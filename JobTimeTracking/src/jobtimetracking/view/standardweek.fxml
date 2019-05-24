@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="362.0" prefWidth="634.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="267.0" layoutY="35.0" text="Actual Week" textAlignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="73.0" layoutY="102.0" text="quota">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="73.0" layoutY="149.0" text="own">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="75.0" layoutY="198.0" text="balance">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="73.0" layoutY="246.0" text="overtime">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="73.0" layoutY="294.0" text="remaining days of vacation">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblSollAusgabe" layoutX="443.0" layoutY="104.0" text="SOLL" />
+      <Label fx:id="lblHabenAusgabe" layoutX="443.0" layoutY="151.0" text="HABEN" />
+      <Label fx:id="lblDifferenzAusgabe" layoutX="443.0" layoutY="200.0" text="DIFFERENZ" />
+      <Label fx:id="lblMehrstundenAusgabe" layoutX="443.0" layoutY="248.0" text="ÜBERSTUNDEN" />
+      <Label fx:id="lblResturlaubAusgabe" layoutX="447.0" layoutY="296.0" prefHeight="17.0" prefWidth="70.0" text="RESTURLAUB" />
+      <Label fx:id="lblJahrResturlaub" layoutX="316.0" layoutY="296.0" text="JAHR" />
+   </children>
+</AnchorPane>

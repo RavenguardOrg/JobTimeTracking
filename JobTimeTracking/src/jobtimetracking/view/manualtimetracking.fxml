@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="417.0" prefWidth="618.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <DatePicker fx:id="dpDatePicker" layoutX="222.0" layoutY="136.0" />
+      <ComboBox fx:id="cbbDropDown" layoutX="31.0" layoutY="136.0" prefWidth="150.0" />
+      <Label fx:id="lblTitle" layoutX="241.0" layoutY="46.0" text="Manual Time Tracking">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtTimePicker" layoutX="438.0" layoutY="136.0" />
+      <Button fx:id="btnSave" layoutX="181.0" layoutY="262.0" mnemonicParsing="false" text="Save">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnCancel" layoutX="387.0" layoutY="262.0" mnemonicParsing="false" text="Cancel">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
