@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="436.0" prefWidth="714.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="305.0" layoutY="21.0" prefHeight="27.0" prefWidth="105.0" text="Evaluation" textAlignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="57.0" layoutY="118.0" text="quota">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="57.0" layoutY="165.0" text="own">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="59.0" layoutY="214.0" text="balance">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="57.0" layoutY="262.0" text="overtime">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="57.0" layoutY="333.0" text="remaining days of vacation">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblSollMonat" layoutX="299.0" layoutY="119.0" text="SOLL MONAT" />
+      <Label fx:id="lblDifferenzMonat" layoutX="299.0" layoutY="216.0" text="DIFFERENZ MONAT" />
+      <Label fx:id="lblMehrstundenMonat" layoutX="299.0" layoutY="264.0" text="ÜBERSTUNDEN MONAT" />
+      <Label fx:id="lblResturlaubAusgabe" layoutX="457.0" layoutY="335.0" prefHeight="17.0" prefWidth="70.0" text="RESTURLAUB" />
+      <Label fx:id="lblJahrResturlaub" layoutX="294.0" layoutY="335.0" text="JAHR" />
+      <Label layoutX="59.0" layoutY="368.0" text="vacation days">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblUrlaubAusgabe" layoutX="457.0" layoutY="369.0" prefHeight="17.0" prefWidth="70.0" text="URLAUB" />
+      <Label fx:id="lblJahrUrlaub" layoutX="294.0" layoutY="369.0" text="JAHR" />
+      <Label fx:id="lblSollJahr" layoutX="457.0" layoutY="119.0" text="SOLL JAHR" />
+      <Label fx:id="lblHabenJahr" layoutX="457.0" layoutY="167.0" text="HABEN JAHR" />
+      <Label fx:id="lblHabenMonat" layoutX="299.0" layoutY="167.0" text="HABEN MONAT" />
+      <Label fx:id="lblDeifferenzJahr" layoutX="457.0" layoutY="216.0" text="DIFFERENZ JAHR" />
+      <Label fx:id="lblMehrstundenJahr" layoutX="459.0" layoutY="264.0" text="ÜBERSTUNDEN JAHR" />
+      <Separator layoutX="36.0" layoutY="312.0" prefHeight="0.0" prefWidth="632.0" />
+      <Separator layoutX="260.0" layoutY="112.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="6.0" />
+      <Separator layoutX="440.0" layoutY="112.0" orientation="VERTICAL" prefHeight="200.0" />
+      <Separator layoutX="47.0" layoutY="111.0" prefHeight="0.0" prefWidth="632.0" />
+      <Label layoutX="51.0" layoutY="75.0" text="Time types">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="299.0" layoutY="75.0" text="Month">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="459.0" layoutY="75.0" text="Year">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
