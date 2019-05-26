@@ -5,10 +5,21 @@
  */
 package jobtimetracking.control;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
+
 /**
  *
  * @author Anika.Schmidt
  */
 public class Manualtimetracking {
-    
+
+    @FXML
+    private ComboBox cbbDropDown;
+    @FXML
+    private DatePicker dpDatePicker;
+    @FXML
+    private TextField txtTimePicker;
 }

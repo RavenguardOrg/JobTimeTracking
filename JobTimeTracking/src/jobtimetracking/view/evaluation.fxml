@@ -5,7 +5,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="436.0" prefWidth="714.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="436.0" prefWidth="714.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="jobtimetracking.control.Evaluation">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="305.0" layoutY="21.0" prefHeight="27.0" prefWidth="105.0" text="Evaluation" textAlignment="CENTER">
          <font>

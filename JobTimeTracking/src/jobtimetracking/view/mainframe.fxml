@@ -15,9 +15,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="jobtimetracking.control.Mainframe">
   <children>
-    <MenuBar VBox.vgrow="NEVER">
+    <MenuBar fx:id="mbMainframe" VBox.vgrow="NEVER">
       <menus>
         <Menu mnemonicParsing="false" text="File">
           <items>
@@ -66,12 +67,12 @@
                   <Button fx:id="btnBreak" layoutX="28.0" layoutY="286.0" mnemonicParsing="false" text="Break" />
           </children>
         </AnchorPane>
-        <ScrollPane prefHeight="-1.0" prefWidth="-1.0">
+        <ScrollPane fx:id="spView" prefHeight="-1.0" prefWidth="-1.0">
           <content>
             <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="475.0" />
           </content>
         </ScrollPane>
-        <AnchorPane />
+        <AnchorPane fx:id="apDetail" />
       </items>
     </SplitPane>
     <HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">

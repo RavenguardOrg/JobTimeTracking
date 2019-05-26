@@ -8,7 +8,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="417.0" prefWidth="618.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="417.0" prefWidth="618.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="jobtimetracking.control.Manualtimetracking">
    <children>
       <DatePicker fx:id="dpDatePicker" layoutX="222.0" layoutY="136.0" />
       <ComboBox fx:id="cbbDropDown" layoutX="31.0" layoutY="136.0" prefWidth="150.0" />
