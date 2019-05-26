@@ -5,6 +5,8 @@
  */
 package jobtimetracking.control;
 
+import java.io.IOException;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -26,4 +28,14 @@ public class Manualtimetracking {
     private TextField txtTimePickerBegin;
     @FXML
     private TextField txtTimePickerEnde;
+    
+    @FXML
+    public void onSave(ActionEvent event) throws IOException {
+        //Save Times
+    }
+
+    @FXML
+    public void onCancel(ActionEvent event) throws IOException {
+        //Cancel Times
+    }
 }

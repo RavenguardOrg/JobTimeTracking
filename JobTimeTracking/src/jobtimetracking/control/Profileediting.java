@@ -5,6 +5,8 @@
  */
 package jobtimetracking.control;
 
+import java.io.IOException;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
@@ -30,4 +32,14 @@ public class Profileediting {
     private TextField txtUsername;
     @FXML
     private TextField txtPassword;
+    
+    @FXML
+    public void onUpdate(ActionEvent event) throws IOException {
+        //Update Profile
+    }
+
+    @FXML
+    public void onCancel(ActionEvent event) throws IOException {
+        //Cancel Profile
+    }
 }

@@ -5,9 +5,11 @@
  */
 package jobtimetracking;
 
+import java.io.IOException;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
@@ -48,4 +50,8 @@ public class JobTimeTracking extends Application {
         launch(args);
     }
     
+    @FXML
+    public void onEnd(ActionEvent event) throws IOException {
+        //End Break
+    }  
 }

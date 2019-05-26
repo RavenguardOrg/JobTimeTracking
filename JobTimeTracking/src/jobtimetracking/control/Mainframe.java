@@ -27,21 +27,21 @@ public class Mainframe {
 
     @FXML
     public void onEditProfile(ActionEvent event) throws IOException {
-
+        //Open the Profil in Detail 
     }
 
     @FXML
     public void onManualTimeTracking(ActionEvent event) throws IOException {
-
+        //Open the ManualTimeTracking in Main 
     }
 
     @FXML
     public void onEvaluation(ActionEvent event) throws IOException {
-
+        //Open the Evaluation in Main
     }
 
     @FXML
     public void onBreak(ActionEvent event) throws IOException {
-
+        //Open a popup with break information
     }
 }
