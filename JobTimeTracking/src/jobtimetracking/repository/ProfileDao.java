@@ -11,6 +11,16 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.security.InvalidKeyException;
+import java.security.Key;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+import javax.crypto.Cipher;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.SecretKey;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
+import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -75,5 +85,17 @@ public class ProfileDao {
                 StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.WRITE);
 
         m.marshal(profile, os);
+    }
+    
+    private static Cipher createSecretKey(String password) throws NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidKeyException {
+        char[] pwd = password.toCharArray();
+        SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA512");
+        PBEKeySpec keySpec = new PBEKeySpec(pwd, "TiniSagtMiau".getBytes(), 40000, 128);
+        SecretKey keyTmp = keyFactory.generateSecret(keySpec);
+        Key key = new SecretKeySpec(keyTmp.getEncoded(), "AES");
+        Cipher cipher = Cipher.getInstance("AES");
+        cipher.init(Cipher.ENCRYPT_MODE, key);
+        
+        return cipher;
     }
 }

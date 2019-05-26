@@ -1,34 +1,125 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="417.0" prefWidth="618.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jobtimetracking.control.Manualtimetracking">
+<AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="252.0" prefWidth="557.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jobtimetracking.control.Manualtimetracking">
    <children>
-      <DatePicker fx:id="dpDatePickerBegin" layoutX="206.0" layoutY="136.0" prefHeight="25.0" prefWidth="137.0" />
-      <ComboBox fx:id="cbbDropDown" layoutX="31.0" layoutY="136.0" prefWidth="150.0" />
-      <Label fx:id="lblTitle" layoutX="241.0" layoutY="46.0" text="Manual Time Tracking">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <TextField fx:id="txtTimePickerBegin" layoutX="387.0" layoutY="184.0" prefHeight="25.0" prefWidth="127.0" />
-      <Button fx:id="btnSave" layoutX="206.0" layoutY="262.0" mnemonicParsing="false" text="Save">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
-      <Button fx:id="btnCancel" layoutX="387.0" layoutY="262.0" mnemonicParsing="false" text="Cancel">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
-      <TextField fx:id="txtTimePickerEnde" layoutX="387.0" layoutY="136.0" prefHeight="25.0" prefWidth="127.0" />
-      <DatePicker fx:id="dpDatePickerEnde" layoutX="206.0" layoutY="184.0" prefHeight="25.0" prefWidth="137.0" />
+      <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+               <children>
+                  <ComboBox fx:id="cbbDropDown" layoutX="30.0" layoutY="17.0" prefHeight="29.0" prefWidth="127.0">
+                     <padding>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </padding>
+                  </ComboBox>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <children>
+                  <TextField fx:id="txtTimePickerBegin" layoutX="29.0" layoutY="19.0" prefHeight="25.0" prefWidth="127.0">
+                     <padding>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </padding>
+                  </TextField>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <children>
+                  <TextField fx:id="txtTimePickerEnde" layoutX="29.0" layoutY="19.0" prefHeight="25.0" prefWidth="127.0">
+                     <padding>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </padding>
+                  </TextField>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+               <children>
+                  <Button fx:id="btnSave" alignment="CENTER" layoutX="77.0" layoutY="20.0" mnemonicParsing="false" text="Save">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </padding>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <children>
+                  <Button fx:id="btnCancel" alignment="CENTER" layoutX="68.0" layoutY="18.0" mnemonicParsing="false" text="Cancel">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </padding>
+                  </Button>
+               </children>
+               <GridPane.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </GridPane.margin>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+               <children>
+                  <Label fx:id="lblTitle" layoutX="18.0" layoutY="26.0" text="Manual Time Tracking" underline="true">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="183.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <DatePicker fx:id="dpDatePickerBegin" layoutX="25.0" layoutY="17.0" prefHeight="25.0" prefWidth="137.0">
+                     <padding>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </padding>
+                  </DatePicker>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <children>
+                  <DatePicker fx:id="dpDatePickerEnde" layoutX="25.0" layoutY="17.0" prefHeight="25.0" prefWidth="137.0">
+                     <padding>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </padding>
+                  </DatePicker>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </GridPane.margin>
+            </AnchorPane>
+         </children>
+      </GridPane>
    </children>
 </AnchorPane>
