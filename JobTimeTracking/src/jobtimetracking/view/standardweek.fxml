@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -42,5 +43,7 @@
       <Label fx:id="lblMehrstundenAusgabe" layoutX="443.0" layoutY="248.0" text="ÜBERSTUNDEN" />
       <Label fx:id="lblResturlaubAusgabe" layoutX="447.0" layoutY="296.0" prefHeight="17.0" prefWidth="70.0" text="RESTURLAUB" />
       <Label fx:id="lblJahrResturlaub" layoutX="316.0" layoutY="296.0" text="JAHR" />
+      <Separator layoutX="73.0" layoutY="76.0" prefHeight="0.0" prefWidth="486.0" />
+      <Separator layoutX="388.0" layoutY="75.0" orientation="VERTICAL" prefHeight="245.0" prefWidth="0.0" />
    </children>
 </AnchorPane>
