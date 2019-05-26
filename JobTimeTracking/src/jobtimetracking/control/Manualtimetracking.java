@@ -19,7 +19,11 @@ public class Manualtimetracking {
     @FXML
     private ComboBox cbbDropDown;
     @FXML
-    private DatePicker dpDatePicker;
+    private DatePicker dpDatePickerBegin;
     @FXML
-    private TextField txtTimePicker;
+    private DatePicker dpDatePickerEnde;
+    @FXML
+    private TextField txtTimePickerBegin;
+    @FXML
+    private TextField txtTimePickerEnde;
 }

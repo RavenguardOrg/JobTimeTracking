@@ -21,11 +21,11 @@ public class Profileediting {
     @FXML
     private TextField txtDepartment;
     @FXML
-    private TextField txtvd;
+    private TextField txtvacationdays;
     @FXML
-    private TextField txthpw;
+    private TextField txthoursperweek;
     @FXML
-    private TextField txtdpw;
+    private TextField txtdaysperweek;
     @FXML
     private TextField txtUsername;
     @FXML

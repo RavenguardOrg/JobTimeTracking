@@ -8,18 +8,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="417.0" prefWidth="618.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" 
-            fx:controller="jobtimetracking.control.Manualtimetracking">
+<AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="417.0" prefWidth="618.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jobtimetracking.control.Manualtimetracking">
    <children>
-      <DatePicker fx:id="dpDatePicker" layoutX="222.0" layoutY="136.0" />
+      <DatePicker fx:id="dpDatePickerBegin" layoutX="206.0" layoutY="136.0" prefHeight="25.0" prefWidth="137.0" />
       <ComboBox fx:id="cbbDropDown" layoutX="31.0" layoutY="136.0" prefWidth="150.0" />
       <Label fx:id="lblTitle" layoutX="241.0" layoutY="46.0" text="Manual Time Tracking">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtTimePicker" layoutX="438.0" layoutY="136.0" />
-      <Button fx:id="btnSave" layoutX="181.0" layoutY="262.0" mnemonicParsing="false" text="Save">
+      <TextField fx:id="txtTimePickerBegin" layoutX="387.0" layoutY="184.0" prefHeight="25.0" prefWidth="127.0" />
+      <Button fx:id="btnSave" layoutX="206.0" layoutY="262.0" mnemonicParsing="false" text="Save">
          <font>
             <Font size="14.0" />
          </font>
@@ -29,5 +28,7 @@
             <Font size="14.0" />
          </font>
       </Button>
+      <TextField fx:id="txtTimePickerEnde" layoutX="387.0" layoutY="136.0" prefHeight="25.0" prefWidth="127.0" />
+      <DatePicker fx:id="dpDatePickerEnde" layoutX="206.0" layoutY="184.0" prefHeight="25.0" prefWidth="137.0" />
    </children>
 </AnchorPane>
