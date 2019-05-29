@@ -10,9 +10,9 @@
    <children>
       <VBox alignment="CENTER" prefHeight="105.0" prefWidth="275.0" spacing="12.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label text="Break">
+            <Label text="Break" underline="true">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Label>
             <Label text="You are in break!">
@@ -20,7 +20,10 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" text="End" />
+            <Button mnemonicParsing="false" text="End">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
          </children>
       </VBox>
    </children>
