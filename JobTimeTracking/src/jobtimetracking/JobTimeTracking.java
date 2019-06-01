@@ -13,10 +13,8 @@ import java.util.stream.Collectors;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -176,7 +174,8 @@ public class JobTimeTracking extends Application {
     }
 
     /**
-     *
+     * Handle create new Profile
+     * 
      * @param result New Profile Dialog Result
      * @param primaryStage Main Stage
      * @param profileController Controller of new Profile Dialog
