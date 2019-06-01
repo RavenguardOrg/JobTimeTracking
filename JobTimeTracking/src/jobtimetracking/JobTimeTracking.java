@@ -29,6 +29,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import jobtimetracking.control.Mainframe;
@@ -76,6 +78,8 @@ public class JobTimeTracking extends Application {
             PasswordField password = new PasswordField();
             password.setPromptText("Password");
             Label errorMessage = new Label();
+            errorMessage.setFont(Font.font("System", FontWeight.BOLD, 14));
+            errorMessage.setTextFill(Color.rgb(210, 39, 30));
             
             grid.add(new Label("Username:"), 0, 0);
             grid.add(username, 1, 0);
@@ -297,8 +301,7 @@ public class JobTimeTracking extends Application {
         if (!errors.isEmpty()) {
             // Join ErrorMessages to single String using stream API
             errorMessage.setText(errors.stream().collect(Collectors.joining(System.lineSeparator())));
-            // Set Color to RED
-            errorMessage.setTextFill(Color.rgb(210, 39, 30));
+            
             // FIT SIZE
             dialog.getDialogPane().getScene().getWindow().sizeToScene();
         }
@@ -328,8 +331,7 @@ public class JobTimeTracking extends Application {
         if (!errors.isEmpty()) {
             // Join ErrorMessages to single String using stream API
             errorMessage.setText(errors.stream().collect(Collectors.joining(System.lineSeparator())));
-            // Set Color to RED
-            errorMessage.setTextFill(Color.rgb(210, 39, 30));
+            
             // FIT SIZE
             dialog.getDialogPane().getScene().getWindow().sizeToScene();
         }
