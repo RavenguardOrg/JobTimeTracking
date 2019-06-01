@@ -20,9 +20,9 @@ public class Profile {
     private String department;
     private String username;
     private String password;
-    private int hpw;
-    private int dpw;
-    private int vd;
+    private int hoursperweek;
+    private int daysperweek;
+    private int vacationdays;
     private ArrayList<Timetracking> tracking = new ArrayList<>();
 
     public String getSurename() {
@@ -82,27 +82,27 @@ public class Profile {
     }
 
     public int getHpw() {
-        return hpw;
+        return hoursperweek;
     }
 
     public void setHpw(int hpw) {
-        this.hpw = hpw;
+        this.hoursperweek = hpw;
     }
 
     public int getDpw() {
-        return dpw;
+        return daysperweek;
     }
 
     public void setDpw(int dpw) {
-        this.dpw = dpw;
+        this.daysperweek = dpw;
     }
 
     public int getVd() {
-        return vd;
+        return vacationdays;
     }
 
     public void setVd(int vd) {
-        this.vd = vd;
+        this.vacationdays = vd;
     }
 
     public ArrayList<Timetracking> getTracking() {

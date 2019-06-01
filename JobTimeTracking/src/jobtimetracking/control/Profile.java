@@ -5,9 +5,8 @@
  */
 package jobtimetracking.control;
 
-import java.io.IOException;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
@@ -37,14 +36,95 @@ public class Profile {
     private TextField txtUsername;
     @FXML
     private PasswordField txtPassword;
-
     @FXML
-    public void onSave(ActionEvent event) throws IOException {
-        //Save Profile
+    private Label lblErrorMessage;
+
+    public Label getLblErrorMessage() {
+        return lblErrorMessage;
     }
 
-    @FXML
-    public void onCancel(ActionEvent event) throws IOException {
-        //Cancel Profile
+    public void setLblErrorMessage(Label lblErrorMessage) {
+        this.lblErrorMessage = lblErrorMessage;
     }
+
+    public TextField getTxtSurename() {
+        return txtSurename;
+    }
+
+    public void setTxtSurename(TextField txtSurename) {
+        this.txtSurename = txtSurename;
+    }
+
+    public TextField getTxtFirstname() {
+        return txtFirstname;
+    }
+
+    public void setTxtFirstname(TextField txtFirstname) {
+        this.txtFirstname = txtFirstname;
+    }
+
+    public TextField getTxtSecondname() {
+        return txtSecondname;
+    }
+
+    public void setTxtSecondname(TextField txtSecondname) {
+        this.txtSecondname = txtSecondname;
+    }
+
+    public TextField getTxtCompany() {
+        return txtCompany;
+    }
+
+    public void setTxtCompany(TextField txtCompany) {
+        this.txtCompany = txtCompany;
+    }
+
+    public TextField getTxtDepartment() {
+        return txtDepartment;
+    }
+
+    public void setTxtDepartment(TextField txtDepartment) {
+        this.txtDepartment = txtDepartment;
+    }
+
+    public TextField getTxthoursperweek() {
+        return txthoursperweek;
+    }
+
+    public void setTxthoursperweek(TextField txthoursperweek) {
+        this.txthoursperweek = txthoursperweek;
+    }
+
+    public TextField getTxtdaysperweek() {
+        return txtdaysperweek;
+    }
+
+    public void setTxtdaysperweek(TextField txtdaysperweek) {
+        this.txtdaysperweek = txtdaysperweek;
+    }
+
+    public TextField getTxtvacationdays() {
+        return txtvacationdays;
+    }
+
+    public void setTxtvacationdays(TextField txtvacationdays) {
+        this.txtvacationdays = txtvacationdays;
+    }
+
+    public TextField getTxtUsername() {
+        return txtUsername;
+    }
+
+    public void setTxtUsername(TextField txtUsername) {
+        this.txtUsername = txtUsername;
+    }
+
+    public PasswordField getTxtPassword() {
+        return txtPassword;
+    }
+
+    public void setTxtPassword(PasswordField txtPassword) {
+        this.txtPassword = txtPassword;
+    }
+
 }

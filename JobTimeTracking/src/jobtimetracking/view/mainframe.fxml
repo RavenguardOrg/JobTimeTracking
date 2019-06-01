@@ -13,19 +13,21 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="650.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jobtimetracking.control.Mainframe">
+<VBox prefHeight="625.0" prefWidth="797.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jobtimetracking.control.Mainframe">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="797.0" VBox.vgrow="ALWAYS">
          <children>
-            <SplitPane dividerPositions="0.22957198443579765, 0.7470817120622568" maxHeight="625.0" maxWidth="1080.0" minHeight="625.0" minWidth="1080.0" prefHeight="625.0" prefWidth="1080.0">
+            <SplitPane dividerPositions="0.22957198443579765" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="797.0">
                <items>
-                  <AnchorPane maxHeight="625.0" maxWidth="190.0" minHeight="625.0" minWidth="190.0" prefHeight="625.0" prefWidth="190.0">
+                  <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="190.0">
                      <children>
-                        <GridPane AnchorPane.bottomAnchor="250.0" AnchorPane.topAnchor="100.0">
+                        <GridPane prefHeight="332.0" prefWidth="190.0" AnchorPane.bottomAnchor="193.0" AnchorPane.topAnchor="100.0">
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                            </columnConstraints>
                            <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -68,17 +70,25 @@
                                     </Button>
                                  </children>
                               </AnchorPane>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5">
+                                 <children>
+                                    <Label fx:id="lblLiveWorkTime" alignment="CENTER" contentDisplay="CENTER" layoutX="75.0" layoutY="19.0" text="STOPUHR" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
                            </children>
                         </GridPane>
                      </children>
                   </AnchorPane>
-                  <ScrollPane fx:id="spView" maxHeight="625.0" minHeight="625.0" prefHeight="625.0" />
-                  <AnchorPane maxHeight="625.0" maxWidth="280.0" minHeight="625.0" minWidth="280.0" prefHeight="625.0" prefWidth="280.0" />
+                  <ScrollPane fx:id="spView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" />
                </items>
             </SplitPane>
          </children>
     </AnchorPane>
-      <HBox prefHeight="28.0" prefWidth="1030.0" VBox.vgrow="ALWAYS">
+      <HBox prefHeight="42.0" prefWidth="797.0" VBox.vgrow="ALWAYS">
          <children>
             <AnchorPane fx:id="apDetail" HBox.hgrow="ALWAYS">
                <children>

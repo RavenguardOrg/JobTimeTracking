@@ -24,6 +24,8 @@ public class Mainframe {
     private Label lblStatusTimeTracking;
     @FXML
     private AnchorPane apDetail;
+    @FXML
+    private Label lblLiveWorkTime;
 
     @FXML
     public void onEditProfile(ActionEvent event) throws IOException {
