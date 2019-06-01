@@ -39,7 +39,7 @@ import jobtimetracking.control.Profile;
  * @author Anika.Schmidt
  */
 public class JobTimeTracking extends Application {
-
+    
     @Override
     public void start(Stage primaryStage) {
         try {
@@ -48,7 +48,7 @@ public class JobTimeTracking extends Application {
             final Parent root = main.getRoot();
             final Scene scene = new Scene(root, 797, 625);
             final Mainframe controller = main.getController();
-
+            
             primaryStage.setMaximized(false);
             primaryStage.setScene(scene);
             primaryStage.setTitle("Job Time Tracking");
@@ -70,13 +70,13 @@ public class JobTimeTracking extends Application {
             grid.setHgap(10);
             grid.setVgap(10);
             grid.setPadding(new Insets(20, 10, 10, 10));
-
+            
             TextField username = new TextField();
             username.setPromptText("Username");
             PasswordField password = new PasswordField();
             password.setPromptText("Password");
             Label errorMessage = new Label();
-
+            
             grid.add(new Label("Username:"), 0, 0);
             grid.add(username, 1, 0);
             grid.add(new Label("Password:"), 0, 1);
@@ -84,27 +84,36 @@ public class JobTimeTracking extends Application {
             grid.add(errorMessage, 0, 2, 2, 1);
 
             // Enable/Disable login button depending on whether a username was entered.
-            Button loginButton = (Button)dialog.getDialogPane().lookupButton(loginButtonType);
-            loginButton.addEventFilter(ActionEvent.ACTION, 
+            Button loginButton = (Button) dialog.getDialogPane().lookupButton(loginButtonType);
+            loginButton.addEventFilter(ActionEvent.ACTION,
                     event -> {
-                        if(!validateLogin(username, password, errorMessage, dialog)) {
+                        if (!validateLogin(username, password, errorMessage, dialog)) {
                             event.consume();
                         }
                     });
-
+            
             dialog.getDialogPane().setContent(grid);
 
             // Request focus on the username field by default.
             Platform.runLater(() -> username.requestFocus());
-
+            
             Optional<ButtonType> result = dialog.showAndWait();
-            handleLogin(result, primaryStage, username, password, errorMessage);
+            handleLogin(result, primaryStage, username, password);
         } catch (IOException e) {
-
+            
         }
     }
 
-    private void handleLogin(Optional<ButtonType> result, Stage primaryStage, TextField username, PasswordField password, Label errorMessage) throws IOException {
+    /**
+     * Handle Loging Dialog
+     *
+     * @param result Login Dialog Result
+     * @param primaryStage Main Stage
+     * @param username Textfield for Username
+     * @param password Textfield for Password
+     * @throws IOException faild to load fxml-Template
+     */
+    private void handleLogin(Optional<ButtonType> result, Stage primaryStage, TextField username, PasswordField password) throws IOException {
         if (result.isPresent()) {
             ButtonType result2 = result.get();
             if (null != result2.getButtonData()) {
@@ -125,7 +134,7 @@ public class JobTimeTracking extends Application {
                                 = new GuiLoader<>("profile.fxml");
                         Profile profileController = helper.getController();
                         AnchorPane anchorPane = helper.getRoot();
-
+                        
                         ButtonType btnSaveProfile = new ButtonType("Save", ButtonData.OK_DONE);
                         ButtonType btnCancelProfile = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
 
@@ -138,17 +147,22 @@ public class JobTimeTracking extends Application {
                         dialogProfile.getDialogPane().setContent(anchorPane);
 
                         // Enable/Disable login button depending on whether a username was entered.
-                        Node saveButton = dialogProfile.getDialogPane().lookupButton(btnSaveProfile);
-                        saveButton.setDisable(validateNewProfile(profileController));
+                        Button saveButton = (Button) dialogProfile.getDialogPane().lookupButton(btnSaveProfile);
+                        saveButton.addEventFilter(ActionEvent.ACTION,
+                                event -> {
+                                    if (!validateNewProfile(profileController, dialogProfile)) {
+                                        event.consume();
+                                    }
+                                });
 
                         // Do some validation (using the Java 8 lambda syntax).
                         profileController.getTxtUsername().textProperty().addListener((observable, oldValue, newValue) -> {
-                            saveButton.setDisable(validateNewProfile(profileController));
+                            saveButton.setDisable(validateNewProfile(profileController, dialogProfile));
                         });
-
+                        
                         Optional<ButtonType> result3 = dialogProfile.showAndWait();
                         handleCreateProfile(result3, primaryStage, profileController);
-
+                        
                         break;
                     default:
                         break;
@@ -157,11 +171,17 @@ public class JobTimeTracking extends Application {
         }
     }
 
-    private void handleCreateProfile(Optional<ButtonType> result3, Stage primaryStage, Profile profileController) {
-        if (result3.isPresent()) {
-            ButtonType result4 = result3.get();
-            if (null != result4.getButtonData()) {
-                switch (result4.getButtonData()) {
+    /**
+     *
+     * @param result New Profile Dialog Result
+     * @param primaryStage Main Stage
+     * @param profileController Controller of new Profile Dialog
+     */
+    private void handleCreateProfile(Optional<ButtonType> result, Stage primaryStage, Profile profileController) {
+        if (result.isPresent()) {
+            ButtonType resultButtonType = result.get();
+            if (null != resultButtonType.getButtonData()) {
+                switch (resultButtonType.getButtonData()) {
                     case CANCEL_CLOSE:
                         primaryStage.close();
                         break;
@@ -176,7 +196,6 @@ public class JobTimeTracking extends Application {
                         String daysperweek = profileController.getTxtdaysperweek().getText();
                         String vacationdays = profileController.getTxtvacationdays().getText();
                         
-
                         break;
                     default:
                         break;
@@ -191,14 +210,21 @@ public class JobTimeTracking extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
+    
     @FXML
     public void onBreakEnd(ActionEvent event) throws IOException {
         //End Break
     }
 
-    private boolean validateNewProfile(Profile profileController) {
-        boolean retValue = true;
+    /**
+     * Validate input from new Profile
+     *
+     * @param profileController Controller to access input
+     * @param dialog to resize
+     * @return true if everything is ok, otherwise false
+     */
+    private boolean validateNewProfile(Profile profileController, Dialog dialog) {
+        List<String> errors = new ArrayList<>();
         Label errorMessage = profileController.getLblErrorMessage();
         String username = profileController.getTxtUsername().getText();
         String password = profileController.getTxtPassword().getText();
@@ -210,81 +236,84 @@ public class JobTimeTracking extends Application {
         String daysperweek = profileController.getTxtdaysperweek().getText();
         String vacationdays = profileController.getTxtvacationdays().getText();
         errorMessage.setText("");
+        // Check input Parameters
         if (password == null || password.trim().isEmpty()) {
-            errorMessage.setText("Password may not be empty!");
-            retValue = false;
+            errors.add("Password may not be empty!");
         }
         if (username == null || username.trim().isEmpty()) {
-            errorMessage.setText("Username may not be empty!");
-            retValue = false;
+            errors.add("Username may not be empty!");
         }
         if (company == null || company.trim().isEmpty()) {
-            errorMessage.setText("Company may not be empty!");
-            retValue = false;
+            errors.add("Company may not be empty!");
         }
         if (department == null || department.trim().isEmpty()) {
-            errorMessage.setText("Department may not be empty!");
-            retValue = false;
+            errors.add("Department may not be empty!");
         }
         if (surename == null || surename.trim().isEmpty()) {
-            errorMessage.setText("Surename may not be empty!");
-            retValue = false;
+            errors.add("Surename may not be empty!");
         }
         if (firstname == null || firstname.trim().isEmpty()) {
-            errorMessage.setText("Firstname may not be empty!");
-            retValue = false;
+            errors.add("Firstname may not be empty!");
         }
         if (hoursperweek == null || hoursperweek.trim().isEmpty()) {
-            errorMessage.setText("Hours per Week may not be empty!");
-            retValue = false;
+            errors.add("Hours per Week may not be empty!");
         } else {
             try {
                 double hpw = Double.parseDouble(hoursperweek);
                 if (hpw <= 0) {
-                    errorMessage.setText("Hours per Week must be Positive!");
-                    retValue = false;
+                    errors.add("Hours per Week must be Positive!");
                 }
-
+                
             } catch (NumberFormatException e) {
-                errorMessage.setText("Hours per Week must be float!");
-                retValue = false;
+                errors.add("Hours per Week must be float!");
             }
         }
         if (daysperweek == null || daysperweek.trim().isEmpty()) {
-            errorMessage.setText("Days per Week may not be empty!");
-            retValue = false;
-        }else {
+            errors.add("Days per Week may not be empty!");
+        } else {
             try {
                 double hpw = Double.parseDouble(hoursperweek);
                 if (hpw <= 0) {
-                    errorMessage.setText("Hors per Week must be Positive!");
-                    retValue = false;
+                    errors.add("Hors per Week must be Positive!");
                 }
-
+                
             } catch (NumberFormatException e) {
-                errorMessage.setText("Hours per Week must be float!");
-                retValue = false;
+                errors.add("Hours per Week must be float!");
             }
         }
         if (vacationdays == null || vacationdays.trim().isEmpty()) {
-            errorMessage.setText("Vacation Days may not be empty!");
-            retValue = false;
-        }else {
+            errors.add("Vacation Days may not be empty!");
+        } else {
             try {
                 double hpw = Double.parseDouble(hoursperweek);
                 if (hpw <= 0) {
-                    errorMessage.setText("Hors per Week must be Positive!");
-                    retValue = false;
+                    errors.add("Hors per Week must be Positive!");
                 }
-
+                
             } catch (NumberFormatException e) {
-                errorMessage.setText("Hours per Week must be float!");
-                retValue = false;
+                errors.add("Hours per Week must be float!");
             }
         }
-        return retValue;
+        if (!errors.isEmpty()) {
+            // Join ErrorMessages to single String using stream API
+            errorMessage.setText(errors.stream().collect(Collectors.joining(System.lineSeparator())));
+            // Set Color to RED
+            errorMessage.setTextFill(Color.rgb(210, 39, 30));
+            // FIT SIZE
+            dialog.getDialogPane().getScene().getWindow().sizeToScene();
+        }
+        return errors.isEmpty();
     }
 
+    /**
+     * ValidateLogin
+     *
+     * @param username Textfield for Username
+     * @param password Textfield for Password
+     * @param errorMessage Label to display ErrorMessages
+     * @param dialog to resize
+     * @return true if everything is ok, otherwise false
+     */
     private boolean validateLogin(TextField username, PasswordField password, Label errorMessage, Dialog dialog) {
         String userName = username.getText();
         String passWord = password.getText();
@@ -296,9 +325,12 @@ public class JobTimeTracking extends Application {
         if (passWord == null || passWord.trim().isEmpty()) {
             errors.add("Password may not be empty!");
         }
-        if(!errors.isEmpty()) {
+        if (!errors.isEmpty()) {
+            // Join ErrorMessages to single String using stream API
             errorMessage.setText(errors.stream().collect(Collectors.joining(System.lineSeparator())));
+            // Set Color to RED
             errorMessage.setTextFill(Color.rgb(210, 39, 30));
+            // FIT SIZE
             dialog.getDialogPane().getScene().getWindow().sizeToScene();
         }
         return errors.isEmpty();
