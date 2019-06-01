@@ -6,7 +6,7 @@ Timekeeping at work, regarding the court judgment of the European Court of Justi
 **Is a tool to**
        <ul>
           <li>manage profiles</li>
-          <li>add manually  times/li>
+          <li>add manually  times</li>
           <li>caputre breaks</li>
           <li>capture automatically time</li>
           <li>evaluate time</li>
