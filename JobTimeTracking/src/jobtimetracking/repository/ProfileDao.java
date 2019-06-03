@@ -12,6 +12,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
@@ -22,6 +23,7 @@ import javax.crypto.CipherOutputStream;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.JAXBContext;
@@ -62,8 +64,9 @@ public class ProfileDao {
      * @throws java.security.InvalidKeyException
      * @throws java.security.NoSuchAlgorithmException
      * @throws java.security.spec.InvalidKeySpecException
+     * @throws java.security.InvalidAlgorithmParameterException
      */
-    public static Profile getFromPath(Path path, String password) throws JAXBException, IOException, NoSuchPaddingException, InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException {
+    public static Profile getFromPath(Path path, String password) throws JAXBException, IOException, NoSuchPaddingException, InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, InvalidAlgorithmParameterException {
         if (path == null) {
             throw new NullPointerException("Path cannot be null.");
         }
@@ -71,7 +74,7 @@ public class ProfileDao {
         final JAXBContext jc = JAXBContext.newInstance(Profile.class);
         final Unmarshaller u = jc.createUnmarshaller();
         InputStream is = Files.newInputStream(path, StandardOpenOption.READ);
-        CipherInputStream cis = new CipherInputStream(is, createSecretKey(password));
+        CipherInputStream cis = new CipherInputStream(is, createSecretKeyDecrypt(password));
         return (Profile) u.unmarshal(cis);
     }
 
@@ -85,10 +88,11 @@ public class ProfileDao {
      * @throws java.security.spec.InvalidKeySpecException
      * @throws javax.crypto.NoSuchPaddingException
      * @throws java.security.InvalidKeyException
+     * @throws java.security.InvalidAlgorithmParameterException
      */
     public static void saveToPath(Profile profile) throws JAXBException, IOException,
             NoSuchAlgorithmException, InvalidKeySpecException,
-            NoSuchPaddingException, InvalidKeyException {
+            NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException {
         if (profile == null) {
             throw new IllegalArgumentException("profile cannot be null.");
         }
@@ -113,15 +117,28 @@ public class ProfileDao {
      * @throws NoSuchPaddingException
      * @throws InvalidKeyException
      */
-    private static Cipher createSecretKey(String password) throws NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidKeyException {
-        char[] pwd = password.toCharArray();
-        SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA512");
-        PBEKeySpec keySpec = new PBEKeySpec(pwd, "TiniSagtMiau".getBytes(), 40000, 128);
-        SecretKey keyTmp = keyFactory.generateSecret(keySpec);
-        Key key = new SecretKeySpec(keyTmp.getEncoded(), "AES");
-        Cipher cipher = Cipher.getInstance("AES");
-        cipher.init(Cipher.ENCRYPT_MODE, key);
+    private static Cipher createSecretKey(String password) throws NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException {
+        Cipher c = Cipher.getInstance("DES");
+        Key k = new SecretKeySpec(password.getBytes(), "DES");
+        c.init(Cipher.ENCRYPT_MODE, k);
 
-        return cipher;
+        return c;
+    }
+
+    /**
+     *
+     * @param password
+     * @return
+     * @throws NoSuchAlgorithmException
+     * @throws InvalidKeySpecException
+     * @throws NoSuchPaddingException
+     * @throws InvalidKeyException
+     */
+    private static Cipher createSecretKeyDecrypt(String password) throws NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException {
+        Cipher c = Cipher.getInstance("DES");
+        Key k = new SecretKeySpec(password.getBytes(), "DES");
+        c.init(Cipher.DECRYPT_MODE, k);
+
+        return c;
     }
 }
