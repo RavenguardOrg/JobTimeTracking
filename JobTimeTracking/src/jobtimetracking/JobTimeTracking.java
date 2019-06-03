@@ -33,12 +33,14 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import jobtimetracking.control.Mainframe;
 import jobtimetracking.control.Profile;
+import jobtimetracking.logic.TimeTrackingService;
 
 /**
  *
  * @author Anika.Schmidt
  */
 public class JobTimeTracking extends Application {
+    private TimeTrackingService service = new TimeTrackingService();
     
     @Override
     public void start(Stage primaryStage) {
@@ -89,7 +91,7 @@ public class JobTimeTracking extends Application {
             Button loginButton = (Button) dialog.getDialogPane().lookupButton(loginButtonType);
             loginButton.addEventFilter(ActionEvent.ACTION,
                     event -> {
-                        if (!validateLogin(username, password, errorMessage, dialog)) {
+                        if (!validateLogin(username, password, errorMessage, dialog, service)) {
                             event.consume();
                         }
                     });
@@ -156,11 +158,6 @@ public class JobTimeTracking extends Application {
                                         event.consume();
                                     }
                                 });
-
-                        // Do some validation (using the Java 8 lambda syntax).
-                        profileController.getTxtUsername().textProperty().addListener((observable, oldValue, newValue) -> {
-                            saveButton.setDisable(validateNewProfile(profileController, dialogProfile));
-                        });
                         
                         Optional<ButtonType> result3 = dialogProfile.showAndWait();
                         handleCreateProfile(result3, primaryStage, profileController);
@@ -238,6 +235,9 @@ public class JobTimeTracking extends Application {
         String hoursperweek = profileController.getTxthoursperweek().getText();
         String daysperweek = profileController.getTxtdaysperweek().getText();
         String vacationdays = profileController.getTxtvacationdays().getText();
+        double hpw = 0;
+        double dpw = 0;
+        double vd = 0;
         errorMessage.setText("");
         // Check input Parameters
         if (password == null || password.trim().isEmpty()) {
@@ -262,7 +262,7 @@ public class JobTimeTracking extends Application {
             errors.add("Hours per Week may not be empty!");
         } else {
             try {
-                double hpw = Double.parseDouble(hoursperweek);
+                hpw = Double.parseDouble(hoursperweek);
                 if (hpw <= 0) {
                     errors.add("Hours per Week must be Positive!");
                 }
@@ -275,28 +275,29 @@ public class JobTimeTracking extends Application {
             errors.add("Days per Week may not be empty!");
         } else {
             try {
-                double hpw = Double.parseDouble(hoursperweek);
-                if (hpw <= 0) {
-                    errors.add("Hors per Week must be Positive!");
+                dpw = Double.parseDouble(daysperweek);
+                if (dpw  <= 0) {
+                    errors.add("Days per Week  must be Positive!");
                 }
                 
             } catch (NumberFormatException e) {
-                errors.add("Hours per Week must be float!");
+                errors.add("Days per Week must be a Number!");
             }
         }
         if (vacationdays == null || vacationdays.trim().isEmpty()) {
             errors.add("Vacation Days may not be empty!");
         } else {
             try {
-                double hpw = Double.parseDouble(hoursperweek);
-                if (hpw <= 0) {
-                    errors.add("Hors per Week must be Positive!");
+                vd = Double.parseDouble(vacationdays);
+                if (vd  <= 0) {
+                    errors.add("Vacation days must be Positive!");
                 }
                 
             } catch (NumberFormatException e) {
-                errors.add("Hours per Week must be float!");
+                errors.add("Vacation days must be a number!");
             }
         }
+        errors.addAll(service.register(username, password, company, department, surename, firstname, surename, hpw, dpw, vd));
         if (!errors.isEmpty()) {
             // Join ErrorMessages to single String using stream API
             errorMessage.setText(errors.stream().collect(Collectors.joining(System.lineSeparator())));
@@ -316,7 +317,7 @@ public class JobTimeTracking extends Application {
      * @param dialog to resize
      * @return true if everything is ok, otherwise false
      */
-    private boolean validateLogin(TextField username, PasswordField password, Label errorMessage, Dialog dialog) {
+    private boolean validateLogin(TextField username, PasswordField password, Label errorMessage, Dialog dialog, TimeTrackingService service) {
         String userName = username.getText();
         String passWord = password.getText();
         errorMessage.setText("");
@@ -327,6 +328,7 @@ public class JobTimeTracking extends Application {
         if (passWord == null || passWord.trim().isEmpty()) {
             errors.add("Password may not be empty!");
         }
+        errors.addAll(service.login(userName, passWord));
         if (!errors.isEmpty()) {
             // Join ErrorMessages to single String using stream API
             errorMessage.setText(errors.stream().collect(Collectors.joining(System.lineSeparator())));

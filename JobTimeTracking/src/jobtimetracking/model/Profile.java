@@ -6,11 +6,18 @@
 package jobtimetracking.model;
 
 import java.util.ArrayList;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author Anika.Schmidt
  */
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Profile {
 
     private String surename;
@@ -20,10 +27,36 @@ public class Profile {
     private String department;
     private String username;
     private String password;
-    private int hoursperweek;
-    private int daysperweek;
-    private int vacationdays;
+    private double hoursperweek;
+    private double daysperweek;
+    private double vacationdays;
+    @XmlElementWrapper(name = "timetrackings")
+    @XmlElement(name = "timetracking")
     private ArrayList<Timetracking> tracking = new ArrayList<>();
+
+    public double getHoursperweek() {
+        return hoursperweek;
+    }
+
+    public void setHoursperweek(double hoursperweek) {
+        this.hoursperweek = hoursperweek;
+    }
+
+    public double getDaysperweek() {
+        return daysperweek;
+    }
+
+    public void setDaysperweek(double daysperweek) {
+        this.daysperweek = daysperweek;
+    }
+
+    public double getVacationdays() {
+        return vacationdays;
+    }
+
+    public void setVacationdays(double vacationdays) {
+        this.vacationdays = vacationdays;
+    }
 
     public String getSurename() {
         return surename;
@@ -79,30 +112,6 @@ public class Profile {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public int getHpw() {
-        return hoursperweek;
-    }
-
-    public void setHpw(int hpw) {
-        this.hoursperweek = hpw;
-    }
-
-    public int getDpw() {
-        return daysperweek;
-    }
-
-    public void setDpw(int dpw) {
-        this.daysperweek = dpw;
-    }
-
-    public int getVd() {
-        return vacationdays;
-    }
-
-    public void setVd(int vd) {
-        this.vacationdays = vd;
     }
 
     public ArrayList<Timetracking> getTracking() {
