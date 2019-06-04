@@ -8,23 +8,21 @@ package jobtimetracking.repository;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.Key;
+import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
+import java.util.Arrays;
 import javax.crypto.Cipher;
 import javax.crypto.CipherInputStream;
 import javax.crypto.CipherOutputStream;
 import javax.crypto.NoSuchPaddingException;
-import javax.crypto.SecretKey;
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -62,11 +60,10 @@ public class ProfileDao {
      * @throws java.io.IOException
      * @throws javax.crypto.NoSuchPaddingException
      * @throws java.security.InvalidKeyException
+     * @throws java.io.UnsupportedEncodingException
      * @throws java.security.NoSuchAlgorithmException
-     * @throws java.security.spec.InvalidKeySpecException
-     * @throws java.security.InvalidAlgorithmParameterException
      */
-    public static Profile getFromPath(Path path, String password) throws JAXBException, IOException, NoSuchPaddingException, InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, InvalidAlgorithmParameterException {
+    public static Profile getFromPath(Path path, String password) throws JAXBException, IOException, NoSuchAlgorithmException, NoSuchPaddingException, UnsupportedEncodingException, InvalidKeyException {
         if (path == null) {
             throw new NullPointerException("Path cannot be null.");
         }
@@ -74,8 +71,9 @@ public class ProfileDao {
         final JAXBContext jc = JAXBContext.newInstance(Profile.class);
         final Unmarshaller u = jc.createUnmarshaller();
         InputStream is = Files.newInputStream(path, StandardOpenOption.READ);
-        CipherInputStream cis = new CipherInputStream(is, createSecretKeyDecrypt(password));
-        return (Profile) u.unmarshal(cis);
+        try (CipherInputStream cis = new CipherInputStream(is, createDecryptCipher(password))) {
+          return (Profile) u.unmarshal(cis);
+        }
     }
 
     /**
@@ -85,14 +83,11 @@ public class ProfileDao {
      * @throws JAXBException parse error
      * @throws IOException I/O error
      * @throws java.security.NoSuchAlgorithmException
-     * @throws java.security.spec.InvalidKeySpecException
      * @throws javax.crypto.NoSuchPaddingException
+     * @throws java.io.UnsupportedEncodingException
      * @throws java.security.InvalidKeyException
-     * @throws java.security.InvalidAlgorithmParameterException
      */
-    public static void saveToPath(Profile profile) throws JAXBException, IOException,
-            NoSuchAlgorithmException, InvalidKeySpecException,
-            NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException {
+    public static void saveToPath(Profile profile) throws JAXBException, IOException, NoSuchAlgorithmException, NoSuchPaddingException, UnsupportedEncodingException, InvalidKeyException {
         if (profile == null) {
             throw new IllegalArgumentException("profile cannot be null.");
         }
@@ -104,8 +99,9 @@ public class ProfileDao {
         m.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
         OutputStream os = Files.newOutputStream(path, StandardOpenOption.CREATE,
                 StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.WRITE);
-        CipherOutputStream cos = new CipherOutputStream(os, createSecretKey(profile.getPassword()));
+        try (CipherOutputStream cos = new CipherOutputStream(os, createEncryptCipher(profile.getPassword()))) {
         m.marshal(profile, cos);
+        }
     }
 
     /**
@@ -117,9 +113,9 @@ public class ProfileDao {
      * @throws NoSuchPaddingException
      * @throws InvalidKeyException
      */
-    private static Cipher createSecretKey(String password) throws NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException {
-        Cipher c = Cipher.getInstance("DES");
-        Key k = new SecretKeySpec(password.getBytes(), "DES");
+    private static Cipher createEncryptCipher(String password) throws NoSuchAlgorithmException, NoSuchPaddingException, UnsupportedEncodingException, InvalidKeyException {
+        Cipher c = Cipher.getInstance("AES/ECB/PKCS5Padding");
+        Key k = createKey(password);
         c.init(Cipher.ENCRYPT_MODE, k);
 
         return c;
@@ -134,11 +130,19 @@ public class ProfileDao {
      * @throws NoSuchPaddingException
      * @throws InvalidKeyException
      */
-    private static Cipher createSecretKeyDecrypt(String password) throws NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException {
-        Cipher c = Cipher.getInstance("DES");
-        Key k = new SecretKeySpec(password.getBytes(), "DES");
+    private static Cipher createDecryptCipher(String password) throws NoSuchAlgorithmException, NoSuchPaddingException, UnsupportedEncodingException, InvalidKeyException {
+        Cipher c = Cipher.getInstance("AES/ECB/PKCS5Padding");
+        Key k = createKey(password);
         c.init(Cipher.DECRYPT_MODE, k);
 
         return c;
+    }
+    
+    private static Key createKey(String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+        byte[] key = password.getBytes("UTF-8");
+            MessageDigest sha = MessageDigest.getInstance("SHA-1");
+            key = sha.digest(key);
+            key = Arrays.copyOf(key, 16);
+            return new SecretKeySpec(key, "AES");
     }
 }

@@ -11,7 +11,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.crypto.NoSuchPaddingException;
@@ -27,14 +26,15 @@ public class TimeTrackingService {
 
     private Profile profile;
 
-    public List<String> login(String username, String password) {
+    public List<String> login(String username, String password)  {
         List<String> errors = new ArrayList<>();
         Path userFile = Paths.get(username + ".xml");
         if (Files.exists(userFile)) {
             try {
                 profile = ProfileDao.getFromPath(userFile, password);
-            } catch (NoSuchPaddingException | InvalidKeyException | NoSuchAlgorithmException | InvalidKeySpecException ex) {
+            } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException  ex) {
                 errors.add("Your passsword is incorrect!");
+                ex.printStackTrace();
             } catch (JAXBException ex) {
                 errors.add("Wrong file format!");
             } catch (IOException ex) {
@@ -68,8 +68,9 @@ public class TimeTrackingService {
             errors.add("Error saving your profile!");
         } catch (IOException ex) {
             errors.add("Can't write file!");
-        } catch (NoSuchAlgorithmException | InvalidKeySpecException | NoSuchPaddingException | InvalidKeyException ex) {
+        } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException  ex) {
             errors.add("Can't encrypt file please choose another password!");
+            ex.printStackTrace();
         }
         return errors;
     }
