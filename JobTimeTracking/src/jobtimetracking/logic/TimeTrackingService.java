@@ -11,7 +11,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.crypto.NoSuchPaddingException;
@@ -33,7 +32,7 @@ public class TimeTrackingService {
         if (Files.exists(userFile)) {
             try {
                 profile = ProfileDao.getFromPath(userFile, password);
-            } catch (NoSuchPaddingException | InvalidKeyException | NoSuchAlgorithmException | InvalidKeySpecException ex) {
+            } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException ex) {
                 errors.add("Your passsword is incorrect!");
             } catch (JAXBException ex) {
                 errors.add("Wrong file format!");
@@ -47,9 +46,9 @@ public class TimeTrackingService {
         return errors;
     }
 
-    public List<String> register(String username, String password, String company, String department, String surename, String firstname, String secondname, 
+    public List<String> register(String username, String password, String company, String department, String surename, String firstname, String secondname,
             double hoursperweek, double daysperweek, double vacationdays) {
-            
+
         List<String> errors = new ArrayList<>();
         profile = new Profile();
         profile.setCompany(company);
@@ -68,8 +67,9 @@ public class TimeTrackingService {
             errors.add("Error saving your profile!");
         } catch (IOException ex) {
             errors.add("Can't write file!");
-        } catch (NoSuchAlgorithmException | InvalidKeySpecException | NoSuchPaddingException | InvalidKeyException ex) {
+        } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException ex) {
             errors.add("Can't encrypt file please choose another password!");
+            ex.printStackTrace();
         }
         return errors;
     }
