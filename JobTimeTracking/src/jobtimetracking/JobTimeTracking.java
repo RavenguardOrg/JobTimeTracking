@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) 2019 Anika Schmidt
  *
  * This program is free software: you can redistribute it and/or modify
@@ -35,6 +35,7 @@ import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
@@ -51,8 +52,9 @@ import jobtimetracking.logic.TimeTrackingService;
  * @author Anika.Schmidt
  */
 public class JobTimeTracking extends Application {
+
     private TimeTrackingService service = new TimeTrackingService();
-    
+
     @Override
     public void start(Stage primaryStage) {
         try {
@@ -61,11 +63,12 @@ public class JobTimeTracking extends Application {
             final Parent root = main.getRoot();
             final Scene scene = new Scene(root, 797, 625);
             final Mainframe controller = main.getController();
-            
+
             primaryStage.setMaximized(false);
             primaryStage.setScene(scene);
             primaryStage.setTitle("Job Time Tracking");
             primaryStage.setResizable(false);
+            primaryStage.getIcons().add(new Image(JobTimeTracking.class.getResourceAsStream("/jobtimetracking/view/TimerMainTitleIcon.png")));
             primaryStage.show();
 
             // Create the custom dialog.
@@ -77,13 +80,15 @@ public class JobTimeTracking extends Application {
             ButtonType createButtonType = new ButtonType("New Profile", ButtonData.OTHER);
             ButtonType loginButtonType = new ButtonType("Login", ButtonData.OK_DONE);
             dialog.getDialogPane().getButtonTypes().addAll(createButtonType, loginButtonType, ButtonType.CANCEL);
+            Stage dialogStage = (Stage) dialog.getDialogPane().getScene().getWindow();
+            dialogStage.getIcons().add(new Image(JobTimeTracking.class.getResourceAsStream("/jobtimetracking/view/LoginTitleIcon.png")));
 
             // Create the username and password labels and fields.
             GridPane grid = new GridPane();
             grid.setHgap(10);
             grid.setVgap(10);
             grid.setPadding(new Insets(20, 10, 10, 10));
-            
+
             TextField username = new TextField();
             username.setPromptText("Username");
             PasswordField password = new PasswordField();
@@ -91,7 +96,7 @@ public class JobTimeTracking extends Application {
             Label errorMessage = new Label();
             errorMessage.setFont(Font.font("System", FontWeight.BOLD, 14));
             errorMessage.setTextFill(Color.rgb(210, 39, 30));
-            
+
             grid.add(new Label("Username:"), 0, 0);
             grid.add(username, 1, 0);
             grid.add(new Label("Password:"), 0, 1);
@@ -106,16 +111,16 @@ public class JobTimeTracking extends Application {
                             event.consume();
                         }
                     });
-            
+
             dialog.getDialogPane().setContent(grid);
 
             // Request focus on the username field by default.
             Platform.runLater(() -> username.requestFocus());
-            
+
             Optional<ButtonType> result = dialog.showAndWait();
             handleLogin(result, primaryStage, username, password);
         } catch (IOException e) {
-            
+
         }
     }
 
@@ -149,7 +154,7 @@ public class JobTimeTracking extends Application {
                                 = new GuiLoader<>("profile.fxml");
                         Profile profileController = helper.getController();
                         AnchorPane anchorPane = helper.getRoot();
-                        
+
                         ButtonType btnSaveProfile = new ButtonType("Save", ButtonData.OK_DONE);
                         ButtonType btnCancelProfile = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
 
@@ -160,6 +165,8 @@ public class JobTimeTracking extends Application {
                         dialogProfile.setTitle("Create new Profile");
                         dialogProfile.getDialogPane().getButtonTypes().addAll(btnSaveProfile, btnCancelProfile);
                         dialogProfile.getDialogPane().setContent(anchorPane);
+                        Stage stageRegister = (Stage) dialogProfile.getDialogPane().getScene().getWindow();
+                        stageRegister.getIcons().add(new Image(this.getClass().getResourceAsStream("/jobtimetracking/view/ProfileTitleIcon.png")));
 
                         // Enable/Disable login button depending on whether a username was entered.
                         Button saveButton = (Button) dialogProfile.getDialogPane().lookupButton(btnSaveProfile);
@@ -169,10 +176,10 @@ public class JobTimeTracking extends Application {
                                         event.consume();
                                     }
                                 });
-                        
+
                         Optional<ButtonType> result3 = dialogProfile.showAndWait();
                         handleCreateProfile(result3, primaryStage, profileController);
-                        
+
                         break;
                     default:
                         break;
@@ -183,7 +190,7 @@ public class JobTimeTracking extends Application {
 
     /**
      * Handle create new Profile
-     * 
+     *
      * @param result New Profile Dialog Result
      * @param primaryStage Main Stage
      * @param profileController Controller of new Profile Dialog
@@ -206,7 +213,7 @@ public class JobTimeTracking extends Application {
                         String hoursperweek = profileController.getTxthoursperweek().getText();
                         String daysperweek = profileController.getTxtdaysperweek().getText();
                         String vacationdays = profileController.getTxtvacationdays().getText();
-                        
+
                         break;
                     default:
                         break;
@@ -221,7 +228,7 @@ public class JobTimeTracking extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
     @FXML
     public void onBreakEnd(ActionEvent event) throws IOException {
         //End Break
@@ -277,7 +284,7 @@ public class JobTimeTracking extends Application {
                 if (hpw <= 0) {
                     errors.add("Hours per Week must be Positive!");
                 }
-                
+
             } catch (NumberFormatException e) {
                 errors.add("Hours per Week must be float!");
             }
@@ -287,10 +294,10 @@ public class JobTimeTracking extends Application {
         } else {
             try {
                 dpw = Double.parseDouble(daysperweek);
-                if (dpw  <= 0) {
+                if (dpw <= 0) {
                     errors.add("Days per Week  must be Positive!");
                 }
-                
+
             } catch (NumberFormatException e) {
                 errors.add("Days per Week must be a Number!");
             }
@@ -300,10 +307,10 @@ public class JobTimeTracking extends Application {
         } else {
             try {
                 vd = Double.parseDouble(vacationdays);
-                if (vd  <= 0) {
+                if (vd <= 0) {
                     errors.add("Vacation days must be Positive!");
                 }
-                
+
             } catch (NumberFormatException e) {
                 errors.add("Vacation days must be a number!");
             }
@@ -312,7 +319,7 @@ public class JobTimeTracking extends Application {
         if (!errors.isEmpty()) {
             // Join ErrorMessages to single String using stream API
             errorMessage.setText(errors.stream().collect(Collectors.joining(System.lineSeparator())));
-            
+
             // FIT SIZE
             dialog.getDialogPane().getScene().getWindow().sizeToScene();
         }
@@ -343,7 +350,7 @@ public class JobTimeTracking extends Application {
         if (!errors.isEmpty()) {
             // Join ErrorMessages to single String using stream API
             errorMessage.setText(errors.stream().collect(Collectors.joining(System.lineSeparator())));
-            
+
             // FIT SIZE
             dialog.getDialogPane().getScene().getWindow().sizeToScene();
         }
