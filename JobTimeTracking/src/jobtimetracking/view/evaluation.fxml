@@ -8,8 +8,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="432.0" prefWidth="658.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" 
-            fx:controller="jobtimetracking.control.Evaluation">
+<AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="460.0" prefWidth="658.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jobtimetracking.control.Evaluation">
    <children>
       <GridPane layoutY="6.0" prefWidth="714.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -26,10 +25,18 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <AnchorPane />
-            <AnchorPane prefHeight="35.0" prefWidth="238.0" GridPane.columnIndex="1">
+            <AnchorPane GridPane.rowIndex="8">
+               <children>
+                  <Label layoutX="14.0" layoutY="17.0" text="Breaks" underline="true">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
+            <AnchorPane GridPane.columnIndex="1">
                <children>
                   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="57.0" layoutY="14.0" prefHeight="27.0" prefWidth="105.0" text="Evaluation" textAlignment="CENTER" underline="true">
                      <font>
@@ -38,8 +45,11 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" />
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+            <AnchorPane GridPane.columnIndex="2" GridPane.rowIndex="8">
+               <children>
+                  <Label fx:id="lblBreaksYearE" layoutX="14.0" layoutY="17.0" text="PAUSENJAHR" />
+               </children></AnchorPane>
+            <AnchorPane GridPane.rowIndex="1">
                <children>
                   <Label layoutX="14.0" layoutY="18.0" text="Time types" underline="true">
                      <font>
@@ -48,7 +58,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <AnchorPane GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
                   <Label layoutX="14.0" layoutY="18.0" text="Month" underline="true">
                      <font>
@@ -57,7 +67,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <AnchorPane GridPane.columnIndex="2" GridPane.rowIndex="1">
                <children>
                   <Label layoutX="14.0" layoutY="18.0" text="Year" underline="true">
                      <font>
@@ -66,122 +76,127 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+            <AnchorPane GridPane.rowIndex="2">
                <children>
-                  <Label layoutX="14.0" layoutY="18.0" text="quota" underline="true">
+                  <Label layoutX="14.0" layoutY="18.0" text="Quota" underline="true">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <AnchorPane GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
                   <Label fx:id="lblSollMonat" layoutX="14.0" layoutY="19.0" text="SOLL MONAT" />
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <AnchorPane GridPane.columnIndex="2" GridPane.rowIndex="2">
                <children>
                   <Label fx:id="lblSollJahr" layoutX="14.0" layoutY="19.0" text="SOLL JAHR" />
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+            <AnchorPane GridPane.rowIndex="3">
                <children>
-                  <Label layoutX="14.0" layoutY="18.0" text="own" underline="true">
+                  <Label layoutX="14.0" layoutY="18.0" text="Own" underline="true">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <AnchorPane GridPane.columnIndex="1" GridPane.rowIndex="3">
                <children>
                   <Label fx:id="lblHabenMonat" layoutX="14.0" layoutY="19.0" text="HABEN MONAT" />
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <AnchorPane GridPane.columnIndex="2" GridPane.rowIndex="3">
                <children>
                   <Label fx:id="lblHabenJahr" layoutX="14.0" layoutY="19.0" text="HABEN JAHR" />
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
+            <AnchorPane GridPane.rowIndex="4">
                <children>
-                  <Label layoutX="14.0" layoutY="17.0" text="balance" underline="true">
+                  <Label layoutX="14.0" layoutY="17.0" text="Balance" underline="true">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <AnchorPane GridPane.columnIndex="1" GridPane.rowIndex="4">
                <children>
                   <Label fx:id="lblDifferenzMonat" layoutX="14.0" layoutY="19.0" text="DIFFERENZ MONAT" />
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+            <AnchorPane GridPane.columnIndex="2" GridPane.rowIndex="4">
                <children>
                   <Label fx:id="lblDeifferenzJahr" layoutX="14.0" layoutY="19.0" text="DIFFERENZ JAHR" />
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
+            <AnchorPane GridPane.columnIndex="2" GridPane.rowIndex="5">
                <children>
                   <Label fx:id="lblMehrstundenJahr" layoutX="14.0" layoutY="19.0" text="ÜBERSTUNDEN JAHR" />
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <AnchorPane GridPane.columnIndex="1" GridPane.rowIndex="5">
                <children>
                   <Label fx:id="lblMehrstundenMonat" layoutX="14.0" layoutY="19.0" text="ÜBERSTUNDEN MONAT" />
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5">
+            <AnchorPane GridPane.rowIndex="5">
                <children>
-                  <Label layoutX="14.0" layoutY="17.0" text="overtime" underline="true">
+                  <Label layoutX="14.0" layoutY="17.0" text="Overtime" underline="true">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="6">
+            <AnchorPane GridPane.rowIndex="6">
                <children>
-                  <Label layoutX="14.0" layoutY="17.0" text="remaining days of vacation" underline="true">
+                  <Label layoutX="14.0" layoutY="17.0" text="Remaining days of vacation" underline="true">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+            <AnchorPane GridPane.columnIndex="1" GridPane.rowIndex="6">
                <children>
                   <Label fx:id="lblJahrUrlaub" layoutX="14.0" layoutY="19.0" text="JAHR" />
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="6">
+            <AnchorPane GridPane.columnIndex="2" GridPane.rowIndex="6">
                <children>
                   <Label fx:id="lblResturlaubAusgabe" layoutX="14.0" layoutY="19.0" prefHeight="17.0" prefWidth="70.0" text="RESTURLAUB" />
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="7">
+            <AnchorPane GridPane.rowIndex="7">
                <children>
-                  <Label layoutX="14.0" layoutY="17.0" text="own vacation days" underline="true">
+                  <Label layoutX="14.0" layoutY="17.0" text="Own vacation days" underline="true">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="69.0" prefWidth="238.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+            <AnchorPane GridPane.columnIndex="1" GridPane.rowIndex="7">
                <children>
                   <Label fx:id="lblJahrResturlaub" layoutX="14.0" layoutY="19.0" text="JAHR" />
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="7">
+            <AnchorPane GridPane.columnIndex="2" GridPane.rowIndex="7">
                <children>
                   <Label fx:id="lblUrlaubAusgabe" layoutX="14.0" layoutY="19.0" prefHeight="17.0" prefWidth="70.0" text="URLAUB" />
                </children>
             </AnchorPane>
             <Separator orientation="VERTICAL" prefHeight="200.0" prefWidth="6.0" />
             <Separator orientation="VERTICAL" prefHeight="200.0" />
+            <AnchorPane GridPane.columnIndex="1" GridPane.rowIndex="8">
+               <children>
+                  <Label fx:id="lblBreaksMonthE" layoutX="14.0" layoutY="17.0" text="PAUSENMONAT" />
+               </children>
+            </AnchorPane>
          </children>
       </GridPane>
    </children>

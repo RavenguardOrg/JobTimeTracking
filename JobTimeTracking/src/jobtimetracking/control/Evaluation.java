@@ -38,5 +38,65 @@ public class Evaluation {
     private Label lblResturlaubAusgabe;
     @FXML
     private Label lblUrlaubAusgabe;
+    @FXML
+    private Label lblBreaksMonthE;
+    @FXML
+    private Label lblBreaksYearE;
+
+    public Label getLblSollMonat() {
+        return lblSollMonat;
+    }
+
+    public Label getLblHabenMonat() {
+        return lblHabenMonat;
+    }
+
+    public Label getLblDifferenzMonat() {
+        return lblDifferenzMonat;
+    }
+
+    public Label getLblMehrstundenMonat() {
+        return lblMehrstundenMonat;
+    }
+
+    public Label getLblJarResturlaub() {
+        return lblJarResturlaub;
+    }
+
+    public Label getLblJahrUrlaub() {
+        return lblJahrUrlaub;
+    }
+
+    public Label getLblSollJahr() {
+        return lblSollJahr;
+    }
+
+    public Label getLblHabenJahr() {
+        return lblHabenJahr;
+    }
+
+    public Label getLblDifferenzJahr() {
+        return lblDifferenzJahr;
+    }
+
+    public Label getLblMehrstundenJahr() {
+        return lblMehrstundenJahr;
+    }
+
+    public Label getLblResturlaubAusgabe() {
+        return lblResturlaubAusgabe;
+    }
+
+    public Label getLblUrlaubAusgabe() {
+        return lblUrlaubAusgabe;
+    }
+
+    public Label getLblBreaksMonthE() {
+        return lblBreaksMonthE;
+    }
+
+    public Label getLblBreaksYearE() {
+        return lblBreaksYearE;
+    }
 
 }
