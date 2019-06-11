@@ -63,6 +63,7 @@ public class JobTimeTracking extends Application {
             final Parent root = main.getRoot();
             final Scene scene = new Scene(root, 797, 625);
             final Mainframe controller = main.getController();
+            controller.setPrimaryStage(primaryStage);
 
             primaryStage.setMaximized(false);
             primaryStage.setScene(scene);
@@ -119,6 +120,7 @@ public class JobTimeTracking extends Application {
 
             Optional<ButtonType> result = dialog.showAndWait();
             handleLogin(result, primaryStage, username, password);
+            controller.start();
         } catch (IOException e) {
 
         }
@@ -143,8 +145,6 @@ public class JobTimeTracking extends Application {
                         break;
                     //Load Profile from file
                     case OK_DONE:
-                        String userName = username.getText();
-                        String passWord = password.getText();
 
                         // Call Service
                         break;
@@ -356,4 +356,5 @@ public class JobTimeTracking extends Application {
         }
         return errors.isEmpty();
     }
+
 }

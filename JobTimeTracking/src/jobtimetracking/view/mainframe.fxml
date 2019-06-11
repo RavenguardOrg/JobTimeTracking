@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <!--
 Copyright (C) 2019 Anika Schmidt
 
@@ -52,7 +53,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                            <children>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                  <children>
-                                    <Button fx:id="btnBreak" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" text="Break">
+                                    <Button fx:id="btnBreak" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" onAction="#onBreak" text="Break">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -61,7 +62,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                               </AnchorPane>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                                  <children>
-                                    <Button fx:id="btnEvaluation" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" text="Evaluation">
+                                    <Button fx:id="btnEvaluation" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" onAction="#onEvaluation" text="Evaluation">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -70,7 +71,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                               </AnchorPane>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                                  <children>
-                                    <Button fx:id="btnEditingProfile" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" text="Edit profile">
+                                    <Button fx:id="btnEditingProfile" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" onAction="#onEditProfile" text="Edit profile">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -79,7 +80,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                               </AnchorPane>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
                                  <children>
-                                    <Button fx:id="btnManualTimeTracking" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" text="Manual Time Tracking">
+                                    <Button fx:id="btnManualTimeTracking" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" onAction="#onManualTimeTracking" text="Manual Time Tracking">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -88,7 +89,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                               </AnchorPane>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5">
                                  <children>
-                                    <Label fx:id="lblLiveWorkTime" alignment="CENTER" contentDisplay="CENTER" layoutX="75.0" layoutY="19.0" text="STOPUHR" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <Label fx:id="lblLiveWorkTime" alignment="CENTER" contentDisplay="CENTER" layoutX="75.0" layoutY="19.0" text="00:00:00" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <font>
                                           <Font name="System Bold" size="15.0" />
                                        </font>
