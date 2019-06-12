@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) 2019 Anika Schmidt
  *
  * This program is free software: you can redistribute it and/or modify
@@ -22,11 +22,14 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import javax.crypto.NoSuchPaddingException;
 import javax.xml.bind.JAXBException;
 import jobtimetracking.model.Profile;
+import jobtimetracking.model.TimeType;
+import jobtimetracking.model.Timetracking;
 import jobtimetracking.repository.ProfileDao;
 
 /**
@@ -35,8 +38,16 @@ import jobtimetracking.repository.ProfileDao;
  */
 public class TimeTrackingService {
 
+    private LocalDateTime lastTimeStamp;
+    private boolean isBreak;
     private Profile profile;
 
+    /**
+     *
+     * @param username
+     * @param password
+     * @return
+     */
     public List<String> login(String username, String password) {
         List<String> errors = new ArrayList<>();
         Path userFile = Paths.get(username + ".xml");
@@ -57,6 +68,20 @@ public class TimeTrackingService {
         return errors;
     }
 
+    /**
+     *
+     * @param username
+     * @param password
+     * @param company
+     * @param department
+     * @param surename
+     * @param firstname
+     * @param secondname
+     * @param hoursperweek
+     * @param daysperweek
+     * @param vacationdays
+     * @return
+     */
     public List<String> register(String username, String password, String company, String department, String surename, String firstname, String secondname,
             double hoursperweek, double daysperweek, double vacationdays) {
 
@@ -80,8 +105,73 @@ public class TimeTrackingService {
             errors.add("Can't write file!");
         } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException ex) {
             errors.add("Can't encrypt file please choose another password!");
-            ex.printStackTrace();
         }
         return errors;
+    }
+
+    public void startAutomaticTimeTracking() {
+        lastTimeStamp = LocalDateTime.now();
+        isBreak = false;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public List<String> createTimeTrackingRecord() {
+        Timetracking record = new Timetracking();
+        record.setBegin(lastTimeStamp);
+        record.setEnde(LocalDateTime.now());
+        if (isBreak) {
+            record.setType(TimeType.BREAK);
+        } else {
+            record.setType(TimeType.WORK);
+        }
+        lastTimeStamp = LocalDateTime.now();
+        isBreak = !isBreak;
+        profile.getTracking().add(record);
+        List<String> errors = new ArrayList<>();
+        try {
+            ProfileDao.saveToPath(profile);
+        } catch (JAXBException ex) {
+            errors.add("Error saving your profile!");
+        } catch (IOException ex) {
+            errors.add("Can't write file!");
+        } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException ex) {
+            errors.add("Can't encrypt file please choose another password!");
+        }
+        return errors;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public List<String> endAutomaticTimeTracking() {
+        Timetracking record = new Timetracking();
+        record.setBegin(lastTimeStamp);
+        record.setEnde(LocalDateTime.now());
+        if (isBreak) {
+            record.setType(TimeType.BREAK);
+        } else {
+            record.setType(TimeType.WORK);
+        }
+        profile.getTracking().add(record);
+        List<String> errors = new ArrayList<>();
+        try {
+            ProfileDao.saveToPath(profile);
+        } catch (JAXBException ex) {
+            errors.add("Error saving your profile!");
+        } catch (IOException ex) {
+            errors.add("Can't write file!");
+        } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException ex) {
+            errors.add("Can't encrypt file please choose another password!");
+        }
+        return errors;
+    }
+
+    public List<String> updateProfile(String username, String password, String company, String department, String surename, double hoursPerWeek, double daysPerWeek,
+            double vacationDays) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

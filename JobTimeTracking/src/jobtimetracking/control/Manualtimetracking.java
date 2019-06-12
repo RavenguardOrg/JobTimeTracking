@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) 2019 Anika Schmidt
  *
  * This program is free software: you can redistribute it and/or modify
@@ -16,12 +16,12 @@
  */
 package jobtimetracking.control;
 
-import java.io.IOException;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.util.StringConverter;
+import jobtimetracking.model.TimeType;
 
 /**
  *
@@ -30,7 +30,7 @@ import javafx.scene.control.TextField;
 public class Manualtimetracking {
 
     @FXML
-    private ComboBox cbbDropDown;
+    private ComboBox<TimeType> cbbDropDown;
     @FXML
     private DatePicker dpDatePickerBegin;
     @FXML
@@ -39,14 +39,45 @@ public class Manualtimetracking {
     private TextField txtTimePickerBegin;
     @FXML
     private TextField txtTimePickerEnde;
-    
-    @FXML
-    public void onSave(ActionEvent event) throws IOException {
-        //Save Times
+
+    public ComboBox<TimeType> getCbbDropDown() {
+        return cbbDropDown;
+    }
+
+    public DatePicker getDpDatePickerBegin() {
+        return dpDatePickerBegin;
+    }
+
+    public DatePicker getDpDatePickerEnde() {
+        return dpDatePickerEnde;
+    }
+
+    public TextField getTxtTimePickerBegin() {
+        return txtTimePickerBegin;
+    }
+
+    public TextField getTxtTimePickerEnde() {
+        return txtTimePickerEnde;
     }
 
     @FXML
-    public void onCancel(ActionEvent event) throws IOException {
-        //Cancel Times
+    public void initialize() {
+        cbbDropDown.getItems().addAll(TimeType.values());
+        cbbDropDown.setConverter(new StringConverter<TimeType>() {
+            @Override
+            public String toString(TimeType object) {
+                return object.getLabel();
+            }
+
+            @Override
+            public TimeType fromString(String string) {
+                for (TimeType type : TimeType.values()) {
+                    if (type.getLabel().equalsIgnoreCase(string)) {
+                        return type;
+                    }
+                }
+                return null;
+            }
+        });
     }
 }

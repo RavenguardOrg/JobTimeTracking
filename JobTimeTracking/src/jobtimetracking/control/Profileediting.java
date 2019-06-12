@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) 2019 Anika Schmidt
  *
  * This program is free software: you can redistribute it and/or modify
@@ -16,9 +16,8 @@
  */
 package jobtimetracking.control;
 
-import java.io.IOException;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 /**
@@ -26,7 +25,10 @@ import javafx.scene.control.TextField;
  * @author Anika.Schmidt
  */
 public class Profileediting {
-    
+
+    @FXML
+    private Label lblErrorMessage;
+
     @FXML
     private TextField txtSurename;
     @FXML
@@ -43,14 +45,40 @@ public class Profileediting {
     private TextField txtUsername;
     @FXML
     private TextField txtPassword;
-    
-    @FXML
-    public void onUpdate(ActionEvent event) throws IOException {
-        //Update Profile
+
+    public Label getLblErrorMessage() {
+        return lblErrorMessage;
     }
 
-    @FXML
-    public void onCancel(ActionEvent event) throws IOException {
-        //Cancel Profile
+    public TextField getTxtSurename() {
+        return txtSurename;
+    }
+
+    public TextField getTxtCompany() {
+        return txtCompany;
+    }
+
+    public TextField getTxtDepartment() {
+        return txtDepartment;
+    }
+
+    public TextField getTxtvacationdays() {
+        return txtvacationdays;
+    }
+
+    public TextField getTxthoursperweek() {
+        return txthoursperweek;
+    }
+
+    public TextField getTxtdaysperweek() {
+        return txtdaysperweek;
+    }
+
+    public TextField getTxtUsername() {
+        return txtUsername;
+    }
+
+    public TextField getTxtPassword() {
+        return txtPassword;
     }
 }

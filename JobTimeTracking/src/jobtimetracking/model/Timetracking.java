@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) 2019 Anika Schmidt
  *
  * This program is free software: you can redistribute it and/or modify
@@ -21,11 +21,13 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 
 /**
+ * Record for time tracking, containing begin, end and type of time
  *
  * @author Anika.Schmidt
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Timetracking {
+
     private TimeType type;
     private LocalDateTime begin;
     private LocalDateTime ende;

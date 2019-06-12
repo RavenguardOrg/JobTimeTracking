@@ -24,6 +24,7 @@ import java.util.stream.Collectors;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
@@ -43,6 +44,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import jobtimetracking.control.Mainframe;
 import jobtimetracking.control.Profile;
 import jobtimetracking.logic.TimeTrackingService;
@@ -64,6 +66,7 @@ public class JobTimeTracking extends Application {
             final Scene scene = new Scene(root, 797, 625);
             final Mainframe controller = main.getController();
             controller.setPrimaryStage(primaryStage);
+            controller.setService(service);
 
             primaryStage.setMaximized(false);
             primaryStage.setScene(scene);
@@ -121,6 +124,12 @@ public class JobTimeTracking extends Application {
             Optional<ButtonType> result = dialog.showAndWait();
             handleLogin(result, primaryStage, username, password);
             controller.start();
+            primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    service.endAutomaticTimeTracking();
+                }
+            });
         } catch (IOException e) {
 
         }
@@ -250,6 +259,7 @@ public class JobTimeTracking extends Application {
         String department = profileController.getTxtDepartment().getText();
         String surename = profileController.getTxtSurename().getText();
         String firstname = profileController.getTxtFirstname().getText();
+        String secondname = profileController.getTxtSecondname().getText();
         String hoursperweek = profileController.getTxthoursperweek().getText();
         String daysperweek = profileController.getTxtdaysperweek().getText();
         String vacationdays = profileController.getTxtvacationdays().getText();
@@ -315,7 +325,9 @@ public class JobTimeTracking extends Application {
                 errors.add("Vacation days must be a number!");
             }
         }
-        errors.addAll(service.register(username, password, company, department, surename, firstname, surename, hpw, dpw, vd));
+        if (errors.isEmpty()) {
+            errors.addAll(service.register(username, password, company, department, surename, firstname, secondname, hpw, dpw, vd));
+        }
         if (!errors.isEmpty()) {
             // Join ErrorMessages to single String using stream API
             errorMessage.setText(errors.stream().collect(Collectors.joining(System.lineSeparator())));
