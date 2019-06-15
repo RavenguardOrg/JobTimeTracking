@@ -19,6 +19,7 @@ package jobtimetracking.model;
 import java.time.LocalDateTime;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
  * Record for time tracking, containing begin, end and type of time
@@ -28,8 +29,11 @@ import javax.xml.bind.annotation.XmlAccessorType;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Timetracking {
 
+    @XmlJavaTypeAdapter(value = TimeTypeAdapter.class)
     private TimeType type;
+    @XmlJavaTypeAdapter(value = LocalDateTimeAdapter.class)
     private LocalDateTime begin;
+    @XmlJavaTypeAdapter(value = LocalDateTimeAdapter.class)
     private LocalDateTime ende;
 
     public TimeType getType() {

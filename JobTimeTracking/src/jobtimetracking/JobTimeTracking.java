@@ -213,16 +213,6 @@ public class JobTimeTracking extends Application {
                         primaryStage.close();
                         break;
                     case OK_DONE:
-                        String username = profileController.getTxtUsername().getText();
-                        String password = profileController.getTxtPassword().getText();
-                        String company = profileController.getTxtCompany().getText();
-                        String department = profileController.getTxtDepartment().getText();
-                        String surename = profileController.getTxtSurename().getText();
-                        String firstname = profileController.getTxtFirstname().getText();
-                        String hoursperweek = profileController.getTxthoursperweek().getText();
-                        String daysperweek = profileController.getTxtdaysperweek().getText();
-                        String vacationdays = profileController.getTxtvacationdays().getText();
-
                         break;
                     default:
                         break;
