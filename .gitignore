@@ -25,3 +25,6 @@ hs_err_pid*
 /JobTimeTracking/build/
 /JobTimeTracking/dist/
 /JobTimeTracking/schmidta.xml
+
+# folders #
+/JobTimeTracking/nbproject
