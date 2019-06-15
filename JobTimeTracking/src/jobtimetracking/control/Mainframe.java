@@ -17,9 +17,11 @@
 package jobtimetracking.control;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -39,6 +41,8 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import jobtimetracking.GuiLoader;
 import jobtimetracking.logic.TimeTrackingService;
+import jobtimetracking.model.TimeType;
+import jobtimetracking.model.Timetracking;
 
 /**
  *
@@ -118,11 +122,20 @@ public class Mainframe {
         Dialog<ButtonType> dialogProfile = new Dialog<>();
         dialogProfile.initModality(Modality.WINDOW_MODAL);
         dialogProfile.initOwner(primaryStage);
-        dialogProfile.setTitle("Manual time tracking");
+        dialogProfile.setTitle("Manual Time Tracking");
         dialogProfile.getDialogPane().getButtonTypes().addAll(btnSaveProfile, btnCancelProfile);
         dialogProfile.getDialogPane().setContent(anchorPane);
         Stage stageRegister = (Stage) dialogProfile.getDialogPane().getScene().getWindow();
         stageRegister.getIcons().add(new Image(this.getClass().getResourceAsStream("/jobtimetracking/view/ManaualTimeTrackingDialogIcon.png")));
+
+        // Enable/Disable login button depending on whether a username was entered.
+        Button saveButton = (Button) dialogProfile.getDialogPane().lookupButton(btnSaveProfile);
+        saveButton.addEventFilter(ActionEvent.ACTION,
+                eventValidate -> {
+                    if (!validateManualTracking(manualtimetracking, dialogProfile)) {
+                        eventValidate.consume();
+                    }
+                });
 
         dialogProfile.showAndWait();
     }
@@ -262,6 +275,64 @@ public class Mainframe {
         }
         if (errors.isEmpty()) {
             errors.addAll(service.updateProfile(username, password, company, department, surename, hpw, dpw, vd));
+        }
+        if (!errors.isEmpty()) {
+            // Join ErrorMessages to single String using stream API
+            errorMessage.setText(errors.stream().collect(Collectors.joining(System.lineSeparator())));
+
+            // FIT SIZE
+            dialog.getDialogPane().getScene().getWindow().sizeToScene();
+        }
+        return errors.isEmpty();
+    }
+
+    private boolean validateManualTracking(Manualtimetracking manualTrackingController, Dialog dialog) {
+        List<String> errors = new ArrayList<>();
+        Label errorMessage = manualTrackingController.getLblMTTErrors();
+        String beginTime = manualTrackingController.getTxtTimePickerBegin().getText();
+        String endTime = manualTrackingController.getTxtTimePickerEnde().getText();
+        LocalDate beginDate = manualTrackingController.getDpDatePickerBegin().getValue();
+        LocalDate endDate = manualTrackingController.getDpDatePickerEnde().getValue();
+        TimeType timeType = manualTrackingController.getCbbDropDown().getValue();
+        LocalTime timeBegin = null;
+        LocalTime timeEnd = null;
+
+        errorMessage.setText("");
+        // Check input Parameters
+        if (beginTime == null || beginTime.trim().isEmpty()) {
+            errors.add("Begin time may not be empty!");
+        }
+        if (endTime == null || endTime.trim().isEmpty()) {
+            errors.add("End time may not be empty!");
+        }
+        if (beginDate == null || beginDate.isAfter(endDate)) {
+            errors.add("Begin date may not be empty!");
+        }
+        if (endDate == null || endDate.isBefore(beginDate)) {
+            errors.add("End date may not be empty!");
+        }
+        if (timeType == null) {
+            errors.add("Please choose a time type!");
+        }
+        if (errors.isEmpty()) {
+            try {
+                timeBegin = LocalTime.parse(beginTime);
+            } catch (DateTimeParseException ex) {
+                errors.add("Begin Time is not valid!");
+            }
+            try {
+                timeEnd = LocalTime.parse(endTime);
+            } catch (DateTimeParseException ex) {
+                errors.add("End Time is not valid!");
+            }
+        }
+
+        if (errors.isEmpty() && beginDate != null && endDate != null) {
+            Timetracking element = new Timetracking();
+            element.setType(timeType);
+            element.setBegin(beginDate.atTime(timeBegin));
+            element.setEnde(endDate.atTime(timeEnd));
+            errors.addAll(service.addTimeTracking(element));
         }
         if (!errors.isEmpty()) {
             // Join ErrorMessages to single String using stream API

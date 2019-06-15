@@ -19,6 +19,7 @@ package jobtimetracking.control;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.util.StringConverter;
 import jobtimetracking.model.TimeType;
@@ -39,6 +40,16 @@ public class Manualtimetracking {
     private TextField txtTimePickerBegin;
     @FXML
     private TextField txtTimePickerEnde;
+    @FXML
+    private Label lblMTTErrors;
+
+    public Label getLblMTTErrors() {
+        return lblMTTErrors;
+    }
+
+    public void setLblMTTErrors(Label lblMTTErrors) {
+        this.lblMTTErrors = lblMTTErrors;
+    }
 
     public ComboBox<TimeType> getCbbDropDown() {
         return cbbDropDown;

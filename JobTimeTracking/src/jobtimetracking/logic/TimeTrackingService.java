@@ -221,4 +221,38 @@ public class TimeTrackingService {
 
         return returnValue;
     }
+
+    public List<String> addTimeTracking(Timetracking element) {
+        List<String> errors = new ArrayList<>();
+
+        List<Timetracking> elements = profile.getTracking();
+        for (Timetracking tracking : elements) {
+            if (element.getBegin().isAfter(tracking.getBegin())
+                    && element.getBegin().isBefore(tracking.getEnde())) {
+                errors.add("No overlaps in time entries allowed!");
+                return errors;
+            }
+            if (element.getEnde().isAfter(tracking.getBegin())
+                    && element.getEnde().isBefore(tracking.getEnde())) {
+                errors.add("No overlaps in time entries allowed!");
+                return errors;
+            }
+            if (element.getBegin().isBefore(tracking.getBegin())
+                    && element.getEnde().isAfter(tracking.getEnde())) {
+                errors.add("No overlaps in time entries allowed!");
+                return errors;
+            }
+        }
+        profile.getTracking().add(element);
+        try {
+            ProfileDao.saveToPath(profile);
+        } catch (JAXBException ex) {
+            errors.add("Error saving your profile!");
+        } catch (IOException ex) {
+            errors.add("Can't write file!");
+        } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException ex) {
+            errors.add("Can't encrypt file please choose another password!");
+        }
+        return errors;
+    }
 }
