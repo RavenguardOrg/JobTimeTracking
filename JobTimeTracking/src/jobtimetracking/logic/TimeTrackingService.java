@@ -25,6 +25,8 @@ import java.security.NoSuchAlgorithmException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.crypto.NoSuchPaddingException;
 import javax.xml.bind.JAXBException;
 import jobtimetracking.model.Profile;
@@ -172,6 +174,51 @@ public class TimeTrackingService {
 
     public List<String> updateProfile(String username, String password, String company, String department, String surename, double hoursPerWeek, double daysPerWeek,
             double vacationDays) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean newUsername = username.equals(profile.getUsername());
+        List<String> errors = new ArrayList<>();
+        if (newUsername) {
+            try {
+                Path path = Paths.get(profile.getUsername() + ".xml");
+                ProfileDao.deletePath(path);
+            } catch (IOException ex) {
+                errors.add("Fail to Delete old file!");
+                return errors;
+            }
+        }
+        profile.setCompany(company);
+        profile.setDaysperweek(daysPerWeek);
+        profile.setDepartment(department);
+        profile.setHoursperweek(hoursPerWeek);
+        profile.setPassword(password);
+        profile.setSurename(surename);
+        profile.setUsername(username);
+        profile.setVacationdays(vacationDays);
+        try {
+            ProfileDao.saveToPath(profile);
+        } catch (JAXBException ex) {
+            errors.add("Error saving your profile!");
+        } catch (IOException ex) {
+            errors.add("Can't write file!");
+        } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException ex) {
+            errors.add("Can't encrypt file please choose another password!");
+        }
+
+        return errors;
+    }
+
+    public Profile getProfile() {
+        Profile returnValue = new Profile();
+        returnValue.setCompany(profile.getCompany());
+        returnValue.setDaysperweek(profile.getDaysperweek());
+        returnValue.setDepartment(profile.getDepartment());
+        returnValue.setFirstname(profile.getFirstname());
+        returnValue.setHoursperweek(profile.getHoursperweek());
+        returnValue.setPassword("");
+        returnValue.setSecondname(profile.getSecondname());
+        returnValue.setSurename(profile.getSurename());
+        returnValue.setUsername(profile.getUsername());
+        returnValue.setVacationdays(profile.getVacationdays());
+
+        return returnValue;
     }
 }

@@ -19,6 +19,7 @@ package jobtimetracking.control;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -80,6 +81,17 @@ public class Mainframe {
         Stage stageRegister = (Stage) dialogProfile.getDialogPane().getScene().getWindow();
         stageRegister.getIcons().add(new Image(this.getClass().getResourceAsStream("/jobtimetracking/view/ProfileTitleIcon.png")));
 
+        // Set Values before
+        jobtimetracking.model.Profile profile = service.getProfile();
+        profileController.getTxtCompany().setText(profile.getCompany());
+        profileController.getTxtDepartment().setText(profile.getDepartment());
+        profileController.getTxtPassword().setText(profile.getPassword());
+        profileController.getTxtSurename().setText(profile.getSurename());
+        profileController.getTxtUsername().setText(profile.getUsername());
+        profileController.getTxtdaysperweek().setText(String.valueOf(profile.getDaysperweek()));
+        profileController.getTxthoursperweek().setText(String.valueOf(profile.getHoursperweek()));
+        profileController.getTxtvacationdays().setText(String.valueOf(profile.getVacationdays()));
+
         // Enable/Disable login button depending on whether a username was entered.
         Button saveButton = (Button) dialogProfile.getDialogPane().lookupButton(btnSaveProfile);
         saveButton.addEventFilter(ActionEvent.ACTION,
@@ -88,6 +100,8 @@ public class Mainframe {
                         eventValidate.consume();
                     }
                 });
+
+        dialogProfile.showAndWait();
     }
 
     @FXML
@@ -246,7 +260,9 @@ public class Mainframe {
                 errors.add("Vacation days must be a number!");
             }
         }
-        errors.addAll(service.updateProfile(username, password, company, department, surename, hpw, dpw, vd));
+        if (errors.isEmpty()) {
+            errors.addAll(service.updateProfile(username, password, company, department, surename, hpw, dpw, vd));
+        }
         if (!errors.isEmpty()) {
             // Join ErrorMessages to single String using stream API
             errorMessage.setText(errors.stream().collect(Collectors.joining(System.lineSeparator())));
