@@ -16,7 +16,7 @@ Timekeeping at work, regarding the court judgment of the European Court of Justi
 <img src="https://image.prntscr.com/image/am4pn7qARESMg6moEnaaNA.jpg" />  
 
 **State Diagram**
-<img src="https://image.prntscr.com/image/YdIS3jMfQGui3csdJFWF9A.jpg" />  
+<img src="https://image.prntscr.com/image/Y5JBc5LlQNO0b_AZqb4CRw.jpg" />  
 
 **[Using Free Icon](https://icons8.de/icons)**
 
