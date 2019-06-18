@@ -25,8 +25,6 @@ import java.security.NoSuchAlgorithmException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.crypto.NoSuchPaddingException;
 import javax.xml.bind.JAXBException;
 import jobtimetracking.model.Profile;

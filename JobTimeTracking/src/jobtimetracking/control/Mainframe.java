@@ -54,6 +54,8 @@ public class Mainframe {
     private ScrollPane spView;
     @FXML
     private Label lblLiveWorkTime;
+    @FXML
+    private Button btnEvaluation;
 
     private Stage primaryStage;
     private TimeTrackingService service;
@@ -160,11 +162,11 @@ public class Mainframe {
         Dialog<ButtonType> dialogProfile = new Dialog<>();
         dialogProfile.initModality(Modality.WINDOW_MODAL);
         dialogProfile.initOwner(primaryStage);
-        dialogProfile.setTitle("Create new Profile");
+        dialogProfile.setTitle("Break");
         dialogProfile.getDialogPane().getButtonTypes().addAll(btnEnd);
         dialogProfile.getDialogPane().setContent(anchorPane);
         Stage stageRegister = (Stage) dialogProfile.getDialogPane().getScene().getWindow();
-        stageRegister.getIcons().add(new Image(this.getClass().getResourceAsStream("/jobtimetracking/view/BreakTitleIcon.png")));
+        stageRegister.getIcons().add(new Image(this.getClass().getResourceAsStream("/jobtimetracking/view/BreakIcon.png")));
         service.createTimeTrackingRecord();
 
         dialogProfile.showAndWait();
@@ -173,9 +175,13 @@ public class Mainframe {
         service.createTimeTrackingRecord();
     }
 
-    public void start() {
+    public void start() throws IOException {
         timeline.play();
         service.startAutomaticTimeTracking();
+        GuiLoader<Standardweek, AnchorPane> loader = new GuiLoader<>("standardweek.fxml");
+        Standardweek controller = loader.getController();
+        AnchorPane root = loader.getRoot();
+        spView.setContent(root);
     }
 
     @FXML
@@ -299,12 +305,6 @@ public class Mainframe {
 
         errorMessage.setText("");
         // Check input Parameters
-        if (beginTime == null || beginTime.trim().isEmpty()) {
-            errors.add("Begin time may not be empty!");
-        }
-        if (endTime == null || endTime.trim().isEmpty()) {
-            errors.add("End time may not be empty!");
-        }
         if (beginDate == null || beginDate.isAfter(endDate)) {
             errors.add("Begin date may not be empty!");
         }
@@ -314,17 +314,28 @@ public class Mainframe {
         if (timeType == null) {
             errors.add("Please choose a time type!");
         }
-        if (errors.isEmpty()) {
-            try {
-                timeBegin = LocalTime.parse(beginTime);
-            } catch (DateTimeParseException ex) {
-                errors.add("Begin Time is not valid!");
+        if (timeType == null || !timeType.isCompleteDay()) {
+            if (beginTime == null || beginTime.trim().isEmpty()) {
+                errors.add("Begin time may not be empty!");
             }
-            try {
-                timeEnd = LocalTime.parse(endTime);
-            } catch (DateTimeParseException ex) {
-                errors.add("End Time is not valid!");
+            if (endTime == null || endTime.trim().isEmpty()) {
+                errors.add("End time may not be empty!");
             }
+            if (errors.isEmpty()) {
+                try {
+                    timeBegin = LocalTime.parse(beginTime);
+                } catch (DateTimeParseException ex) {
+                    errors.add("Begin Time is not valid!");
+                }
+                try {
+                    timeEnd = LocalTime.parse(endTime);
+                } catch (DateTimeParseException ex) {
+                    errors.add("End Time is not valid!");
+                }
+            }
+        } else {
+            timeBegin = LocalTime.of(0, 0, 0);
+            timeEnd = LocalTime.of(23, 59, 59);
         }
 
         if (errors.isEmpty() && beginDate != null && endDate != null) {

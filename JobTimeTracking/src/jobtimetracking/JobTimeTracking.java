@@ -24,7 +24,6 @@ import java.util.stream.Collectors;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
@@ -63,7 +62,7 @@ public class JobTimeTracking extends Application {
             // Do basic loading
             final GuiLoader<Mainframe, Parent> main = new GuiLoader<>("mainframe.fxml");
             final Parent root = main.getRoot();
-            final Scene scene = new Scene(root, 797, 625);
+            final Scene scene = new Scene(root, 870, 500);
             final Mainframe controller = main.getController();
             controller.setPrimaryStage(primaryStage);
             controller.setService(service);
@@ -124,11 +123,8 @@ public class JobTimeTracking extends Application {
             Optional<ButtonType> result = dialog.showAndWait();
             handleLogin(result, primaryStage, username, password);
             controller.start();
-            primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-                @Override
-                public void handle(WindowEvent event) {
-                    service.endAutomaticTimeTracking();
-                }
+            primaryStage.setOnCloseRequest((WindowEvent event) -> {
+                service.endAutomaticTimeTracking();
             });
         } catch (IOException e) {
 
