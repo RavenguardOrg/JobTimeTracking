@@ -5,6 +5,13 @@
         <group>
             <file>file:/C:/Users/anika/Desktop/Schul-Projekt/JobTimeTracking/JobTimeTracking/src/jobtimetracking/model/TimeType.java</file>
             <file>file:/C:/Users/anika/Desktop/Schul-Projekt/JobTimeTracking/JobTimeTracking/src/jobtimetracking/logic/TimeTrackingService.java</file>
+            <file>file:/C:/Users/anika/Desktop/Schul-Projekt/JobTimeTracking/JobTimeTracking/src/jobtimetracking/repository/ProfileDao.java</file>
+            <file>file:/C:/Users/anika/Desktop/Schul-Projekt/JobTimeTracking/JobTimeTracking/src/jobtimetracking/JobTimeTracking.java</file>
+            <file>file:/C:/Users/anika/Desktop/Schul-Projekt/JobTimeTracking/JobTimeTracking/src/jobtimetracking/logic/EvaluationService.java</file>
+            <file>file:/C:/Users/anika/Desktop/Schul-Projekt/JobTimeTracking/JobTimeTracking/src/jobtimetracking/control/Standardweek.java</file>
+            <file>file:/C:/Users/anika/Desktop/Schul-Projekt/JobTimeTracking/JobTimeTracking/src/jobtimetracking/control/Evaluation.java</file>
+            <file>file:/C:/Users/anika/Desktop/Schul-Projekt/JobTimeTracking/JobTimeTracking/src/jobtimetracking/GuiLoader.java</file>
+            <file>file:/C:/Users/anika/Desktop/Schul-Projekt/JobTimeTracking/JobTimeTracking/src/jobtimetracking/control/Mainframe.java</file>
         </group>
     </open-files>
 </project-private>

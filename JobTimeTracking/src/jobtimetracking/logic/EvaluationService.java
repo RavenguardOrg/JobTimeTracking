@@ -16,10 +16,115 @@
  */
 package jobtimetracking.logic;
 
+import java.time.DayOfWeek;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.WeekFields;
+import java.util.List;
+import java.util.stream.Collectors;
+import jobtimetracking.model.Profile;
+import jobtimetracking.model.TimeType;
+import jobtimetracking.model.Timetracking;
+
 /**
  *
  * @author Anika.Schmidt
  */
 public class EvaluationService {
 
+    public StandardWeekData getStandardWeek(Profile profile) {
+        LocalDateTime firstDayOfWeek = LocalDate.now().with(DayOfWeek.MONDAY).atStartOfDay();
+
+        int weekOfYear = LocalDate.now().get(WeekFields.ISO.weekOfYear());
+        // using week based year (for example: 30.12.2019 - 2020 Week 1)
+        int currentYear = LocalDate.now().get(WeekFields.ISO.weekBasedYear());
+        // filter List for data before current week
+        List<Timetracking> beforeList = profile.getTracking().stream()
+                .filter(element
+                        -> element.getBegin().isBefore(firstDayOfWeek))
+                .collect(Collectors.toList());
+        // get current week
+        List<Timetracking> currentWeek = profile.getTracking().stream()
+                .filter(element
+                        -> element.getBegin().get(WeekFields.ISO.weekOfYear()) == weekOfYear
+                && element.getBegin().get(WeekFields.ISO.weekBasedYear()) == currentYear)
+                .collect(Collectors.toList());
+
+        // evaluate both lists
+        StandardWeekData before = calculateValues(beforeList, profile);
+        StandardWeekData current = calculateValues(currentWeek, profile);
+
+        // calculate total overtime
+        current.setOvertime(current.getOvertime() + before.getOvertime());
+
+        return current;
+    }
+
+    private StandardWeekData calculateValues(List<Timetracking> currentWeek, Profile profile) {
+        // calculate hours per day
+        double hoursPerDay = profile.getHoursperweek() / profile.getDaysperweek();
+        Duration durationPerDay = Duration.of((long) (hoursPerDay * 60), ChronoUnit.MINUTES);
+
+        // count Weeks
+        long countWeeks = currentWeek.stream()
+                // map to identifier for week and year
+                .map(element -> element.getBegin().get(WeekFields.ISO.weekOfYear()) + "_" + element.getBegin().get(WeekFields.ISO.weekBasedYear()))
+                .distinct()
+                .count();
+
+        // count all holidays
+        long countHolidays = currentWeek.stream()
+                .filter(element -> element.getType() == TimeType.HOLIDAY)
+                .count();
+
+        // calculate time to work
+        double timeToWork = countWeeks * profile.getHoursperweek() - countHolidays * hoursPerDay;
+        // sum up all break times
+        double sumBreaks = currentWeek.stream()
+                // filter: Only Break
+                .filter(element -> element.getType() == TimeType.BREAK)
+                // map: Duration
+                .map(element -> Duration.between(element.getBegin(), element.getEnde()))
+                // sum: Duration to double hours and sum up
+                .collect(Collectors.summingDouble(element -> {
+                    long hours = element.toHours();
+                    double fraction = (element.toMinutes() - (hours * 60)) / 60;
+                    return hours + fraction;
+                }));
+
+        // sum up all work time
+        double sumWorkTime = currentWeek.stream()
+                // filter: Only Work Times
+                .filter(element -> element.getType() != TimeType.BREAK
+                && element.getType() != TimeType.WORK_LIFE_BALANCE
+                && element.getType() != TimeType.HOLIDAY)
+                // map: difference Duration or hours per Day
+                .map(element -> {
+                    if (element.getType().isCompleteDay()) {
+                        return Duration.between(element.getBegin(), element.getEnde());
+                    } else {
+                        return durationPerDay;
+                    }
+                })
+                // sum: Duration to double hours and sum up
+                .collect(Collectors.summingDouble(element -> {
+                    long hours = element.toHours();
+                    double fraction = (element.toMinutes() - (hours * 60)) / 60;
+                    return hours + fraction;
+                }));
+
+        // Set return values
+        StandardWeekData data = new StandardWeekData();
+        data.setQuota(timeToWork);
+        data.setBreaks(sumBreaks);
+        data.setOwn(sumWorkTime);
+        data.setBalance(timeToWork - sumWorkTime);
+        if (sumWorkTime > timeToWork) {
+            data.setOvertime(sumWorkTime - timeToWork);
+        }
+
+        return data;
+    }
 }

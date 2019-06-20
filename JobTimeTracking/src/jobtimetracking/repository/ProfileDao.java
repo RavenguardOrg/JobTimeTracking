@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) 2019 Anika Schmidt
  *
  * This program is free software: you can redistribute it and/or modify
@@ -83,7 +83,7 @@ public class ProfileDao {
         final Unmarshaller u = jc.createUnmarshaller();
         InputStream is = Files.newInputStream(path, StandardOpenOption.READ);
         try (CipherInputStream cis = new CipherInputStream(is, createDecryptCipher(password))) {
-          return (Profile) u.unmarshal(cis);
+            return (Profile) u.unmarshal(cis);
         }
     }
 
@@ -111,7 +111,7 @@ public class ProfileDao {
         OutputStream os = Files.newOutputStream(path, StandardOpenOption.CREATE,
                 StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.WRITE);
         try (CipherOutputStream cos = new CipherOutputStream(os, createEncryptCipher(profile.getPassword()))) {
-        m.marshal(profile, cos);
+            m.marshal(profile, cos);
         }
     }
 
@@ -148,12 +148,12 @@ public class ProfileDao {
 
         return c;
     }
-    
+
     private static Key createKey(String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         byte[] key = password.getBytes("UTF-8");
-            MessageDigest sha = MessageDigest.getInstance("SHA-1");
-            key = sha.digest(key);
-            key = Arrays.copyOf(key, 16);
-            return new SecretKeySpec(key, "AES");
+        MessageDigest sha = MessageDigest.getInstance("SHA-1");
+        key = sha.digest(key);
+        key = Arrays.copyOf(key, 16);
+        return new SecretKeySpec(key, "AES");
     }
 }

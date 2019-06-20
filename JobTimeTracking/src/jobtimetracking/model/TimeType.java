@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) 2019 Anika Schmidt
  *
  * This program is free software: you can redistribute it and/or modify
@@ -25,14 +25,15 @@ public enum TimeType {
     BREAK(false, true, "Break"),
     MEETING_OFFICE(false, false, "Meeting"),
     VACATION(true, false, "Vacation"),
-    ILLNESS(true, false, "Illness"),
+    ILLNESS(false, false, "Illness"),
+    HOLIDAY(true, false, "Holiday"),
     TRAINING(false, false, "Training"),
     BUSINESS_TRIP(false, false, "Business Trip"),
     BUSINESS_DINNER(false, false, "Business Dinner"),
     SCHOOL_UNIVERSITY(true, false, "School or University"),
     HOMEOFFICE(false, false, "Home Office"),
     WORK_LIFE_BALANCE(false, false, "Work Life Balance");
-    
+
     private boolean completeDay;
     private boolean freeTime;
     private String label;

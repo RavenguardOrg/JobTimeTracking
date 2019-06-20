@@ -17,9 +17,55 @@
 package jobtimetracking.logic;
 
 /**
+ * Data bean for evaluation standard week
  *
  * @author Anika.Schmidt
  */
 public class StandardWeekData {
 
+    private double quota;
+    private double own;
+    private double balance;
+    private double overtime;
+    private double breaks;
+
+    public double getQuota() {
+        return quota;
+    }
+
+    public void setQuota(double quota) {
+        this.quota = quota;
+    }
+
+    public double getOwn() {
+        return own;
+    }
+
+    public void setOwn(double own) {
+        this.own = own;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    public double getOvertime() {
+        return overtime;
+    }
+
+    public void setOvertime(double overtime) {
+        this.overtime = overtime;
+    }
+
+    public double getBreaks() {
+        return breaks;
+    }
+
+    public void setBreaks(double breaks) {
+        this.breaks = breaks;
+    }
 }

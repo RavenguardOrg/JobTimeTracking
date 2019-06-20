@@ -220,6 +220,11 @@ public class TimeTrackingService {
         return returnValue;
     }
 
+    public StandardWeekData getWeekData() {
+        EvaluationService evaluationService = new EvaluationService();
+        return evaluationService.getStandardWeek(profile);
+    }
+
     public List<String> addTimeTracking(Timetracking element) {
         List<String> errors = new ArrayList<>();
 

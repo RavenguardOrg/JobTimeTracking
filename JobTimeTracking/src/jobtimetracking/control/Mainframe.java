@@ -17,6 +17,8 @@
 package jobtimetracking.control;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
@@ -40,6 +42,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import jobtimetracking.GuiLoader;
+import jobtimetracking.logic.StandardWeekData;
 import jobtimetracking.logic.TimeTrackingService;
 import jobtimetracking.model.TimeType;
 import jobtimetracking.model.Timetracking;
@@ -181,6 +184,13 @@ public class Mainframe {
         GuiLoader<Standardweek, AnchorPane> loader = new GuiLoader<>("standardweek.fxml");
         Standardweek controller = loader.getController();
         AnchorPane root = loader.getRoot();
+        StandardWeekData week = service.getWeekData();
+        DecimalFormat format = new DecimalFormat("##.##");
+        controller.getLblBreakAW().setText(format.format(week.getBreaks()));
+        controller.getLblDifferezAusgabe().setText(format.format(week.getBalance()));
+        controller.getLblHabenAusgabe().setText(format.format(week.getOwn()));
+        controller.getLblMehrstundenAusgabe().setText(format.format(week.getOvertime()));
+        controller.getLblSollAusgabe().setText(format.format(week.getQuota()));
         spView.setContent(root);
     }
 

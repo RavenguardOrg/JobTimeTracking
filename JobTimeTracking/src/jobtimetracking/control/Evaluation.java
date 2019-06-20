@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) 2019 Anika Schmidt
  *
  * This program is free software: you can redistribute it and/or modify
@@ -34,10 +34,6 @@ public class Evaluation {
     @FXML
     private Label lblMehrstundenMonat;
     @FXML
-    private Label lblJarResturlaub;
-    @FXML
-    private Label lblJahrUrlaub;
-    @FXML
     private Label lblSollJahr;
     @FXML
     private Label lblHabenJahr;
@@ -45,10 +41,6 @@ public class Evaluation {
     private Label lblDifferenzJahr;
     @FXML
     private Label lblMehrstundenJahr;
-    @FXML
-    private Label lblResturlaubAusgabe;
-    @FXML
-    private Label lblUrlaubAusgabe;
     @FXML
     private Label lblBreaksMonthE;
     @FXML
@@ -70,14 +62,6 @@ public class Evaluation {
         return lblMehrstundenMonat;
     }
 
-    public Label getLblJarResturlaub() {
-        return lblJarResturlaub;
-    }
-
-    public Label getLblJahrUrlaub() {
-        return lblJahrUrlaub;
-    }
-
     public Label getLblSollJahr() {
         return lblSollJahr;
     }
@@ -92,14 +76,6 @@ public class Evaluation {
 
     public Label getLblMehrstundenJahr() {
         return lblMehrstundenJahr;
-    }
-
-    public Label getLblResturlaubAusgabe() {
-        return lblResturlaubAusgabe;
-    }
-
-    public Label getLblUrlaubAusgabe() {
-        return lblUrlaubAusgabe;
     }
 
     public Label getLblBreaksMonthE() {

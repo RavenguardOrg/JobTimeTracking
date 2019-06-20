@@ -16,6 +16,8 @@
  */
 package jobtimetracking.model;
 
+import jobtimetracking.repository.LocalDateTimeAdapter;
+import jobtimetracking.repository.TimeTypeAdapter;
 import java.time.LocalDateTime;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

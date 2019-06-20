@@ -21,7 +21,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 
 /**
- * this helper class load the FXML and come from another project
+ * this helper class load the FXML and came from another project
  * https://github.com/ColdanR/ausbildungsnachweis
  *
  * @author Bernd.Schmidt

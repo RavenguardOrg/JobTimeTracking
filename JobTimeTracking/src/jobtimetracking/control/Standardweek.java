@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) 2019 Anika Schmidt
  *
  * This program is free software: you can redistribute it and/or modify
@@ -30,15 +30,11 @@ public class Standardweek {
     @FXML
     private Label lblHabenAusgabe;
     @FXML
-    private Label lblDifferezAusgabe;
+    private Label lblDifferenzAusgabe;
     @FXML
     private Label lblMehrstundenAusgabe;
     @FXML
-    private Label lblResturlaubAusgabe;
-    @FXML
-    private Label lblJahrResturlaub;
-    @FXML
-    private Label lblBreakAW;
+    private Label lblBreaksAW;
 
     public Label getLblSollAusgabe() {
         return lblSollAusgabe;
@@ -49,22 +45,14 @@ public class Standardweek {
     }
 
     public Label getLblDifferezAusgabe() {
-        return lblDifferezAusgabe;
+        return lblDifferenzAusgabe;
     }
 
     public Label getLblMehrstundenAusgabe() {
         return lblMehrstundenAusgabe;
     }
 
-    public Label getLblResturlaubAusgabe() {
-        return lblResturlaubAusgabe;
-    }
-
-    public Label getLblJahrResturlaub() {
-        return lblJahrResturlaub;
-    }
-
     public Label getLblBreakAW() {
-        return lblBreakAW;
+        return lblBreaksAW;
     }
 }

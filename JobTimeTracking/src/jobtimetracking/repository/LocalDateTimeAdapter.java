@@ -14,18 +14,19 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package jobtimetracking.model;
+package jobtimetracking.repository;
 
+import java.time.LocalDateTime;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 /**
  *
  * @author Anika.Schmidt
  */
-public class TimeTypeAdapter extends XmlAdapter<String, TimeType> {
+public class LocalDateTimeAdapter extends XmlAdapter<String, LocalDateTime> {
 
     @Override
-    public String marshal(TimeType v) throws Exception {
+    public String marshal(LocalDateTime v) throws Exception {
         if (v == null) {
             return null;
         }
@@ -33,11 +34,10 @@ public class TimeTypeAdapter extends XmlAdapter<String, TimeType> {
     }
 
     @Override
-    public TimeType unmarshal(String v) throws Exception {
+    public LocalDateTime unmarshal(String v) throws Exception {
         if (v == null) {
             return null;
         }
-        return TimeType.valueOf(v);
+        return LocalDateTime.parse(v);
     }
 }
-
