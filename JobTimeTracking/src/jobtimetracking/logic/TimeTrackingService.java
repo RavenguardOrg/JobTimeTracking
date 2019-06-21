@@ -170,6 +170,18 @@ public class TimeTrackingService {
         return errors;
     }
 
+    /**
+     *
+     * @param username
+     * @param password
+     * @param company
+     * @param department
+     * @param surename
+     * @param hoursPerWeek
+     * @param daysPerWeek
+     * @param vacationDays
+     * @return
+     */
     public List<String> updateProfile(String username, String password, String company, String department, String surename, double hoursPerWeek, double daysPerWeek,
             double vacationDays) {
         boolean newUsername = username.equals(profile.getUsername());
@@ -235,6 +247,11 @@ public class TimeTrackingService {
         return evaluationService.getEvaluationYear(profile);
     }
 
+    /**
+     *
+     * @param element
+     * @return
+     */
     public List<String> addTimeTracking(Timetracking element) {
         List<String> errors = new ArrayList<>();
 

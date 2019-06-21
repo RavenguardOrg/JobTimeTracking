@@ -56,6 +56,10 @@ public class JobTimeTracking extends Application {
 
     private TimeTrackingService service = new TimeTrackingService();
 
+    /**
+     *
+     * @param primaryStage
+     */
     @Override
     public void start(Stage primaryStage) {
         try {

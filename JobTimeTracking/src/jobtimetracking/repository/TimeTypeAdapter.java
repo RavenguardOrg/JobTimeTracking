@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) 2019 Anika Schmidt
  *
  * This program is free software: you can redistribute it and/or modify
@@ -25,6 +25,13 @@ import jobtimetracking.model.TimeType;
  */
 public class TimeTypeAdapter extends XmlAdapter<String, TimeType> {
 
+    /**
+     * marshal String
+     *
+     * @param v
+     * @return
+     * @throws Exception
+     */
     @Override
     public String marshal(TimeType v) throws Exception {
         if (v == null) {
@@ -33,6 +40,13 @@ public class TimeTypeAdapter extends XmlAdapter<String, TimeType> {
         return v.toString();
     }
 
+    /**
+     * unmarshal TimeType
+     *
+     * @param v
+     * @return
+     * @throws Exception
+     */
     @Override
     public TimeType unmarshal(String v) throws Exception {
         if (v == null) {
@@ -41,4 +55,3 @@ public class TimeTypeAdapter extends XmlAdapter<String, TimeType> {
         return TimeType.valueOf(v);
     }
 }
-
