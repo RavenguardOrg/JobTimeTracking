@@ -145,7 +145,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
             </AnchorPane>
             <AnchorPane GridPane.columnIndex="2" GridPane.rowIndex="4">
                <children>
-                  <Label fx:id="lblDeifferenzJahr" layoutX="14.0" layoutY="19.0" text="DIFFERENZ JAHR" />
+                  <Label fx:id="lblDifferenzJahr" layoutX="14.0" layoutY="19.0" text="DIFFERENZ JAHR" />
                </children>
             </AnchorPane>
             <AnchorPane GridPane.columnIndex="2" GridPane.rowIndex="5">

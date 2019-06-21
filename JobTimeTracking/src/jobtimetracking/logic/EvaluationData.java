@@ -21,7 +21,7 @@ package jobtimetracking.logic;
  *
  * @author Anika.Schmidt
  */
-public class StandardWeekData {
+public class EvaluationData {
 
     private double quota;
     private double own;

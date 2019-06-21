@@ -34,7 +34,7 @@ import jobtimetracking.model.Timetracking;
  */
 public class EvaluationService {
 
-    public StandardWeekData getStandardWeek(Profile profile) {
+    public EvaluationData getStandardWeek(Profile profile) {
         LocalDateTime firstDayOfWeek = LocalDate.now().with(DayOfWeek.MONDAY).atStartOfDay();
 
         int weekOfYear = LocalDate.now().get(WeekFields.ISO.weekOfYear());
@@ -53,8 +53,8 @@ public class EvaluationService {
                 .collect(Collectors.toList());
 
         // evaluate both lists
-        StandardWeekData before = calculateValues(beforeList, profile);
-        StandardWeekData current = calculateValues(currentWeek, profile);
+        EvaluationData before = calculateValues(beforeList, profile);
+        EvaluationData current = calculateValues(currentWeek, profile);
 
         // calculate total overtime
         current.setOvertime(current.getOvertime() + before.getOvertime());
@@ -62,7 +62,7 @@ public class EvaluationService {
         return current;
     }
 
-    private StandardWeekData calculateValues(List<Timetracking> currentWeek, Profile profile) {
+    private EvaluationData calculateValues(List<Timetracking> currentWeek, Profile profile) {
         // calculate hours per day
         double hoursPerDay = profile.getHoursperweek() / profile.getDaysperweek();
         Duration durationPerDay = Duration.of((long) (hoursPerDay * 60), ChronoUnit.MINUTES);
@@ -90,7 +90,7 @@ public class EvaluationService {
                 // sum: Duration to double hours and sum up
                 .collect(Collectors.summingDouble(element -> {
                     long hours = element.toHours();
-                    double fraction = (element.toMinutes() - (hours * 60)) / 60;
+                    double fraction = (element.toMinutes() - (hours * 60)) / 60.0;
                     return hours + fraction;
                 }));
 
@@ -102,7 +102,7 @@ public class EvaluationService {
                 && element.getType() != TimeType.HOLIDAY)
                 // map: difference Duration or hours per Day
                 .map(element -> {
-                    if (element.getType().isCompleteDay()) {
+                    if (!element.getType().isCompleteDay()) {
                         return Duration.between(element.getBegin(), element.getEnde());
                     } else {
                         return durationPerDay;
@@ -111,12 +111,12 @@ public class EvaluationService {
                 // sum: Duration to double hours and sum up
                 .collect(Collectors.summingDouble(element -> {
                     long hours = element.toHours();
-                    double fraction = (element.toMinutes() - (hours * 60)) / 60;
+                    double fraction = (element.toMinutes() - (hours * 60)) / 60.0;
                     return hours + fraction;
                 }));
 
         // Set return values
-        StandardWeekData data = new StandardWeekData();
+        EvaluationData data = new EvaluationData();
         data.setQuota(timeToWork);
         data.setBreaks(sumBreaks);
         data.setOwn(sumWorkTime);

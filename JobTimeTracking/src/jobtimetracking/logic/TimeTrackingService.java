@@ -220,7 +220,7 @@ public class TimeTrackingService {
         return returnValue;
     }
 
-    public StandardWeekData getWeekData() {
+    public EvaluationData getWeekData() {
         EvaluationService evaluationService = new EvaluationService();
         return evaluationService.getStandardWeek(profile);
     }
