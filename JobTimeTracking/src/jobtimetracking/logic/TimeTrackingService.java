@@ -220,9 +220,19 @@ public class TimeTrackingService {
         return returnValue;
     }
 
-    public StandardWeekData getWeekData() {
+    public EvaluationData getWeekData() {
         EvaluationService evaluationService = new EvaluationService();
         return evaluationService.getStandardWeek(profile);
+    }
+
+    public EvaluationData getEvaluationMonth() {
+        EvaluationService evaluationService = new EvaluationService();
+        return evaluationService.getEvaluationMonth(profile);
+    }
+
+    public EvaluationData getEvaluationYear() {
+        EvaluationService evaluationService = new EvaluationService();
+        return evaluationService.getEvaluationYear(profile);
     }
 
     public List<String> addTimeTracking(Timetracking element) {

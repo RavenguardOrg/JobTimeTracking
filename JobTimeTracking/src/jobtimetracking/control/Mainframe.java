@@ -18,7 +18,6 @@ package jobtimetracking.control;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
@@ -42,7 +41,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import jobtimetracking.GuiLoader;
-import jobtimetracking.logic.StandardWeekData;
+import jobtimetracking.logic.EvaluationData;
 import jobtimetracking.logic.TimeTrackingService;
 import jobtimetracking.model.TimeType;
 import jobtimetracking.model.Timetracking;
@@ -64,6 +63,8 @@ public class Mainframe {
     private TimeTrackingService service;
     private Timeline timeline;
     private int secs = 0;
+
+    private boolean showStandardWeek = true;
 
     public void setService(TimeTrackingService service) {
         this.service = service;
@@ -148,7 +149,11 @@ public class Mainframe {
     @FXML
     public void onEvaluation(ActionEvent event) throws IOException {
         //Open the Evaluation in Main
-        spView.setContent(spView);
+        if (showStandardWeek) {
+            setEvaluation();
+        } else {
+            setStandardWeek();
+        }
     }
 
     @FXML
@@ -181,17 +186,45 @@ public class Mainframe {
     public void start() throws IOException {
         timeline.play();
         service.startAutomaticTimeTracking();
+        setStandardWeek();
+    }
+
+    private void setStandardWeek() throws IOException {
         GuiLoader<Standardweek, AnchorPane> loader = new GuiLoader<>("standardweek.fxml");
         Standardweek controller = loader.getController();
         AnchorPane root = loader.getRoot();
-        StandardWeekData week = service.getWeekData();
-        DecimalFormat format = new DecimalFormat("##.##");
+        EvaluationData week = service.getWeekData();
+        DecimalFormat format = new DecimalFormat("00.00");
         controller.getLblBreakAW().setText(format.format(week.getBreaks()));
         controller.getLblDifferezAusgabe().setText(format.format(week.getBalance()));
         controller.getLblHabenAusgabe().setText(format.format(week.getOwn()));
         controller.getLblMehrstundenAusgabe().setText(format.format(week.getOvertime()));
         controller.getLblSollAusgabe().setText(format.format(week.getQuota()));
         spView.setContent(root);
+        btnEvaluation.setText("Evaluation");
+        showStandardWeek = true;
+    }
+
+    private void setEvaluation() throws IOException {
+        GuiLoader<Evaluation, AnchorPane> loader = new GuiLoader<>("evaluation.fxml");
+        Evaluation controller = loader.getController();
+        AnchorPane root = loader.getRoot();
+        EvaluationData month = service.getEvaluationMonth();
+        EvaluationData year = service.getEvaluationYear();
+        DecimalFormat format = new DecimalFormat("00.00");
+        controller.getLblBreaksMonthE().setText(format.format(month.getBreaks()));
+        controller.getLblBreaksYearE().setText(format.format(year.getBreaks()));
+        controller.getLblDifferenzMonat().setText(format.format(month.getBalance()));
+        controller.getLblDifferenzJahr().setText(format.format(year.getBalance()));
+        controller.getLblHabenMonat().setText(format.format(month.getOwn()));
+        controller.getLblHabenJahr().setText(format.format(year.getOwn()));
+        controller.getLblMehrstundenMonat().setText(format.format(month.getOvertime()));
+        controller.getLblMehrstundenJahr().setText(format.format(year.getOvertime()));
+        controller.getLblSollMonat().setText(format.format(month.getQuota()));
+        controller.getLblSollJahr().setText(format.format(year.getQuota()));
+        spView.setContent(root);
+        btnEvaluation.setText("StandardWeek");
+        showStandardWeek = false;
     }
 
     @FXML

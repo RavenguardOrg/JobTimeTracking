@@ -20,6 +20,8 @@ import java.time.DayOfWeek;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.temporal.ChronoField;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.WeekFields;
 import java.util.List;
@@ -34,7 +36,7 @@ import jobtimetracking.model.Timetracking;
  */
 public class EvaluationService {
 
-    public StandardWeekData getStandardWeek(Profile profile) {
+    public EvaluationData getStandardWeek(Profile profile) {
         LocalDateTime firstDayOfWeek = LocalDate.now().with(DayOfWeek.MONDAY).atStartOfDay();
 
         int weekOfYear = LocalDate.now().get(WeekFields.ISO.weekOfYear());
@@ -53,8 +55,8 @@ public class EvaluationService {
                 .collect(Collectors.toList());
 
         // evaluate both lists
-        StandardWeekData before = calculateValues(beforeList, profile);
-        StandardWeekData current = calculateValues(currentWeek, profile);
+        EvaluationData before = calculateValues(beforeList, profile);
+        EvaluationData current = calculateValues(currentWeek, profile);
 
         // calculate total overtime
         current.setOvertime(current.getOvertime() + before.getOvertime());
@@ -62,7 +64,7 @@ public class EvaluationService {
         return current;
     }
 
-    private StandardWeekData calculateValues(List<Timetracking> currentWeek, Profile profile) {
+    private EvaluationData calculateValues(List<Timetracking> currentWeek, Profile profile) {
         // calculate hours per day
         double hoursPerDay = profile.getHoursperweek() / profile.getDaysperweek();
         Duration durationPerDay = Duration.of((long) (hoursPerDay * 60), ChronoUnit.MINUTES);
@@ -90,7 +92,7 @@ public class EvaluationService {
                 // sum: Duration to double hours and sum up
                 .collect(Collectors.summingDouble(element -> {
                     long hours = element.toHours();
-                    double fraction = (element.toMinutes() - (hours * 60)) / 60;
+                    double fraction = (element.toMinutes() - (hours * 60)) / 60.0;
                     return hours + fraction;
                 }));
 
@@ -102,7 +104,7 @@ public class EvaluationService {
                 && element.getType() != TimeType.HOLIDAY)
                 // map: difference Duration or hours per Day
                 .map(element -> {
-                    if (element.getType().isCompleteDay()) {
+                    if (!element.getType().isCompleteDay()) {
                         return Duration.between(element.getBegin(), element.getEnde());
                     } else {
                         return durationPerDay;
@@ -111,12 +113,12 @@ public class EvaluationService {
                 // sum: Duration to double hours and sum up
                 .collect(Collectors.summingDouble(element -> {
                     long hours = element.toHours();
-                    double fraction = (element.toMinutes() - (hours * 60)) / 60;
+                    double fraction = (element.toMinutes() - (hours * 60)) / 60.0;
                     return hours + fraction;
                 }));
 
         // Set return values
-        StandardWeekData data = new StandardWeekData();
+        EvaluationData data = new EvaluationData();
         data.setQuota(timeToWork);
         data.setBreaks(sumBreaks);
         data.setOwn(sumWorkTime);
@@ -126,5 +128,60 @@ public class EvaluationService {
         }
 
         return data;
+    }
+
+    public EvaluationData getEvaluationMonth(Profile profile) {
+        LocalDateTime firstDayOfMonth = LocalDate.now().with(ChronoField.DAY_OF_MONTH, 1).atStartOfDay();
+
+        Month month = LocalDate.now().getMonth();
+        int currentYear = LocalDate.now().getYear();
+        // filter List for data before current month
+        List<Timetracking> beforeList = profile.getTracking().stream()
+                .filter(element
+                        -> element.getBegin().isBefore(firstDayOfMonth))
+                .collect(Collectors.toList());
+        // get current month
+        List<Timetracking> currentWeek = profile.getTracking().stream()
+                .filter(element
+                        -> element.getBegin().getMonth() == month
+                && element.getBegin().getYear() == currentYear)
+                .collect(Collectors.toList());
+
+        // evaluate both lists
+        EvaluationData before = calculateValues(beforeList, profile);
+        EvaluationData current = calculateValues(currentWeek, profile);
+
+        // calculate total overtime
+        current.setOvertime(current.getOvertime() + before.getOvertime());
+
+        return current;
+    }
+
+    public EvaluationData getEvaluationYear(Profile profile) {
+        LocalDateTime firstDayOfYear = LocalDate.now()
+                .with(ChronoField.DAY_OF_MONTH, 1)
+                .with(ChronoField.MONTH_OF_YEAR, 1)
+                .atStartOfDay();
+
+        int currentYear = LocalDate.now().getYear();
+        // filter List for data before current month
+        List<Timetracking> beforeList = profile.getTracking().stream()
+                .filter(element
+                        -> element.getBegin().isBefore(firstDayOfYear))
+                .collect(Collectors.toList());
+        // get current month
+        List<Timetracking> currentWeek = profile.getTracking().stream()
+                .filter(element
+                        -> element.getBegin().getYear() == currentYear)
+                .collect(Collectors.toList());
+
+        // evaluate both lists
+        EvaluationData before = calculateValues(beforeList, profile);
+        EvaluationData current = calculateValues(currentWeek, profile);
+
+        // calculate total overtime
+        current.setOvertime(current.getOvertime() + before.getOvertime());
+
+        return current;
     }
 }
