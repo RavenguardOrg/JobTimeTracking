@@ -70,6 +70,11 @@ public class Mainframe {
         this.service = service;
     }
 
+    /**
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void onEditProfile(ActionEvent event) throws IOException {
         //Open the Profil in Dialog
@@ -114,6 +119,11 @@ public class Mainframe {
         dialogProfile.showAndWait();
     }
 
+    /**
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void onManualTimeTracking(ActionEvent event) throws IOException {
         //Open the ManualTimeTracking in Main
@@ -189,6 +199,10 @@ public class Mainframe {
         setStandardWeek();
     }
 
+    /**
+     *
+     * @throws IOException
+     */
     private void setStandardWeek() throws IOException {
         GuiLoader<Standardweek, AnchorPane> loader = new GuiLoader<>("standardweek.fxml");
         Standardweek controller = loader.getController();
@@ -205,6 +219,10 @@ public class Mainframe {
         showStandardWeek = true;
     }
 
+    /**
+     *
+     * @throws IOException
+     */
     private void setEvaluation() throws IOException {
         GuiLoader<Evaluation, AnchorPane> loader = new GuiLoader<>("evaluation.fxml");
         Evaluation controller = loader.getController();
@@ -252,6 +270,12 @@ public class Mainframe {
         this.primaryStage = primaryStage;
     }
 
+    /**
+     *
+     * @param profileController
+     * @param dialog
+     * @return
+     */
     private boolean validateNewProfile(Profileediting profileController, Dialog dialog) {
         List<String> errors = new ArrayList<>();
         Label errorMessage = profileController.getLblErrorMessage();
@@ -335,6 +359,12 @@ public class Mainframe {
         return errors.isEmpty();
     }
 
+    /**
+     *
+     * @param manualTrackingController
+     * @param dialog
+     * @return
+     */
     private boolean validateManualTracking(Manualtimetracking manualTrackingController, Dialog dialog) {
         List<String> errors = new ArrayList<>();
         Label errorMessage = manualTrackingController.getLblMTTErrors();

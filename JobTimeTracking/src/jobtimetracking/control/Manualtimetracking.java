@@ -25,6 +25,7 @@ import javafx.util.StringConverter;
 import jobtimetracking.model.TimeType;
 
 /**
+ * Manualtimetracking
  *
  * @author Anika.Schmidt
  */
@@ -71,6 +72,9 @@ public class Manualtimetracking {
         return txtTimePickerEnde;
     }
 
+    /**
+     * initialize
+     */
     @FXML
     public void initialize() {
         cbbDropDown.getItems().addAll(TimeType.values());

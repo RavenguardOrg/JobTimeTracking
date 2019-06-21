@@ -36,6 +36,12 @@ import jobtimetracking.model.Timetracking;
  */
 public class EvaluationService {
 
+    /**
+     * getStandardWeek
+     *
+     * @param profile
+     * @return
+     */
     public EvaluationData getStandardWeek(Profile profile) {
         LocalDateTime firstDayOfWeek = LocalDate.now().with(DayOfWeek.MONDAY).atStartOfDay();
 
@@ -64,6 +70,12 @@ public class EvaluationService {
         return current;
     }
 
+    /**
+     * calculateValues
+     *
+     * @param profile
+     * @return
+     */
     private EvaluationData calculateValues(List<Timetracking> currentWeek, Profile profile) {
         // calculate hours per day
         double hoursPerDay = profile.getHoursperweek() / profile.getDaysperweek();
@@ -130,6 +142,12 @@ public class EvaluationService {
         return data;
     }
 
+    /**
+     * getEvaluationMonth
+     *
+     * @param profile
+     * @return
+     */
     public EvaluationData getEvaluationMonth(Profile profile) {
         LocalDateTime firstDayOfMonth = LocalDate.now().with(ChronoField.DAY_OF_MONTH, 1).atStartOfDay();
 
@@ -157,6 +175,11 @@ public class EvaluationService {
         return current;
     }
 
+    /**
+     * getEvaluationYear
+     *
+     * @param profile return
+     */
     public EvaluationData getEvaluationYear(Profile profile) {
         LocalDateTime firstDayOfYear = LocalDate.now()
                 .with(ChronoField.DAY_OF_MONTH, 1)

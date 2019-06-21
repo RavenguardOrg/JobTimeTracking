@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) 2019 Anika Schmidt
  *
  * This program is free software: you can redistribute it and/or modify
@@ -25,6 +25,13 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
  */
 public class LocalDateTimeAdapter extends XmlAdapter<String, LocalDateTime> {
 
+    /**
+     * marshal String
+     *
+     * @param v
+     * @return
+     * @throws Exception
+     */
     @Override
     public String marshal(LocalDateTime v) throws Exception {
         if (v == null) {
@@ -33,6 +40,13 @@ public class LocalDateTimeAdapter extends XmlAdapter<String, LocalDateTime> {
         return v.toString();
     }
 
+    /**
+     * unmarshal LocalDateTime
+     *
+     * @param v
+     * @return
+     * @throws Exception
+     */
     @Override
     public LocalDateTime unmarshal(String v) throws Exception {
         if (v == null) {

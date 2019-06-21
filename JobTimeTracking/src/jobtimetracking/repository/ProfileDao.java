@@ -149,6 +149,13 @@ public class ProfileDao {
         return c;
     }
 
+    /**
+     *
+     * @param password
+     * @return
+     * @throws UnsupportedEncodingException
+     * @throws NoSuchAlgorithmException
+     */
     private static Key createKey(String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         byte[] key = password.getBytes("UTF-8");
         MessageDigest sha = MessageDigest.getInstance("SHA-1");
