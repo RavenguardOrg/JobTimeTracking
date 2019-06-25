@@ -28,7 +28,7 @@ import javafx.scene.control.TextField;
 public class Profile {
 
     @FXML
-    private TextField txtSurename;
+    private TextField txtsSurename;
     @FXML
     private TextField txtFirstname;
     @FXML
@@ -38,11 +38,11 @@ public class Profile {
     @FXML
     private TextField txtDepartment;
     @FXML
-    private TextField txthoursperweek;
+    private TextField txtHoursPerWeek;
     @FXML
-    private TextField txtdaysperweek;
+    private TextField txtDaysPerWeek;
     @FXML
-    private TextField txtvacationdays;
+    private TextField txtVacationDays;
     @FXML
     private TextField txtUsername;
     @FXML
@@ -54,16 +54,12 @@ public class Profile {
         return lblErrorMessage;
     }
 
-    public void setLblErrorMessage(Label lblErrorMessage) {
-        this.lblErrorMessage = lblErrorMessage;
+    public TextField getTxtsSurename() {
+        return txtsSurename;
     }
 
-    public TextField getTxtSurename() {
-        return txtSurename;
-    }
-
-    public void setTxtSurename(TextField txtSurename) {
-        this.txtSurename = txtSurename;
+    public void setTxtsSurename(TextField txtsSurename) {
+        this.txtsSurename = txtsSurename;
     }
 
     public TextField getTxtFirstname() {
@@ -98,28 +94,28 @@ public class Profile {
         this.txtDepartment = txtDepartment;
     }
 
-    public TextField getTxthoursperweek() {
-        return txthoursperweek;
+    public TextField getTxtHoursPerWeek() {
+        return txtHoursPerWeek;
     }
 
-    public void setTxthoursperweek(TextField txthoursperweek) {
-        this.txthoursperweek = txthoursperweek;
+    public void setTxtHoursPerWeek(TextField txtHoursPerWeek) {
+        this.txtHoursPerWeek = txtHoursPerWeek;
     }
 
-    public TextField getTxtdaysperweek() {
-        return txtdaysperweek;
+    public TextField getTxtDaysPerWeek() {
+        return txtDaysPerWeek;
     }
 
-    public void setTxtdaysperweek(TextField txtdaysperweek) {
-        this.txtdaysperweek = txtdaysperweek;
+    public void setTxtDaysPerWeek(TextField txtDaysPerWeek) {
+        this.txtDaysPerWeek = txtDaysPerWeek;
     }
 
-    public TextField getTxtvacationdays() {
-        return txtvacationdays;
+    public TextField getTxtVacationDays() {
+        return txtVacationDays;
     }
 
-    public void setTxtvacationdays(TextField txtvacationdays) {
-        this.txtvacationdays = txtvacationdays;
+    public void setTxtVacationDays(TextField txtVacationDays) {
+        this.txtVacationDays = txtVacationDays;
     }
 
     public TextField getTxtUsername() {

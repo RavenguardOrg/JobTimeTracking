@@ -103,7 +103,7 @@ public class ProfileDao {
             throw new IllegalArgumentException("profile cannot be null.");
         }
 
-        Path path = Paths.get(profile.getUsername() + ".xml");
+        Path path = Paths.get(profile.getUsername()+ ".xml");
         final JAXBContext jc = JAXBContext.newInstance(Profile.class);
         final Marshaller m = jc.createMarshaller();
         m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);

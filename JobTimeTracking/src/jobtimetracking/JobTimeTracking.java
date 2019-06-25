@@ -247,12 +247,12 @@ public class JobTimeTracking extends Application {
         String password = profileController.getTxtPassword().getText();
         String company = profileController.getTxtCompany().getText();
         String department = profileController.getTxtDepartment().getText();
-        String surename = profileController.getTxtSurename().getText();
+        String surename = profileController.getTxtsSurename().getText();
         String firstname = profileController.getTxtFirstname().getText();
         String secondname = profileController.getTxtSecondname().getText();
-        String hoursperweek = profileController.getTxthoursperweek().getText();
-        String daysperweek = profileController.getTxtdaysperweek().getText();
-        String vacationdays = profileController.getTxtvacationdays().getText();
+        String hoursperweek = profileController.getTxtHoursPerWeek().getText();
+        String daysperweek = profileController.getTxtDaysPerWeek().getText();
+        String vacationdays = profileController.getTxtVacationDays().getText();
         double hpw = 0;
         double dpw = 0;
         double vd = 0;
