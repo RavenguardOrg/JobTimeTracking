@@ -7,12 +7,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane minWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jobtimetracking.control.Standardweek">
    <children>
       <Pane>
          <children>
-            <Label alignment="BASELINE_LEFT" layoutX="135.0" layoutY="69.0" text="Quota" underline="true">
+            <Label alignment="BASELINE_LEFT" layoutX="135.0" layoutY="98.0" text="Quota" underline="true">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -20,7 +19,7 @@
                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                </padding>
             </Label>
-            <Label fx:id="lblSollAusgabe" alignment="BASELINE_LEFT" layoutX="366.0" layoutY="117.0" text="SOLL">
+            <Label fx:id="lblSollAusgabe" alignment="BASELINE_LEFT" layoutX="366.0" layoutY="146.0" text="SOLL">
                <padding>
                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                </padding>
@@ -28,7 +27,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label alignment="BASELINE_LEFT" layoutX="137.0" layoutY="117.0" text="Own" underline="true">
+            <Label alignment="BASELINE_LEFT" layoutX="137.0" layoutY="146.0" text="Own" underline="true">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -36,12 +35,12 @@
                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                </padding>
             </Label>
-            <Label alignment="BASELINE_LEFT" layoutX="135.0" layoutY="257.0" text="Breaks" underline="true">
+            <Label alignment="BASELINE_LEFT" layoutX="135.0" layoutY="286.0" text="Breaks" underline="true">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="lblHabenAusgabe" alignment="BASELINE_LEFT" layoutX="367.0" layoutY="69.0" text="HABEN">
+            <Label fx:id="lblHabenAusgabe" alignment="BASELINE_LEFT" layoutX="367.0" layoutY="98.0" text="HABEN">
                <padding>
                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                </padding>
@@ -49,7 +48,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label alignment="BASELINE_LEFT" layoutX="137.0" layoutY="168.0" text="Balance" underline="true">
+            <Label alignment="BASELINE_LEFT" layoutX="137.0" layoutY="197.0" text="Balance" underline="true">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -57,12 +56,12 @@
                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                </padding>
             </Label>
-            <Label fx:id="lblBreaksAW" alignment="BASELINE_LEFT" layoutX="367.0" layoutY="257.0" text="PAUSEN">
+            <Label fx:id="lblBreaksAW" alignment="BASELINE_LEFT" layoutX="367.0" layoutY="286.0" text="PAUSEN">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label alignment="BASELINE_LEFT" layoutX="135.0" layoutY="211.0" text="Overtime" underline="true">
+            <Label alignment="BASELINE_LEFT" layoutX="135.0" layoutY="240.0" text="Overtime" underline="true">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -70,7 +69,7 @@
                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                </padding>
             </Label>
-            <Label fx:id="lblMehrstundenAusgabe" alignment="BASELINE_LEFT" layoutX="366.0" layoutY="211.0" text="ÜBERSTUNDEN">
+            <Label fx:id="lblMehrstundenAusgabe" alignment="BASELINE_LEFT" layoutX="366.0" layoutY="240.0" text="ÜBERSTUNDEN">
                <padding>
                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                </padding>
@@ -78,16 +77,16 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label alignment="BASELINE_CENTER" layoutX="250.0" layoutY="14.0" text="Current Week" textAlignment="CENTER" underline="true">
+            <Label alignment="BASELINE_CENTER" layoutX="240.0" layoutY="24.0" text="Current Week" textAlignment="CENTER">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
                <padding>
                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                </padding>
             </Label>
-            <Separator layoutY="45.0" minHeight="1.0" minWidth="600.0" />
-            <Label fx:id="lblDifferenzAusgabe" alignment="BASELINE_LEFT" layoutX="367.0" layoutY="168.0" text="DIFFERENZ">
+            <Separator layoutY="74.0" minHeight="1.0" minWidth="600.0" />
+            <Label fx:id="lblDifferenzAusgabe" alignment="BASELINE_LEFT" layoutX="367.0" layoutY="197.0" text="DIFFERENZ">
                <padding>
                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                </padding>
@@ -95,7 +94,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Separator layoutY="307.0" minHeight="1.0" minWidth="420.0" />
+            <Separator layoutY="336.0" minHeight="1.0" minWidth="600.0" />
          </children>
       </Pane>
    </children>
