@@ -66,7 +66,7 @@ public class JobTimeTracking extends Application {
             // Do basic loading
             final GuiLoader<Mainframe, Parent> main = new GuiLoader<>("mainframe.fxml");
             final Parent root = main.getRoot();
-            final Scene scene = new Scene(root, 870, 500);
+            final Scene scene = new Scene(root);
             final Mainframe controller = main.getController();
             controller.setPrimaryStage(primaryStage);
             controller.setService(service);
@@ -74,7 +74,7 @@ public class JobTimeTracking extends Application {
             primaryStage.setMaximized(false);
             primaryStage.setScene(scene);
             primaryStage.setTitle("Job Time Tracking");
-            primaryStage.setResizable(false);
+            primaryStage.setResizable(true);
             primaryStage.getIcons().add(new Image(JobTimeTracking.class.getResourceAsStream("/jobtimetracking/view/TimerMainTitleIcon.png")));
             primaryStage.show();
 

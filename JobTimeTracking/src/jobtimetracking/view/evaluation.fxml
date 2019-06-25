@@ -10,7 +10,7 @@
    <children>
       <Pane layoutX="7.0">
          <children>
-            <Label alignment="BASELINE_CENTER" contentDisplay="CENTER" layoutX="256.0" layoutY="22.0" text="Evaluation" textAlignment="CENTER" underline="true">
+            <Label alignment="BASELINE_CENTER" contentDisplay="CENTER" layoutX="249.0" layoutY="22.0" text="Evaluation" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -66,7 +66,7 @@
             <Label fx:id="lblBreaksYearE" alignment="BASELINE_LEFT" layoutX="440.0" layoutY="281.0" text="PAUSENJAHR" />
             <Label fx:id="lblBreaksMonthE" alignment="BASELINE_LEFT" layoutX="258.0" layoutY="281.0" text="PAUSENMONAT" />
             <Separator layoutX="-7.0" layoutY="72.0" minWidth="600.0" valignment="BASELINE" />
-            <Separator layoutX="161.0" layoutY="71.0" orientation="VERTICAL" prefHeight="330.0" />
+            <Separator layoutX="3.0" layoutY="320.0" minWidth="600.0" valignment="BASELINE" />
          </children>
       </Pane>
    </children>

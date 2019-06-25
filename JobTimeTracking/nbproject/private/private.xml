@@ -5,9 +5,11 @@
         <group>
             <file>file:/C:/Users/aschmidt/Documents/Java-School/JobTimeTracking/JobTimeTracking/src/jobtimetracking/control/Mainframe.java</file>
             <file>file:/C:/Users/aschmidt/Documents/Java-School/JobTimeTracking/JobTimeTracking/src/jobtimetracking/model/Profile.java</file>
+            <file>file:/C:/Users/aschmidt/Documents/Java-School/JobTimeTracking/JobTimeTracking/src/jobtimetracking/view/mainframe.fxml</file>
             <file>file:/C:/Users/aschmidt/Documents/Java-School/JobTimeTracking/JobTimeTracking/src/jobtimetracking/JobTimeTracking.java</file>
             <file>file:/C:/Users/aschmidt/Documents/Java-School/JobTimeTracking/JobTimeTracking/src/jobtimetracking/control/Profile.java</file>
             <file>file:/C:/Users/aschmidt/Documents/Java-School/JobTimeTracking/JobTimeTracking/src/jobtimetracking/repository/ProfileDao.java</file>
+            <file>file:/C:/Users/aschmidt/Documents/Java-School/JobTimeTracking/JobTimeTracking/src/jobtimetracking/control/Evaluation.java</file>
         </group>
     </open-files>
 </project-private>

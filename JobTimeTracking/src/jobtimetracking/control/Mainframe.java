@@ -152,7 +152,6 @@ public class Mainframe {
                         eventValidate.consume();
                     }
                 });
-
         dialogProfile.showAndWait();
     }
 
@@ -241,7 +240,7 @@ public class Mainframe {
         controller.getLblSollMonat().setText(format.format(month.getQuota()));
         controller.getLblSollJahr().setText(format.format(year.getQuota()));
         spView.setContent(root);
-        btnEvaluation.setText("StandardWeek");
+        btnEvaluation.setText("Current week");
         showStandardWeek = false;
     }
 
