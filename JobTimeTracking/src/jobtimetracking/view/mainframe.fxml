@@ -25,7 +25,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.29797979797979796" minHeight="400.0" minWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jobtimetracking.control.Mainframe">
+<SplitPane dividerPositions="0.29797979797979796" minHeight="400.0" minWidth="800.0" xmlns="http://javafx.com/javafx/8.0.211" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jobtimetracking.control.Mainframe">
   <items>
       <AnchorPane minWidth="190.0">
          <children>
