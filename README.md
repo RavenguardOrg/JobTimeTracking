@@ -20,8 +20,9 @@ Timekeeping at work, regarding the court judgment of the European Court of Justi
 
 **Structure**
 3 Layers: View, Control and Repository
+
 <ul>
-       <li><View with fxml files and controller classes</li>
+       <li>View with fxml files and controller classes</li>
        <li>Control with services for encapsulating the data business methods</li>
        <li>Repository for saving and loading data, using JAXB</li>
 </ul>
