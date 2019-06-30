@@ -19,6 +19,7 @@ Timekeeping at work, regarding the court judgment of the European Court of Justi
 <img src="https://image.prntscr.com/image/Y5JBc5LlQNO0b_AZqb4CRw.jpg" />  
 
 **Structure**
+<img src="https://github.com/aschmidt82/JobTimeTracking/blob/FeatureBranch/class%20diagram.png" />
 3 Layers: View, Control and Repository
 
 <ul>
