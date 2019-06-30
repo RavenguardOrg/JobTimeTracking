@@ -26,7 +26,7 @@ Timekeeping at work, regarding the court judgment of the European Court of Justi
        <li>Repository for saving and loading data, using JAXB</li>
 </ul>
 
-**Fur<her features**
+**Further features**
 <ul>
        <li>Evaluation with custom time borders</li>
        <li>List and edit Timetracking entries</li>
