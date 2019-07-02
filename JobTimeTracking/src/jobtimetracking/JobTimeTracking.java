@@ -125,11 +125,12 @@ public class JobTimeTracking extends Application {
             Platform.runLater(() -> username.requestFocus());
 
             Optional<ButtonType> result = dialog.showAndWait();
-            handleLogin(result, primaryStage, username, password);
-            controller.start();
-            primaryStage.setOnCloseRequest((WindowEvent event) -> {
-                service.endAutomaticTimeTracking();
-            });
+            if (handleLogin(result, primaryStage, username, password)) {
+                controller.start();
+                primaryStage.setOnCloseRequest((WindowEvent event) -> {
+                    service.endAutomaticTimeTracking();
+                });
+            }
         } catch (IOException e) {
 
         }
@@ -142,21 +143,20 @@ public class JobTimeTracking extends Application {
      * @param primaryStage Main Stage
      * @param username Textfield for Username
      * @param password Textfield for Password
+     * @return true if successful login or registration, otherwise false
      * @throws IOException faild to load fxml-Template
      */
-    private void handleLogin(Optional<ButtonType> result, Stage primaryStage, TextField username, PasswordField password) throws IOException {
+    private boolean handleLogin(Optional<ButtonType> result, Stage primaryStage, TextField username, PasswordField password) throws IOException {
         if (result.isPresent()) {
             ButtonType result2 = result.get();
             if (null != result2.getButtonData()) {
                 switch (result2.getButtonData()) {
                     case CANCEL_CLOSE:
                         primaryStage.close();
-                        break;
+                        return false;
                     //Load Profile from file
                     case OK_DONE:
-
-                        // Call Service
-                        break;
+                        return true;
                     // Create new Profile
                     case OTHER:
                         final GuiLoader<Profile, AnchorPane> helper
@@ -187,14 +187,13 @@ public class JobTimeTracking extends Application {
                                 });
 
                         Optional<ButtonType> result3 = dialogProfile.showAndWait();
-                        handleCreateProfile(result3, primaryStage, profileController);
-
-                        break;
+                        return handleCreateProfile(result3, primaryStage, profileController);
                     default:
                         break;
                 }
             }
         }
+        return false;
     }
 
     /**
@@ -203,22 +202,24 @@ public class JobTimeTracking extends Application {
      * @param result New Profile Dialog Result
      * @param primaryStage Main Stage
      * @param profileController Controller of new Profile Dialog
+     * @return true if successful creation, otherwise false
      */
-    private void handleCreateProfile(Optional<ButtonType> result, Stage primaryStage, Profile profileController) {
+    private boolean handleCreateProfile(Optional<ButtonType> result, Stage primaryStage, Profile profileController) {
         if (result.isPresent()) {
             ButtonType resultButtonType = result.get();
             if (null != resultButtonType.getButtonData()) {
                 switch (resultButtonType.getButtonData()) {
                     case CANCEL_CLOSE:
                         primaryStage.close();
-                        break;
+                        return false;
                     case OK_DONE:
-                        break;
+                        return true;
                     default:
                         break;
                 }
             }
         }
+        return false;
     }
 
     /**
