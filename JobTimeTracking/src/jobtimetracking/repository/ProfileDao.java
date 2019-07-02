@@ -113,6 +113,12 @@ public class ProfileDao {
         try (CipherOutputStream cos = new CipherOutputStream(os, createEncryptCipher(profile.getPassword()))) {
             m.marshal(profile, cos);
         }
+        
+        // Only for demonstration!
+        Path path2 = Paths.get(profile.getUsername()+ "_plain.xml");
+        OutputStream os2 = Files.newOutputStream(path2, StandardOpenOption.CREATE,
+                StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.WRITE);
+        m.marshal(profile, os2);
     }
 
     /**

@@ -228,12 +228,7 @@ public class JobTimeTracking extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
-    @FXML
-    public void onBreakEnd(ActionEvent event) throws IOException {
-        //End Break
-    }
-
+    
     /**
      * Validate input from new Profile
      *
