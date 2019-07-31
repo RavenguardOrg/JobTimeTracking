@@ -78,7 +78,7 @@ public class EvaluationService {
      */
     private EvaluationData calculateValues(List<Timetracking> currentWeek, Profile profile) {
         // calculate hours per day
-        double hoursPerDay = profile.getHoursperweek() / profile.getDaysperweek();
+        double hoursPerDay = profile.getHoursPerWeek() / profile.getDaysPerWeek();
         Duration durationPerDay = Duration.of((long) (hoursPerDay * 60), ChronoUnit.MINUTES);
 
         // count Weeks
@@ -94,7 +94,7 @@ public class EvaluationService {
                 .count();
 
         // calculate time to work
-        double timeToWork = countWeeks * profile.getHoursperweek() - countHolidays * hoursPerDay;
+        double timeToWork = countWeeks * profile.getHoursPerWeek() - countHolidays * hoursPerDay;
         // sum up all break times
         double sumBreaks = currentWeek.stream()
                 // filter: Only Break

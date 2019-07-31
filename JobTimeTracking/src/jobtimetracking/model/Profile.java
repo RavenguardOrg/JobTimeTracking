@@ -45,27 +45,27 @@ public class Profile {
     @XmlElement(name = "timetracking")
     private ArrayList<Timetracking> tracking = new ArrayList<>();
 
-    public double getHoursperweek() {
+    public double getHoursPerWeek() {
         return hoursperweek;
     }
 
-    public void setHoursperweek(double hoursperweek) {
+    public void setHoursPerWeek(double hoursperweek) {
         this.hoursperweek = hoursperweek;
     }
 
-    public double getDaysperweek() {
+    public double getDaysPerWeek() {
         return daysperweek;
     }
 
-    public void setDaysperweek(double daysperweek) {
+    public void setDaysPerWeek(double daysperweek) {
         this.daysperweek = daysperweek;
     }
 
-    public double getVacationdays() {
+    public double getVacationDays() {
         return vacationdays;
     }
 
-    public void setVacationdays(double vacationdays) {
+    public void setVacationDays(double vacationdays) {
         this.vacationdays = vacationdays;
     }
 

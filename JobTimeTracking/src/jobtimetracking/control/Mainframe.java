@@ -103,9 +103,9 @@ public class Mainframe {
         profileController.getTxtPassword().setText(profile.getPassword());
         profileController.getTxtSurename().setText(profile.getSurename());
         profileController.getTxtUsername().setText(profile.getUsername());
-        profileController.getTxtdaysperweek().setText(String.valueOf(profile.getDaysperweek()));
-        profileController.getTxthoursperweek().setText(String.valueOf(profile.getHoursperweek()));
-        profileController.getTxtvacationdays().setText(String.valueOf(profile.getVacationdays()));
+        profileController.getTxtdaysperweek().setText(String.valueOf(profile.getDaysPerWeek()));
+        profileController.getTxthoursperweek().setText(String.valueOf(profile.getHoursPerWeek()));
+        profileController.getTxtvacationdays().setText(String.valueOf(profile.getVacationDays()));
 
         // Enable/Disable login button depending on whether a username was entered.
         Button saveButton = (Button) dialogProfile.getDialogPane().lookupButton(btnSaveProfile);
@@ -152,7 +152,6 @@ public class Mainframe {
                         eventValidate.consume();
                     }
                 });
-
         dialogProfile.showAndWait();
     }
 
@@ -241,7 +240,7 @@ public class Mainframe {
         controller.getLblSollMonat().setText(format.format(month.getQuota()));
         controller.getLblSollJahr().setText(format.format(year.getQuota()));
         spView.setContent(root);
-        btnEvaluation.setText("StandardWeek");
+        btnEvaluation.setText("Current week");
         showStandardWeek = false;
     }
 

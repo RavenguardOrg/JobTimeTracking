@@ -66,7 +66,7 @@ public class JobTimeTracking extends Application {
             // Do basic loading
             final GuiLoader<Mainframe, Parent> main = new GuiLoader<>("mainframe.fxml");
             final Parent root = main.getRoot();
-            final Scene scene = new Scene(root, 870, 500);
+            final Scene scene = new Scene(root);
             final Mainframe controller = main.getController();
             controller.setPrimaryStage(primaryStage);
             controller.setService(service);
@@ -74,7 +74,7 @@ public class JobTimeTracking extends Application {
             primaryStage.setMaximized(false);
             primaryStage.setScene(scene);
             primaryStage.setTitle("Job Time Tracking");
-            primaryStage.setResizable(false);
+            primaryStage.setResizable(true);
             primaryStage.getIcons().add(new Image(JobTimeTracking.class.getResourceAsStream("/jobtimetracking/view/TimerMainTitleIcon.png")));
             primaryStage.show();
 
@@ -125,11 +125,12 @@ public class JobTimeTracking extends Application {
             Platform.runLater(() -> username.requestFocus());
 
             Optional<ButtonType> result = dialog.showAndWait();
-            handleLogin(result, primaryStage, username, password);
-            controller.start();
-            primaryStage.setOnCloseRequest((WindowEvent event) -> {
-                service.endAutomaticTimeTracking();
-            });
+            if (handleLogin(result, primaryStage, username, password)) {
+                controller.start();
+                primaryStage.setOnCloseRequest((WindowEvent event) -> {
+                    service.endAutomaticTimeTracking();
+                });
+            }
         } catch (IOException e) {
 
         }
@@ -142,21 +143,20 @@ public class JobTimeTracking extends Application {
      * @param primaryStage Main Stage
      * @param username Textfield for Username
      * @param password Textfield for Password
+     * @return true if successful login or registration, otherwise false
      * @throws IOException faild to load fxml-Template
      */
-    private void handleLogin(Optional<ButtonType> result, Stage primaryStage, TextField username, PasswordField password) throws IOException {
+    private boolean handleLogin(Optional<ButtonType> result, Stage primaryStage, TextField username, PasswordField password) throws IOException {
         if (result.isPresent()) {
             ButtonType result2 = result.get();
             if (null != result2.getButtonData()) {
                 switch (result2.getButtonData()) {
                     case CANCEL_CLOSE:
                         primaryStage.close();
-                        break;
+                        return false;
                     //Load Profile from file
                     case OK_DONE:
-
-                        // Call Service
-                        break;
+                        return true;
                     // Create new Profile
                     case OTHER:
                         final GuiLoader<Profile, AnchorPane> helper
@@ -187,14 +187,13 @@ public class JobTimeTracking extends Application {
                                 });
 
                         Optional<ButtonType> result3 = dialogProfile.showAndWait();
-                        handleCreateProfile(result3, primaryStage, profileController);
-
-                        break;
+                        return handleCreateProfile(result3, primaryStage, profileController);
                     default:
                         break;
                 }
             }
         }
+        return false;
     }
 
     /**
@@ -203,22 +202,24 @@ public class JobTimeTracking extends Application {
      * @param result New Profile Dialog Result
      * @param primaryStage Main Stage
      * @param profileController Controller of new Profile Dialog
+     * @return true if successful creation, otherwise false
      */
-    private void handleCreateProfile(Optional<ButtonType> result, Stage primaryStage, Profile profileController) {
+    private boolean handleCreateProfile(Optional<ButtonType> result, Stage primaryStage, Profile profileController) {
         if (result.isPresent()) {
             ButtonType resultButtonType = result.get();
             if (null != resultButtonType.getButtonData()) {
                 switch (resultButtonType.getButtonData()) {
                     case CANCEL_CLOSE:
                         primaryStage.close();
-                        break;
+                        return false;
                     case OK_DONE:
-                        break;
+                        return true;
                     default:
                         break;
                 }
             }
         }
+        return false;
     }
 
     /**
@@ -227,12 +228,7 @@ public class JobTimeTracking extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
-    @FXML
-    public void onBreakEnd(ActionEvent event) throws IOException {
-        //End Break
-    }
-
+    
     /**
      * Validate input from new Profile
      *
@@ -247,12 +243,12 @@ public class JobTimeTracking extends Application {
         String password = profileController.getTxtPassword().getText();
         String company = profileController.getTxtCompany().getText();
         String department = profileController.getTxtDepartment().getText();
-        String surename = profileController.getTxtSurename().getText();
+        String surename = profileController.getTxtsSurename().getText();
         String firstname = profileController.getTxtFirstname().getText();
         String secondname = profileController.getTxtSecondname().getText();
-        String hoursperweek = profileController.getTxthoursperweek().getText();
-        String daysperweek = profileController.getTxtdaysperweek().getText();
-        String vacationdays = profileController.getTxtvacationdays().getText();
+        String hoursperweek = profileController.getTxtHoursPerWeek().getText();
+        String daysperweek = profileController.getTxtDaysPerWeek().getText();
+        String vacationdays = profileController.getTxtVacationDays().getText();
         double hpw = 0;
         double dpw = 0;
         double vd = 0;

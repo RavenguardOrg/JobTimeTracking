@@ -46,6 +46,8 @@ public class TimeTrackingService {
      *
      * param username param password
      *
+     * @param username
+     * @param password
      * @return
      */
     public List<String> login(String username, String password) {
@@ -89,14 +91,14 @@ public class TimeTrackingService {
         profile = new Profile();
         profile.setCompany(company);
         profile.setDepartment(department);
-        profile.setDaysperweek(daysperweek);
+        profile.setDaysPerWeek(daysperweek);
         profile.setFirstname(firstname);
-        profile.setHoursperweek(hoursperweek);
+        profile.setHoursPerWeek(hoursperweek);
         profile.setPassword(password);
         profile.setSecondname(secondname);
         profile.setSurename(surename);
         profile.setUsername(username);
-        profile.setVacationdays(vacationdays);
+        profile.setVacationDays(vacationdays);
         try {
             ProfileDao.saveToPath(profile);
         } catch (JAXBException ex) {
@@ -196,13 +198,13 @@ public class TimeTrackingService {
             }
         }
         profile.setCompany(company);
-        profile.setDaysperweek(daysPerWeek);
+        profile.setDaysPerWeek(daysPerWeek);
         profile.setDepartment(department);
-        profile.setHoursperweek(hoursPerWeek);
+        profile.setHoursPerWeek(hoursPerWeek);
         profile.setPassword(password);
         profile.setSurename(surename);
         profile.setUsername(username);
-        profile.setVacationdays(vacationDays);
+        profile.setVacationDays(vacationDays);
         try {
             ProfileDao.saveToPath(profile);
         } catch (JAXBException ex) {
@@ -219,15 +221,15 @@ public class TimeTrackingService {
     public Profile getProfile() {
         Profile returnValue = new Profile();
         returnValue.setCompany(profile.getCompany());
-        returnValue.setDaysperweek(profile.getDaysperweek());
+        returnValue.setDaysPerWeek(profile.getDaysPerWeek());
         returnValue.setDepartment(profile.getDepartment());
         returnValue.setFirstname(profile.getFirstname());
-        returnValue.setHoursperweek(profile.getHoursperweek());
+        returnValue.setHoursPerWeek(profile.getHoursPerWeek());
         returnValue.setPassword("");
         returnValue.setSecondname(profile.getSecondname());
         returnValue.setSurename(profile.getSurename());
         returnValue.setUsername(profile.getUsername());
-        returnValue.setVacationdays(profile.getVacationdays());
+        returnValue.setVacationDays(profile.getVacationDays());
 
         return returnValue;
     }
