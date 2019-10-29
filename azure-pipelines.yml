@@ -1,4 +1,14 @@
 # Ant
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    javaHomeOption: 'JDKVersion'
+    mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: false
+    effectivePomSkip: false
+    sonarQubeRunAnalysis: false
 # Build your Java projects and run tests with Apache Ant.
 # Add steps that save build artifacts and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
