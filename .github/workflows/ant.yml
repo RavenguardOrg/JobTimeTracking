@@ -13,5 +13,6 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
+        javafx: true
     - name: Build with Ant
       run: ant -noinput -buildfile JobTimeTracking/build.xml
