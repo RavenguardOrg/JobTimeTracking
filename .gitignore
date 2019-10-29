@@ -25,5 +25,4 @@ hs_err_pid*
 /JobTimeTracking/build/
 /JobTimeTracking/dist/
 /JobTimeTracking/aschmidt.xml
-/JobTimeTracking/nbproject/*
 /JobTimeTracking/aschmidt2.xml
