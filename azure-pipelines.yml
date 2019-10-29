@@ -13,7 +13,7 @@ steps:
 - task: Ant@1
   inputs:
     workingDirectory: ''
-    buildFile: 'build.xml'
+    buildFile: 'JobTimeTracking/build.xml'
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.8'
     jdkArchitectureOption: 'x64'
