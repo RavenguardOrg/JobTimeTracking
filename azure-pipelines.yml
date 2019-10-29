@@ -27,5 +27,6 @@ steps:
     buildFile: 'JobTimeTracking/build.xml'
     javaHomeOption: Path
     jdkDirectory: $(jdkDir)
+    jdkUserInputPath:
     publishJUnitResults: true
     testResultsFiles: '**/TEST-*.xml'
