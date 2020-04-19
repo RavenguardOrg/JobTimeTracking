@@ -22,10 +22,10 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
-/JobTimeTracking/build/
-/JobTimeTracking/dist/
-/JobTimeTracking/aschmidt.xml
-/JobTimeTracking/aschmidt2.xml
+/jobTimeTracking/build/
+/jobTimeTracking/dist/
+/jobTimeTracking/aschmidt.xml
+/jobTimeTracking/aschmidt2.xml
 
-/JobTimeTracking/nbproject/
-/JobTimeTracking/target/
+/jobTimeTracking/nbproject/
+/jobTimeTracking/target/
