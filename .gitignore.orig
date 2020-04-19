@@ -26,6 +26,8 @@ hs_err_pid*
 /JobTimeTracking/dist/
 /JobTimeTracking/aschmidt.xml
 /JobTimeTracking/aschmidt2.xml
-
+<<<<<<< HEAD
 /JobTimeTracking/nbproject/
+=======
 /JobTimeTracking/target/
+>>>>>>> ChangeRuntimeAndCreateDatabase
