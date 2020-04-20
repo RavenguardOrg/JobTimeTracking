@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane minWidth="600.0" xmlns="http://javafx.com/javafx/8.0.211" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.ravenguard.jobtimetracking.view.ProfileController">
+  <children>
+    <Pane>
+      <children>
+        <Label fx:id="lblSurename" alignment="BASELINE_LEFT" layoutX="29.0" layoutY="83.0" text="Surename">
+          <font>
+            <Font size="14.0" />
+          </font>
+        </Label>
+        <TextField fx:id="txtsSurename" alignment="BASELINE_LEFT" layoutX="32.0" layoutY="114.0" minWidth="150.0" promptText="Surname" />
+        <Label fx:id="lblFirstname" alignment="BASELINE_LEFT" layoutX="229.0" layoutY="83.0" text="Firstname">
+          <font>
+            <Font size="14.0" />
+          </font>
+        </Label>
+        <TextField fx:id="txtFirstname" alignment="BASELINE_LEFT" layoutX="225.0" layoutY="114.0" minWidth="150.0" promptText="Firstname" />
+        <Label fx:id="lblSecondname" alignment="BASELINE_LEFT" layoutX="415.0" layoutY="83.0" text="Secondname">
+          <font>
+            <Font size="14.0" />
+          </font>
+        </Label>
+        <TextField fx:id="txtSecondname" alignment="BASELINE_LEFT" layoutX="415.0" layoutY="114.0" minWidth="150.0" promptText="Secondname" />
+        <Label fx:id="lblCompany" alignment="BASELINE_LEFT" layoutX="30.0" layoutY="163.0" text="Company">
+          <font>
+            <Font size="14.0" />
+          </font>
+        </Label>
+        <TextField fx:id="txtCompany" alignment="BASELINE_LEFT" layoutX="32.0" layoutY="192.0" minWidth="150.0" promptText="Company" />
+        <Label fx:id="lblDepartment" alignment="BASELINE_LEFT" layoutX="222.0" layoutY="163.0" text="Department">
+          <font>
+            <Font size="14.0" />
+          </font>
+        </Label>
+        <TextField fx:id="txtDepartment" alignment="BASELINE_LEFT" layoutX="225.0" layoutY="192.0" minWidth="150.0" promptText="Department" />
+        <Label fx:id="lblhpw" alignment="BASELINE_LEFT" layoutX="28.0" layoutY="234.0" text="hours per week">
+          <font>
+            <Font size="14.0" />
+          </font>
+        </Label>
+        <TextField fx:id="txtHoursPerWeek" alignment="BASELINE_LEFT" layoutX="32.0" layoutY="268.0" minWidth="150.0" promptText="Hours per week" />
+        <Label fx:id="lbldpw" alignment="BASELINE_LEFT" layoutX="230.0" layoutY="234.0" text="days per week">
+          <font>
+            <Font size="14.0" />
+          </font>
+        </Label>
+        <TextField fx:id="txtDaysPerWeek" alignment="BASELINE_LEFT" layoutX="230.0" layoutY="268.0" minWidth="150.0" promptText="Days per week" />
+        <Label fx:id="lblvd" alignment="BASELINE_LEFT" layoutX="422.0" layoutY="234.0" text="vacation days">
+          <font>
+            <Font size="14.0" />
+          </font>
+        </Label>
+        <TextField fx:id="txtVacationDays" alignment="BASELINE_LEFT" layoutX="415.0" layoutY="268.0" minWidth="150.0" promptText="Vacation days" />
+        <Label fx:id="lblUsername" alignment="BASELINE_LEFT" layoutX="31.0" layoutY="321.0" text="Username">
+          <font>
+            <Font size="14.0" />
+          </font>
+        </Label>
+        <TextField fx:id="txtUsername" alignment="BASELINE_LEFT" layoutX="32.0" layoutY="351.0" minWidth="150.0" promptText="Username" />
+        <Label fx:id="lblPassword" alignment="BASELINE_LEFT" layoutX="228.0" layoutY="321.0" text="Password">
+          <font>
+            <Font size="14.0" />
+          </font>
+        </Label>
+        <PasswordField fx:id="txtPassword" alignment="BASELINE_LEFT" layoutX="228.0" layoutY="351.0" minWidth="150.0" promptText="Password" />
+        <Label fx:id="lblErrorMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="5.0" layoutY="391.0" minHeight="20.0" minWidth="600.0" textFill="#fc0303">
+          <font>
+            <Font name="System Bold" size="14.0" />
+          </font>
+        </Label>
+        <Label layoutX="242.0" layoutY="25.0" text="Create Profile">
+          <font>
+            <Font name="System Bold" size="18.0" />
+          </font>
+        </Label>
+        <Separator layoutY="70.0" minWidth="600.0" />
+        <Separator layoutY="390.0" minWidth="600.0" />
+      </children>
+    </Pane>
+  </children>
+</AnchorPane>

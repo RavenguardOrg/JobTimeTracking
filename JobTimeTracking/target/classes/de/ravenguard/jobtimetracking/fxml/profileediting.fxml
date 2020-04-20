@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane minWidth="600.0" xmlns="http://javafx.com/javafx/8.0.211" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.ravenguard.jobtimetracking.view.ProfileEditingController">
+  <children>
+    <Pane>
+      <children>
+        <Label fx:id="lblSurename" alignment="BASELINE_LEFT" layoutX="29.0" layoutY="78.0" text="Surename">
+          <font>
+            <Font size="14.0" />
+          </font>
+        </Label>
+        <TextField fx:id="txtSurename" alignment="BASELINE_LEFT" layoutX="30.0" layoutY="109.0" minWidth="150.0" promptText="Surename" />
+        <TextField fx:id="txtDepartment" alignment="BASELINE_LEFT" layoutX="422.0" layoutY="109.0" minWidth="150.0" promptText="Department" />
+        <Label fx:id="lblCompany" alignment="BASELINE_LEFT" layoutX="228.0" layoutY="78.0" text="Company">
+          <font>
+            <Font size="14.0" />
+          </font>
+        </Label>
+        <TextField fx:id="txtCompany" alignment="BASELINE_LEFT" layoutX="230.0" layoutY="109.0" minWidth="150.0" promptText="Company" />
+        <Label fx:id="lblDepartment" alignment="BASELINE_LEFT" layoutX="422.0" layoutY="78.0" text="Department">
+          <font>
+            <Font size="14.0" />
+          </font>
+        </Label>
+        <TextField fx:id="txtvacationdays" alignment="BASELINE_LEFT" layoutX="427.0" layoutY="186.0" minWidth="150.0" promptText="Vacation days" />
+        <Label fx:id="lblhpw" alignment="BASELINE_LEFT" layoutX="33.0" layoutY="152.0" text="hours per week">
+          <font>
+            <Font size="14.0" />
+          </font>
+        </Label>
+        <TextField fx:id="txthoursperweek" alignment="BASELINE_LEFT" layoutX="37.0" layoutY="186.0" minWidth="150.0" promptText="Hours per week" />
+        <Label fx:id="lbldpw" alignment="BASELINE_LEFT" layoutX="235.0" layoutY="152.0" text="days per week">
+          <font>
+            <Font size="14.0" />
+          </font>
+        </Label>
+        <TextField fx:id="txtdaysperweek" alignment="BASELINE_LEFT" layoutX="235.0" layoutY="186.0" minWidth="150.0" promptText="Days per week" />
+        <Label fx:id="lblvd" alignment="BASELINE_LEFT" layoutX="427.0" layoutY="152.0" text="vacation days">
+          <font>
+            <Font size="14.0" />
+          </font>
+        </Label>
+        <TextField fx:id="txtUsername" alignment="BASELINE_LEFT" layoutX="35.0" layoutY="269.0" minWidth="150.0" promptText="Username" />
+        <Label fx:id="lblUsername" alignment="BASELINE_LEFT" layoutX="36.0" layoutY="239.0" text="Username">
+          <font>
+            <Font size="14.0" />
+          </font>
+        </Label>
+        <Label fx:id="lblPassword" alignment="BASELINE_LEFT" layoutX="233.0" layoutY="239.0" text="Password">
+          <font>
+            <Font size="14.0" />
+          </font>
+        </Label>
+        <PasswordField fx:id="txtPassword" alignment="BASELINE_LEFT" layoutX="233.0" layoutY="269.0" minWidth="150.0" promptText="Password" />
+        <Label fx:id="lblErrorMessage" alignment="CENTER" contentDisplay="CENTER" layoutY="319.0" minHeight="20.0" minWidth="600.0" textFill="#fc0303">
+          <font>
+            <Font name="System Bold" size="14.0" />
+          </font>
+        </Label>
+        <Label layoutX="239.0" layoutY="22.0" text="Editing Profile">
+          <font>
+            <Font name="System Bold" size="18.0" />
+          </font>
+        </Label>
+        <Separator layoutY="65.0" minWidth="600.0" />
+        <Separator layoutY="318.0" minWidth="600.0" />
+      </children>
+    </Pane>
+  </children>
+</AnchorPane>

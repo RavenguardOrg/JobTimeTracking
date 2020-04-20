@@ -1,0 +1,4 @@
+--patch-module
+de.ravenguard.jobtimetracking=_
+--add-reads
+de.ravenguard.jobtimetracking=ALL-UNNAMED

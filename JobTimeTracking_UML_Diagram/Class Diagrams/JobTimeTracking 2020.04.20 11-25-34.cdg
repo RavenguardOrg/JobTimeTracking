@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="JobTimeTracking">
+  <ClassDiagramComponents>
+    <Class name="EvaluationData" package="de.ravenguard.jobtimetracking.boundary" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="quota" type="double" visibility="private"/>
+        <Field name="own" type="double" visibility="private"/>
+        <Field name="balance" type="double" visibility="private"/>
+        <Field name="overtime" type="double" visibility="private"/>
+        <Field name="breaks" type="double" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getQuota" returnType="double" visibility="public"/>
+        <Method name="setQuota" returnType="void" visibility="public">
+          <Argument type="double" name="quota"/>
+        </Method>
+        <Method name="getOwn" returnType="double" visibility="public"/>
+        <Method name="setOwn" returnType="void" visibility="public">
+          <Argument type="double" name="own"/>
+        </Method>
+        <Method name="getBalance" returnType="double" visibility="public"/>
+        <Method name="setBalance" returnType="void" visibility="public">
+          <Argument type="double" name="balance"/>
+        </Method>
+        <Method name="getOvertime" returnType="double" visibility="public"/>
+        <Method name="setOvertime" returnType="void" visibility="public">
+          <Argument type="double" name="overtime"/>
+        </Method>
+        <Method name="getBreaks" returnType="double" visibility="public"/>
+        <Method name="setBreaks" returnType="void" visibility="public">
+          <Argument type="double" name="breaks"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="EvaluationService" package="de.ravenguard.jobtimetracking.boundary" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="getEvaluationMonth" returnType="EvaluationData" visibility="public">
+          <Argument type="Profile" name="profile"/>
+        </Method>
+        <Method name="getEvaluationYear" returnType="EvaluationData" visibility="public">
+          <Argument type="Profile" name="profile"/>
+        </Method>
+        <Method name="getStandardWeek" returnType="EvaluationData" visibility="public">
+          <Argument type="Profile" name="profile"/>
+        </Method>
+        <Method name="calculateValues" returnType="EvaluationData" visibility="private">
+          <Argument type="List&lt;Timetracking&gt;" name="currentWeek"/>
+          <Argument type="Profile" name="profile"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="TimeTrackingService" package="de.ravenguard.jobtimetracking.boundary" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields>
+        <Field name="dao" type="ProfileDao" visibility="private"/>
+        <Field name="isBreak" type="boolean" visibility="private"/>
+        <Field name="lastTimeStamp" type="LocalDateTime" visibility="private"/>
+        <Field name="profile" type="Profile" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="addTimeTracking" returnType="List&lt;String&gt;" visibility="public">
+          <Argument type="Timetracking" name="element"/>
+        </Method>
+        <Method name="close" returnType="void" visibility="public"/>
+        <Method name="createTimeTrackingRecord" returnType="void" visibility="public"/>
+        <Method name="endAutomaticTimeTracking" returnType="void" visibility="public"/>
+        <Method name="getEvaluationMonth" returnType="EvaluationData" visibility="public"/>
+        <Method name="getEvaluationYear" returnType="EvaluationData" visibility="public"/>
+        <Method name="getProfile" returnType="Profile" visibility="public"/>
+        <Method name="getWeekData" returnType="EvaluationData" visibility="public"/>
+        <Method name="login" returnType="void" visibility="public">
+          <Argument type="String" name="username"/>
+          <Argument type="String" name="password"/>
+        </Method>
+        <Method name="register" returnType="void" visibility="public">
+          <Argument type="String" name="username"/>
+          <Argument type="String" name="password"/>
+          <Argument type="String" name="company"/>
+          <Argument type="String" name="department"/>
+          <Argument type="String" name="surename"/>
+          <Argument type="String" name="firstname"/>
+          <Argument type="String" name="secondname"/>
+          <Argument type="double" name="hoursperweek"/>
+          <Argument type="double" name="daysperweek"/>
+          <Argument type="double" name="vacationdays"/>
+        </Method>
+        <Method name="startAutomaticTimeTracking" returnType="void" visibility="public"/>
+        <Method name="updateProfile" returnType="void" visibility="public">
+          <Argument type="String" name="username"/>
+          <Argument type="String" name="password"/>
+          <Argument type="String" name="company"/>
+          <Argument type="String" name="department"/>
+          <Argument type="String" name="surename"/>
+          <Argument type="double" name="hoursPerWeek"/>
+          <Argument type="double" name="daysPerWeek"/>
+          <Argument type="double" name="vacationDays"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="LoginException" package="de.ravenguard.jobtimetracking.control" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="PasswordConverter" package="de.ravenguard.jobtimetracking.control" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields>
+        <Field name="ALGORITHM" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="KEY" type="byte[]" visibility="private" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="convertToDatabaseColumn" returnType="String" visibility="public">
+          <Argument type="String" name="password"/>
+        </Method>
+        <Method name="convertToEntityAttribute" returnType="String" visibility="public">
+          <Argument type="String" name="dbData"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ProfileDao" package="de.ravenguard.jobtimetracking.control" visibility="public" xPosition="1520.0" yPosition="20.0">
+      <Fields>
+        <Field name="em" type="EntityManager" visibility="private"/>
+        <Field name="emf" type="EntityManagerFactory" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="close" returnType="void" visibility="public"/>
+        <Method name="delete" returnType="void" visibility="public">
+          <Argument type="Profile" name="profile"/>
+        </Method>
+        <Method name="loadProfile" returnType="Profile" visibility="public">
+          <Argument type="String" name="userName"/>
+          <Argument type="String" name="password"/>
+        </Method>
+        <Method name="save" returnType="void" visibility="public">
+          <Argument type="Profile" name="profile"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Profile" package="de.ravenguard.jobtimetracking.entity" visibility="public" xPosition="1820.0" yPosition="20.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="company" type="String" visibility="private"/>
+        <Field name="daysperweek" type="double" visibility="private"/>
+        <Field name="department" type="String" visibility="private"/>
+        <Field name="firstname" type="String" visibility="private"/>
+        <Field name="hoursperweek" type="double" visibility="private"/>
+        <Field name="id" type="Integer" visibility="private"/>
+        <Field name="password" type="String" visibility="private"/>
+        <Field name="secondname" type="String" visibility="private"/>
+        <Field name="surename" type="String" visibility="private"/>
+        <Field name="tracking" type="ArrayList&lt;Timetracking&gt;" visibility="private"/>
+        <Field name="username" type="String" visibility="private"/>
+        <Field name="vacationdays" type="double" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="addTracking" returnType="void" visibility="public">
+          <Argument type="Timetracking" name="tracking"/>
+        </Method>
+        <Method name="getCompany" returnType="String" visibility="public"/>
+        <Method name="getDaysPerWeek" returnType="double" visibility="public"/>
+        <Method name="getDepartment" returnType="String" visibility="public"/>
+        <Method name="getFirstname" returnType="String" visibility="public"/>
+        <Method name="getHoursPerWeek" returnType="double" visibility="public"/>
+        <Method name="getId" returnType="Integer" visibility="public"/>
+        <Method name="getPassword" returnType="String" visibility="public"/>
+        <Method name="getSecondname" returnType="String" visibility="public"/>
+        <Method name="getSurename" returnType="String" visibility="public"/>
+        <Method name="getTracking" returnType="ArrayList&lt;Timetracking&gt;" visibility="public"/>
+        <Method name="getUsername" returnType="String" visibility="public"/>
+        <Method name="getVacationDays" returnType="double" visibility="public"/>
+        <Method name="setCompany" returnType="void" visibility="public">
+          <Argument type="String" name="company"/>
+        </Method>
+        <Method name="setDaysPerWeek" returnType="void" visibility="public">
+          <Argument type="double" name="daysperweek"/>
+        </Method>
+        <Method name="setDepartment" returnType="void" visibility="public">
+          <Argument type="String" name="department"/>
+        </Method>
+        <Method name="setFirstname" returnType="void" visibility="public">
+          <Argument type="String" name="firstname"/>
+        </Method>
+        <Method name="setHoursPerWeek" returnType="void" visibility="public">
+          <Argument type="double" name="hoursperweek"/>
+        </Method>
+        <Method name="setId" returnType="void" visibility="public">
+          <Argument type="Integer" name="id"/>
+        </Method>
+        <Method name="setPassword" returnType="void" visibility="public">
+          <Argument type="String" name="password"/>
+        </Method>
+        <Method name="setSecondname" returnType="void" visibility="public">
+          <Argument type="String" name="secondname"/>
+        </Method>
+        <Method name="setSurename" returnType="void" visibility="public">
+          <Argument type="String" name="surename"/>
+        </Method>
+        <Method name="setTracking" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Timetracking&gt;" name="tracking"/>
+        </Method>
+        <Method name="setUsername" returnType="void" visibility="public">
+          <Argument type="String" name="username"/>
+        </Method>
+        <Method name="setVacationDays" returnType="void" visibility="public">
+          <Argument type="double" name="vacationdays"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Timetracking" package="de.ravenguard.jobtimetracking.entity" visibility="public" xPosition="2120.0" yPosition="20.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="begin" type="LocalDateTime" visibility="private"/>
+        <Field name="ende" type="LocalDateTime" visibility="private"/>
+        <Field name="id" type="Integer" visibility="private"/>
+        <Field name="profileFk" type="Profile" visibility="private"/>
+        <Field name="type" type="TimeType" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getBegin" returnType="LocalDateTime" visibility="public"/>
+        <Method name="getEnde" returnType="LocalDateTime" visibility="public"/>
+        <Method name="getId" returnType="Integer" visibility="public"/>
+        <Method name="getProfileFk" returnType="Profile" visibility="public"/>
+        <Method name="getType" returnType="TimeType" visibility="public"/>
+        <Method name="setBegin" returnType="void" visibility="public">
+          <Argument type="LocalDateTime" name="begin"/>
+        </Method>
+        <Method name="setEnde" returnType="void" visibility="public">
+          <Argument type="LocalDateTime" name="ende"/>
+        </Method>
+        <Method name="setId" returnType="void" visibility="public">
+          <Argument type="Integer" name="id"/>
+        </Method>
+        <Method name="setProfileFk" returnType="void" visibility="public">
+          <Argument type="Profile" name="profileFk"/>
+        </Method>
+        <Method name="setType" returnType="void" visibility="public">
+          <Argument type="TimeType" name="type"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Enum name="TimeType" package="de.ravenguard.jobtimetracking.entity" visibility="public" xPosition="20.0" yPosition="420.0">
+      <Literals>
+        <Literal name="WORK"/>
+        <Literal name="BREAK"/>
+        <Literal name="MEETING_OFFICE"/>
+        <Literal name="VACATION"/>
+        <Literal name="ILLNESS"/>
+        <Literal name="HOLIDAY"/>
+        <Literal name="TRAINING"/>
+        <Literal name="BUSINESS_TRIP"/>
+        <Literal name="BUSINESS_DINNER"/>
+        <Literal name="SCHOOL_UNIVERSITY"/>
+        <Literal name="HOMEOFFICE"/>
+        <Literal name="WORK_LIFE_BALANCE"/>
+      </Literals>
+    </Enum>
+    <Class name="GuiLoader" package="de.ravenguard.jobtimetracking" visibility="public" xPosition="320.0" yPosition="420.0">
+      <Fields>
+        <Field name="PREFIX_FXML" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="controller" type="C" visibility="private" isFinal="true"/>
+        <Field name="root" type="P" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="template"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getController" returnType="C" visibility="public"/>
+        <Method name="getRoot" returnType="P" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="JobTimeTracking" package="de.ravenguard.jobtimetracking" visibility="public" xPosition="620.0" yPosition="420.0">
+      <Fields>
+        <Field name="service" type="TimeTrackingService" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+        <Method name="stop" returnType="void" visibility="public"/>
+        <Method name="start" returnType="void" visibility="public">
+          <Argument type="Stage" name="primaryStage"/>
+        </Method>
+        <Method name="handleCreateProfile" returnType="boolean" visibility="private">
+          <Argument type="Optional&lt;ButtonType&gt;" name="result"/>
+          <Argument type="Stage" name="primaryStage"/>
+        </Method>
+        <Method name="handleLogin" returnType="boolean" visibility="private">
+          <Argument type="Optional&lt;ButtonType&gt;" name="result"/>
+          <Argument type="Stage" name="primaryStage"/>
+        </Method>
+        <Method name="validateLogin" returnType="boolean" visibility="private">
+          <Argument type="TextField" name="username"/>
+          <Argument type="PasswordField" name="password"/>
+          <Argument type="Label" name="errorMessage"/>
+          <Argument type="Dialog&lt;ButtonType&gt;" name="dialog"/>
+          <Argument type="TimeTrackingService" name="service"/>
+        </Method>
+        <Method name="validateNewProfile" returnType="boolean" visibility="private">
+          <Argument type="ProfileController" name="profileController"/>
+          <Argument type="Dialog&lt;ButtonType&gt;" name="dialog"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="StartJFX" package="de.ravenguard.jobtimetracking" visibility="public" xPosition="920.0" yPosition="420.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="DataRecordDBController" package="de.ravenguard.jobtimetracking.control" visibility="public" xPosition="1220.0" yPosition="420.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="EvaluationStandardWeekController" package="de.ravenguard.jobtimetracking.view" visibility="public" xPosition="1520.0" yPosition="420.0">
+      <Fields>
+        <Field name="lblSollAusgabe" type="Label" visibility="private"/>
+        <Field name="lblHabenAusgabe" type="Label" visibility="private"/>
+        <Field name="lblDifferenzAusgabe" type="Label" visibility="private"/>
+        <Field name="lblMehrstundenAusgabe" type="Label" visibility="private"/>
+        <Field name="lblBreaksAW" type="Label" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getLblSollAusgabe" returnType="Label" visibility="public"/>
+        <Method name="getLblHabenAusgabe" returnType="Label" visibility="public"/>
+        <Method name="getLblDifferezAusgabe" returnType="Label" visibility="public"/>
+        <Method name="getLblMehrstundenAusgabe" returnType="Label" visibility="public"/>
+        <Method name="getLblBreakAW" returnType="Label" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="EvaluationYearController" package="de.ravenguard.jobtimetracking.view" visibility="public" xPosition="1820.0" yPosition="420.0">
+      <Fields>
+        <Field name="lblSollMonat" type="Label" visibility="private"/>
+        <Field name="lblHabenMonat" type="Label" visibility="private"/>
+        <Field name="lblDifferenzMonat" type="Label" visibility="private"/>
+        <Field name="lblMehrstundenMonat" type="Label" visibility="private"/>
+        <Field name="lblSollJahr" type="Label" visibility="private"/>
+        <Field name="lblHabenJahr" type="Label" visibility="private"/>
+        <Field name="lblDifferenzJahr" type="Label" visibility="private"/>
+        <Field name="lblMehrstundenJahr" type="Label" visibility="private"/>
+        <Field name="lblBreaksMonthE" type="Label" visibility="private"/>
+        <Field name="lblBreaksYearE" type="Label" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getLblSollMonat" returnType="Label" visibility="public"/>
+        <Method name="getLblHabenMonat" returnType="Label" visibility="public"/>
+        <Method name="getLblDifferenzMonat" returnType="Label" visibility="public"/>
+        <Method name="getLblMehrstundenMonat" returnType="Label" visibility="public"/>
+        <Method name="getLblSollJahr" returnType="Label" visibility="public"/>
+        <Method name="getLblHabenJahr" returnType="Label" visibility="public"/>
+        <Method name="getLblDifferenzJahr" returnType="Label" visibility="public"/>
+        <Method name="getLblMehrstundenJahr" returnType="Label" visibility="public"/>
+        <Method name="getLblBreaksMonthE" returnType="Label" visibility="public"/>
+        <Method name="getLblBreaksYearE" returnType="Label" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="MainframeController" package="de.ravenguard.jobtimetracking.view" visibility="public" xPosition="2120.0" yPosition="420.0">
+      <Fields>
+        <Field name="btnEvaluation" type="Button" visibility="private"/>
+        <Field name="lblLiveWorkTime" type="Label" visibility="private"/>
+        <Field name="primaryStage" type="Stage" visibility="private"/>
+        <Field name="secs" type="int" visibility="private"/>
+        <Field name="service" type="TimeTrackingService" visibility="private"/>
+        <Field name="showStandardWeek" type="boolean" visibility="private"/>
+        <Field name="spView" type="ScrollPane" visibility="private"/>
+        <Field name="timeline" type="Timeline" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="initialize" returnType="void" visibility="public"/>
+        <Method name="onBreak" returnType="void" visibility="public">
+          <Argument type="ActionEvent" name="event"/>
+        </Method>
+        <Method name="onEditProfile" returnType="void" visibility="public">
+          <Argument type="ActionEvent" name="event"/>
+        </Method>
+        <Method name="onEvaluation" returnType="void" visibility="public">
+          <Argument type="ActionEvent" name="event"/>
+        </Method>
+        <Method name="onManualTimeTracking" returnType="void" visibility="public">
+          <Argument type="ActionEvent" name="event"/>
+        </Method>
+        <Method name="setPrimaryStage" returnType="void" visibility="public">
+          <Argument type="Stage" name="primaryStage"/>
+        </Method>
+        <Method name="setService" returnType="void" visibility="public">
+          <Argument type="TimeTrackingService" name="service"/>
+        </Method>
+        <Method name="start" returnType="void" visibility="public"/>
+        <Method name="setEvaluation" returnType="void" visibility="private"/>
+        <Method name="setStandardWeek" returnType="void" visibility="private"/>
+        <Method name="validateManualTracking" returnType="boolean" visibility="private">
+          <Argument type="ManualtimetrackingController" name="manualTrackingController"/>
+          <Argument type="Dialog&lt;ButtonType&gt;" name="dialog"/>
+        </Method>
+        <Method name="validateNewProfile" returnType="boolean" visibility="private">
+          <Argument type="ProfileEditingController" name="profileController"/>
+          <Argument type="Dialog&lt;ButtonType&gt;" name="dialog"/>
+        </Method>
+        <Method name="change" returnType="void" visibility="package">
+          <Argument type="Label" name="text"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ManualtimetrackingController" package="de.ravenguard.jobtimetracking.view" visibility="public" xPosition="20.0" yPosition="820.0">
+      <Fields>
+        <Field name="cbbDropDown" type="ComboBox&lt;TimeType&gt;" visibility="private"/>
+        <Field name="dpDatePickerBegin" type="DatePicker" visibility="private"/>
+        <Field name="dpDatePickerEnde" type="DatePicker" visibility="private"/>
+        <Field name="txtTimePickerBegin" type="TextField" visibility="private"/>
+        <Field name="txtTimePickerEnde" type="TextField" visibility="private"/>
+        <Field name="lblMTTErrors" type="Label" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getLblMTTErrors" returnType="Label" visibility="public"/>
+        <Method name="setLblMTTErrors" returnType="void" visibility="public">
+          <Argument type="Label" name="lblMTTErrors"/>
+        </Method>
+        <Method name="getCbbDropDown" returnType="ComboBox&lt;TimeType&gt;" visibility="public"/>
+        <Method name="getDpDatePickerBegin" returnType="DatePicker" visibility="public"/>
+        <Method name="getDpDatePickerEnde" returnType="DatePicker" visibility="public"/>
+        <Method name="getTxtTimePickerBegin" returnType="TextField" visibility="public"/>
+        <Method name="getTxtTimePickerEnde" returnType="TextField" visibility="public"/>
+        <Method name="initialize" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ProfileController" package="de.ravenguard.jobtimetracking.view" visibility="public" xPosition="320.0" yPosition="820.0">
+      <Fields>
+        <Field name="txtsSurename" type="TextField" visibility="private"/>
+        <Field name="txtFirstname" type="TextField" visibility="private"/>
+        <Field name="txtSecondname" type="TextField" visibility="private"/>
+        <Field name="txtCompany" type="TextField" visibility="private"/>
+        <Field name="txtDepartment" type="TextField" visibility="private"/>
+        <Field name="txtHoursPerWeek" type="TextField" visibility="private"/>
+        <Field name="txtDaysPerWeek" type="TextField" visibility="private"/>
+        <Field name="txtVacationDays" type="TextField" visibility="private"/>
+        <Field name="txtUsername" type="TextField" visibility="private"/>
+        <Field name="txtPassword" type="PasswordField" visibility="private"/>
+        <Field name="lblErrorMessage" type="Label" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getLblErrorMessage" returnType="Label" visibility="public"/>
+        <Method name="getTxtsSurename" returnType="TextField" visibility="public"/>
+        <Method name="setTxtsSurename" returnType="void" visibility="public">
+          <Argument type="TextField" name="txtsSurename"/>
+        </Method>
+        <Method name="getTxtFirstname" returnType="TextField" visibility="public"/>
+        <Method name="setTxtFirstname" returnType="void" visibility="public">
+          <Argument type="TextField" name="txtFirstname"/>
+        </Method>
+        <Method name="getTxtSecondname" returnType="TextField" visibility="public"/>
+        <Method name="setTxtSecondname" returnType="void" visibility="public">
+          <Argument type="TextField" name="txtSecondname"/>
+        </Method>
+        <Method name="getTxtCompany" returnType="TextField" visibility="public"/>
+        <Method name="setTxtCompany" returnType="void" visibility="public">
+          <Argument type="TextField" name="txtCompany"/>
+        </Method>
+        <Method name="getTxtDepartment" returnType="TextField" visibility="public"/>
+        <Method name="setTxtDepartment" returnType="void" visibility="public">
+          <Argument type="TextField" name="txtDepartment"/>
+        </Method>
+        <Method name="getTxtHoursPerWeek" returnType="TextField" visibility="public"/>
+        <Method name="setTxtHoursPerWeek" returnType="void" visibility="public">
+          <Argument type="TextField" name="txtHoursPerWeek"/>
+        </Method>
+        <Method name="getTxtDaysPerWeek" returnType="TextField" visibility="public"/>
+        <Method name="setTxtDaysPerWeek" returnType="void" visibility="public">
+          <Argument type="TextField" name="txtDaysPerWeek"/>
+        </Method>
+        <Method name="getTxtVacationDays" returnType="TextField" visibility="public"/>
+        <Method name="setTxtVacationDays" returnType="void" visibility="public">
+          <Argument type="TextField" name="txtVacationDays"/>
+        </Method>
+        <Method name="getTxtUsername" returnType="TextField" visibility="public"/>
+        <Method name="setTxtUsername" returnType="void" visibility="public">
+          <Argument type="TextField" name="txtUsername"/>
+        </Method>
+        <Method name="getTxtPassword" returnType="PasswordField" visibility="public"/>
+        <Method name="setTxtPassword" returnType="void" visibility="public">
+          <Argument type="PasswordField" name="txtPassword"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ProfileEditingController" package="de.ravenguard.jobtimetracking.view" visibility="public" xPosition="620.0" yPosition="820.0">
+      <Fields>
+        <Field name="lblErrorMessage" type="Label" visibility="private"/>
+        <Field name="txtSurename" type="TextField" visibility="private"/>
+        <Field name="txtCompany" type="TextField" visibility="private"/>
+        <Field name="txtDepartment" type="TextField" visibility="private"/>
+        <Field name="txtvacationdays" type="TextField" visibility="private"/>
+        <Field name="txthoursperweek" type="TextField" visibility="private"/>
+        <Field name="txtdaysperweek" type="TextField" visibility="private"/>
+        <Field name="txtUsername" type="TextField" visibility="private"/>
+        <Field name="txtPassword" type="TextField" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getLblErrorMessage" returnType="Label" visibility="public"/>
+        <Method name="getTxtSurename" returnType="TextField" visibility="public"/>
+        <Method name="getTxtCompany" returnType="TextField" visibility="public"/>
+        <Method name="getTxtDepartment" returnType="TextField" visibility="public"/>
+        <Method name="getTxtvacationdays" returnType="TextField" visibility="public"/>
+        <Method name="getTxthoursperweek" returnType="TextField" visibility="public"/>
+        <Method name="getTxtdaysperweek" returnType="TextField" visibility="public"/>
+        <Method name="getTxtUsername" returnType="TextField" visibility="public"/>
+        <Method name="getTxtPassword" returnType="TextField" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="type" source="de.ravenguard.jobtimetracking.entity.Timetracking" target="de.ravenguard.jobtimetracking.entity.TimeType" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="de.ravenguard.jobtimetracking.control.ProfileDao" target="de.ravenguard.jobtimetracking.entity.Profile" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="de.ravenguard.jobtimetracking.view.MainframeController" target="de.ravenguard.jobtimetracking.view.ProfileEditingController" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="de.ravenguard.jobtimetracking.entity.Profile" target="de.ravenguard.jobtimetracking.entity.Timetracking" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="de.ravenguard.jobtimetracking.view.ManualtimetrackingController" target="de.ravenguard.jobtimetracking.entity.TimeType" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="de.ravenguard.jobtimetracking.boundary.TimeTrackingService" target="de.ravenguard.jobtimetracking.entity.Timetracking" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="profile" source="de.ravenguard.jobtimetracking.boundary.TimeTrackingService" target="de.ravenguard.jobtimetracking.entity.Profile" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="de.ravenguard.jobtimetracking.boundary.EvaluationService" target="de.ravenguard.jobtimetracking.entity.Profile" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="service" source="de.ravenguard.jobtimetracking.view.MainframeController" target="de.ravenguard.jobtimetracking.boundary.TimeTrackingService" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="de.ravenguard.jobtimetracking.JobTimeTracking" target="de.ravenguard.jobtimetracking.view.ProfileController" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="de.ravenguard.jobtimetracking.JobTimeTracking" target="de.ravenguard.jobtimetracking.boundary.TimeTrackingService" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="de.ravenguard.jobtimetracking.view.MainframeController" target="de.ravenguard.jobtimetracking.boundary.TimeTrackingService" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="de.ravenguard.jobtimetracking.boundary.EvaluationService" target="de.ravenguard.jobtimetracking.entity.Timetracking" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="service" source="de.ravenguard.jobtimetracking.JobTimeTracking" target="de.ravenguard.jobtimetracking.boundary.TimeTrackingService" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="de.ravenguard.jobtimetracking.entity.Timetracking" target="de.ravenguard.jobtimetracking.entity.Profile" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="dao" source="de.ravenguard.jobtimetracking.boundary.TimeTrackingService" target="de.ravenguard.jobtimetracking.control.ProfileDao" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="de.ravenguard.jobtimetracking.view.MainframeController" target="de.ravenguard.jobtimetracking.view.ManualtimetrackingController" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="de.ravenguard.jobtimetracking.boundary.TimeTrackingService" target="de.ravenguard.jobtimetracking.entity.Profile" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="tracking" source="de.ravenguard.jobtimetracking.entity.Profile" target="de.ravenguard.jobtimetracking.entity.Timetracking" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Timetracking&gt;"/>
+    <HasRelation name="cbbDropDown" source="de.ravenguard.jobtimetracking.view.ManualtimetrackingController" target="de.ravenguard.jobtimetracking.entity.TimeType" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="de.ravenguard.jobtimetracking.boundary.TimeTrackingService" target="de.ravenguard.jobtimetracking.boundary.EvaluationData" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="profileFk" source="de.ravenguard.jobtimetracking.entity.Timetracking" target="de.ravenguard.jobtimetracking.entity.Profile" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="de.ravenguard.jobtimetracking.entity.Timetracking" target="de.ravenguard.jobtimetracking.entity.TimeType" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
