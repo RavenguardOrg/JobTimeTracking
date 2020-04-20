@@ -16,7 +16,6 @@
  */
 package de.ravenguard.jobtimetracking.boundary;
 
-import de.ravenguard.jobtimetracking.boundary.EvaluationData;
 import de.ravenguard.jobtimetracking.entity.Profile;
 import de.ravenguard.jobtimetracking.entity.TimeType;
 import de.ravenguard.jobtimetracking.entity.Timetracking;

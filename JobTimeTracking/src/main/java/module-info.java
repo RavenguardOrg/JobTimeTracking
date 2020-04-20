@@ -5,8 +5,6 @@
  */
 
 module de.ravenguard.jobtimetracking {
-  requires org.apache.logging.log4j;
-  requires org.apache.logging.log4j.core;
   requires java.sql;
   requires java.persistence;
   requires javafx.controls;

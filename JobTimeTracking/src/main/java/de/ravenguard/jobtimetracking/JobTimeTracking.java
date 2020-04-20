@@ -72,8 +72,6 @@ public class JobTimeTracking extends Application {
     service.close();
   }
 
-
-
   private final TimeTrackingService service = new TimeTrackingService();
 
   /**
@@ -263,6 +261,7 @@ public class JobTimeTracking extends Application {
       service.login(userName, passWord);
     } catch (NoResultException | LoginException ex) {
       Logger.getLogger(JobTimeTracking.class.getName()).log(Level.SEVERE, null, ex);
+      errors.add("Login not successful");
     }
     if (!errors.isEmpty()) {
       // Join ErrorMessages to single String using stream API

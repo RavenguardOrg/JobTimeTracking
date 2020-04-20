@@ -26,64 +26,64 @@ import javafx.scene.control.Label;
 public class EvaluationYearController {
 
   @FXML
-  private Label lblSollMonat;
+  private Label lblBalanceM;
   @FXML
-  private Label lblHabenMonat;
+  private Label lblBalanceY;
   @FXML
-  private Label lblDifferenzMonat;
+  private Label lblBreaksM;
   @FXML
-  private Label lblMehrstundenMonat;
+  private Label lblBreaksY;
   @FXML
-  private Label lblSollJahr;
+  private Label lblOvertimeM;
   @FXML
-  private Label lblHabenJahr;
+  private Label lblOvertimeY;
   @FXML
-  private Label lblDifferenzJahr;
+  private Label lblOwnM;
   @FXML
-  private Label lblMehrstundenJahr;
+  private Label lblOwnY;
   @FXML
-  private Label lblBreaksMonthE;
+  private Label lblQuotaM;
   @FXML
-  private Label lblBreaksYearE;
+  private Label lblQuotaY;
 
-  public Label getLblSollMonat() {
-    return lblSollMonat;
+  public Label getLblBalanceM() {
+    return lblBalanceM;
   }
 
-  public Label getLblHabenMonat() {
-    return lblHabenMonat;
+  public Label getLblBalanceY() {
+    return lblBalanceY;
   }
 
-  public Label getLblDifferenzMonat() {
-    return lblDifferenzMonat;
+  public Label getLblBreaksM() {
+    return lblBreaksM;
   }
 
-  public Label getLblMehrstundenMonat() {
-    return lblMehrstundenMonat;
+  public Label getLblBreaksY() {
+    return lblBreaksY;
   }
 
-  public Label getLblSollJahr() {
-    return lblSollJahr;
+  public Label getLblOvertimeM() {
+    return lblOvertimeM;
   }
 
-  public Label getLblHabenJahr() {
-    return lblHabenJahr;
+  public Label getLblOvertimeY() {
+    return lblOvertimeY;
   }
 
-  public Label getLblDifferenzJahr() {
-    return lblDifferenzJahr;
+  public Label getLblOwnM() {
+    return lblOwnM;
   }
 
-  public Label getLblMehrstundenJahr() {
-    return lblMehrstundenJahr;
+  public Label getLblOwnY() {
+    return lblOwnY;
   }
 
-  public Label getLblBreaksMonthE() {
-    return lblBreaksMonthE;
+  public Label getLblQuotaM() {
+    return lblQuotaM;
   }
 
-  public Label getLblBreaksYearE() {
-    return lblBreaksYearE;
+  public Label getLblQuotaY() {
+    return lblQuotaY;
   }
 
 }

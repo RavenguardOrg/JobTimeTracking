@@ -1,0 +1,73 @@
+= JobTimeTracking
+:author: Anika Schmidt
+:email: anika@schmidt-bth.de
+
+== Concept
+
+Time tracking at work, regarding the court judgment of the European Court of Justice.
+
+.Currently implemented features
+- manage profile
+- provide automatic time tracking
+- capture breaks
+- add manuell entries
+- evaluate tracked times
+
+== Installation
+
+.Used JDK and APIs
+- Java 11 (https://github.com/ojdkbuild/ojdkbuild[OpenJDK 11.0.6])
+- Maven 3.6.3
+- OpenJavaFx 11 (Version {javafx-version}) - provided by Maven
+- JPA 2.2 implemented by EclipseLink (Version: {jpa-version}) - provided by Maven
+- MariaDB Java Client (Version {jdbc-version}) - provided by Maven
+- AsciiDoctor for documentation (Generation provided by pom.xml)
+
+The source code is provided at https://github.com/RavenguardOrg/JobTimeTracking[GitHub]
+
+== Database
+
+The database connection is provided by JPA 2.2. Setup of database and tables is automated.
+
+Configured database is *MariaDB* and configured user is *root* with password *root*.
+Please change *persistence.xml* for your database settings.
+
+<<<
+
+== Project Structure
+
+This project uses the _Boundary - Control - Entity Pattern_ with an additional View
+
+- Services are included in the package *de.ravenguard.jobtimetracking.boundary*
+- The repository and additional components for JPA are in the package *de.ravenguard.jobtimetracking.control*
+- The entity classes and enums are in the package *de.ravenguard.jobtimetracking.entity*
+- *de.ravenguard.jobtimetracking.view* contains all controller for JavaFX
+
+Resources for the view are provided in the package *de.ravenguard.jobtimetracking.fxml* for the templates and *de.ravenguard.jobtimetracking.images* for the images used.
+
+Documentation is provided by asciidoc.
+
+== Planned features
+
+- List and edit Timetracking entries (expanding view and timetracking service)
+- Evaluating Vacation days (expanding evaluation service)
+- Evaluation with custom time borders (expanding evaluation service)
+- Automatic holidays (Using webserice to receive holidays)
+- Disable and enable automatic time tracking (User setting)
+
+*https://icons8.de/icons[Using Free Icon]*
+
+<<<
+
+== Additional documentation
+
+=== Diagramms
+
+.Use Case Diagram
+image::UseCaseZeiterfassung.JPG[Class Diagram]
+
+.State Diagram
+image::StateDiagramm.JPG[State Diagram]
+
+.Structure
+image::class diagram.png[Class Diagram]

@@ -22,6 +22,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 
 /**
@@ -30,63 +31,63 @@ import javax.persistence.TypedQuery;
  */
 public class ProfileDao {
 
-    private EntityManager em;
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("job-time-tracking");
+  private EntityManager em;
+  private EntityManagerFactory emf = Persistence.createEntityManagerFactory("job-time-tracking");
 
-    public ProfileDao() {
-        em = emf.createEntityManager();
-    }
+  public ProfileDao() {
+    em = emf.createEntityManager();
+  }
 
-    public void close() {
-        em.close();
-        emf.close();
-    }
+  public void close() {
+    em.close();
+    emf.close();
+  }
 
-    /**
-     * Deletes the profile.
-     *
-     * @param profile profile to delete
-     */
-    public void delete(Profile profile) {
-        EntityTransaction tx = em.getTransaction();
-        tx.begin();
-        em.remove(profile);
-        tx.commit();
-    }
+  /**
+   * Deletes the profile.
+   *
+   * @param profile profile to delete
+   */
+  public void delete(Profile profile) {
+    EntityTransaction tx = em.getTransaction();
+    tx.begin();
+    em.remove(profile);
+    tx.commit();
+  }
 
-    /**
-     * Load the profile
-     *
-     * @param userName
-     * @param password
-     * @return Profile instance
-     * @throws LoginException
-     */
-    public Profile loadProfile(String userName, String password)
-            throws LoginException, NoResultException {
-        TypedQuery<Profile> query = em.createNamedQuery("Profile.login", Profile.class);
-        query.setParameter("username", userName);
-        Profile profile = query.getSingleResult();
-        if (profile.getPassword().equalsIgnoreCase(password)) {
-            return profile;
-        } else {
-            throw new LoginException();
-        }
+  /**
+   * Load the profile
+   *
+   * @param userName
+   * @param password
+   * @return Profile instance
+   * @throws LoginException
+   */
+  public Profile loadProfile(String userName, String password)
+          throws LoginException, NoResultException {
+    TypedQuery<Profile> query = em.createNamedQuery("Profile.login", Profile.class);
+    query.setParameter("username", userName);
+    Profile profile = query.getSingleResult();
+    if (profile.getPassword().equalsIgnoreCase(password)) {
+      return profile;
+    } else {
+      throw new LoginException();
     }
+  }
 
-    /**
-     * Saves the Profile of the User
-     *
-     * @param profile
-     */
-    public void save(Profile profile) {
-        EntityTransaction tx = em.getTransaction();
-        tx.begin();
-        if (profile.getId() == null) {
-            em.persist(profile);
-        } else {
-            em.merge(profile);
-        }
-        tx.commit();
+  /**
+   * Saves the Profile of the User
+   *
+   * @param profile
+   */
+  public void save(Profile profile) throws PersistenceException {
+    EntityTransaction tx = em.getTransaction();
+    tx.begin();
+    if (profile.getId() == null) {
+      em.persist(profile);
+    } else {
+      em.merge(profile);
     }
+    tx.commit();
+  }
 }

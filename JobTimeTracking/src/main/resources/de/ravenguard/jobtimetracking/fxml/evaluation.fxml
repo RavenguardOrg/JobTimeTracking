@@ -35,24 +35,24 @@
             <Font name="System Bold" size="14.0" />
           </font>
         </Label>
-        <Label fx:id="lblSollMonat" alignment="BASELINE_LEFT" layoutX="257.0" layoutY="134.0" text="SOLL MONAT" />
-        <Label fx:id="lblSollJahr" alignment="BASELINE_LEFT" layoutX="440.0" layoutY="134.0" text="SOLL JAHR" />
+        <Label fx:id="lblQuotaM" alignment="BASELINE_LEFT" layoutX="257.0" layoutY="134.0" />
+        <Label fx:id="lblQuotaY" alignment="BASELINE_LEFT" layoutX="440.0" layoutY="134.0" />
         <Label alignment="BASELINE_LEFT" layoutX="16.0" layoutY="171.0" prefHeight="20.0" prefWidth="41.0" text="Own" underline="true">
           <font>
             <Font name="System Bold" size="14.0" />
           </font>
         </Label>
-        <Label fx:id="lblHabenMonat" alignment="BASELINE_LEFT" layoutX="257.0" layoutY="172.0" text="HABEN MONAT" />
-        <Label fx:id="lblHabenJahr" alignment="BASELINE_LEFT" layoutX="440.0" layoutY="172.0" text="HABEN JAHR" />
+        <Label fx:id="lblOwnM" alignment="BASELINE_LEFT" layoutX="257.0" layoutY="172.0" />
+        <Label fx:id="lblOwnY" alignment="BASELINE_LEFT" layoutX="440.0" layoutY="172.0" />
         <Label alignment="BASELINE_LEFT" layoutX="15.0" layoutY="205.0" text="Balance" underline="true">
           <font>
             <Font name="System Bold" size="14.0" />
           </font>
         </Label>
-        <Label fx:id="lblDifferenzMonat" alignment="BASELINE_LEFT" layoutX="258.0" layoutY="207.0" text="DIFFERENZ MONAT" />
-        <Label fx:id="lblDifferenzJahr" alignment="BASELINE_LEFT" layoutX="440.0" layoutY="207.0" text="DIFFERENZ JAHR" />
-        <Label fx:id="lblMehrstundenJahr" alignment="BASELINE_LEFT" layoutX="440.0" layoutY="245.0" text="ÜBERSTUNDEN JAHR" />
-        <Label fx:id="lblMehrstundenMonat" alignment="BASELINE_LEFT" layoutX="258.0" layoutY="245.0" text="ÜBERSTUNDEN MONAT" />
+        <Label fx:id="lblBalanceM" alignment="BASELINE_LEFT" layoutX="258.0" layoutY="207.0" />
+        <Label fx:id="lblBalanceY" alignment="BASELINE_LEFT" layoutX="440.0" layoutY="207.0" />
+        <Label fx:id="lblOvertimeY" alignment="BASELINE_LEFT" layoutX="440.0" layoutY="245.0" />
+        <Label fx:id="lblOvertimeM" alignment="BASELINE_LEFT" layoutX="258.0" layoutY="245.0" />
         <Label alignment="BASELINE_LEFT" layoutX="14.0" layoutY="243.0" text="Overtime" underline="true">
           <font>
             <Font name="System Bold" size="14.0" />
@@ -63,8 +63,8 @@
             <Font name="System Bold" size="14.0" />
           </font>
         </Label>
-        <Label fx:id="lblBreaksYearE" alignment="BASELINE_LEFT" layoutX="440.0" layoutY="281.0" text="PAUSENJAHR" />
-        <Label fx:id="lblBreaksMonthE" alignment="BASELINE_LEFT" layoutX="258.0" layoutY="281.0" text="PAUSENMONAT" />
+        <Label fx:id="lblBreaksY" alignment="BASELINE_LEFT" layoutX="440.0" layoutY="281.0" />
+        <Label fx:id="lblBreaksM" alignment="BASELINE_LEFT" layoutX="258.0" layoutY="281.0" />
         <Separator layoutX="-7.0" layoutY="72.0" minWidth="600.0" valignment="BASELINE" />
         <Separator layoutX="3.0" layoutY="320.0" minWidth="600.0" valignment="BASELINE" />
       </children>

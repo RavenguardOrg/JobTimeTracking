@@ -19,68 +19,65 @@ import javafx.util.StringConverter;
  */
 public class DatarecordsUpdateController {
 
-    @FXML
-    private ComboBox<TimeType> cbbDropDown;
-    @FXML
-    private DatePicker dpDatePickerBegin;
-    @FXML
-    private DatePicker dpDatePickerEnd;
-    @FXML
-    private TextField txtTimePickerBegin;
-    @FXML
-    private TextField txtTimePickerEnde;
-    @FXML
-    private Label lblDBRUErrors;
+  @FXML
+  private ComboBox<TimeType> cbbDropDown;
+  @FXML
+  private DatePicker dpDatePickerBegin;
+  @FXML
+  private DatePicker dpDatePickerEnd;
+  @FXML
+  private Label lblDBRUErrors;
+  @FXML
+  private TextField txtTimePickerBegin;
+  @FXML
+  private TextField txtTimePickerEnd;
 
-    public Label getLblDBRUErrors() {
-        return lblDBRUErrors;
-    }
+  public ComboBox<TimeType> getCbbDropDown() {
+    return cbbDropDown;
+  }
 
-    public void setLblDBRUErrors(Label lblDBRUErrors) {
-        this.lblDBRUErrors = lblDBRUErrors;
-    }
+  public DatePicker getDpDatePickerBegin() {
+    return dpDatePickerBegin;
+  }
 
-    public ComboBox<TimeType> getCbbDropDown() {
-        return cbbDropDown;
-    }
+  public DatePicker getDpDatePickerEnd() {
+    return dpDatePickerEnd;
+  }
 
-    public DatePicker getDpDatePickerBegin() {
-        return dpDatePickerBegin;
-    }
+  public Label getLblDBRUErrors() {
+    return lblDBRUErrors;
+  }
 
-    public DatePicker getDpDatePickerEnd() {
-        return dpDatePickerEnd;
-    }
+  public TextField getTxtTimePickerBegin() {
+    return txtTimePickerBegin;
+  }
 
-    public TextField getTxtTimePickerBegin() {
-        return txtTimePickerBegin;
-    }
+  public TextField getTxtTimePickerEnd() {
+    return txtTimePickerEnd;
+  }
 
-    public TextField getTxtTimePickerEnd() {
-        return txtTimePickerEnde;
-    }
+  /**
+   * initialize
+   */
+  @FXML
+  public void initialize() {
+    cbbDropDown.getItems().addAll(TimeType.values());
+    cbbDropDown.setConverter(new StringConverter<TimeType>() {
 
-    /**
-     * initialize
-     */
-    @FXML
-    public void initialize() {
-        cbbDropDown.getItems().addAll(TimeType.values());
-        cbbDropDown.setConverter(new StringConverter<TimeType>() {
-            @Override
-            public String toString(TimeType object) {
-                return object.getLabel();
-            }
+      @Override
+      public TimeType fromString(String string) {
+        for (TimeType type : TimeType.values()) {
+          if (type.getLabel().equalsIgnoreCase(string)) {
+            return type;
+          }
+        }
+        return null;
+      }
 
-            @Override
-            public TimeType fromString(String string) {
-                for (TimeType type : TimeType.values()) {
-                    if (type.getLabel().equalsIgnoreCase(string)) {
-                        return type;
-                    }
-                }
-                return null;
-            }
-        });
-    }
+      @Override
+      public String toString(TimeType object) {
+        return object.getLabel();
+      }
+    });
+  }
 }

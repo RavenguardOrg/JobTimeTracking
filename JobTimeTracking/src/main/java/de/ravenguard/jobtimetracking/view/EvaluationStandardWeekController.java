@@ -26,33 +26,33 @@ import javafx.scene.control.Label;
 public class EvaluationStandardWeekController {
 
   @FXML
-  private Label lblSollAusgabe;
+  private Label lblBalance;
   @FXML
-  private Label lblHabenAusgabe;
+  private Label lblBreaks;
   @FXML
-  private Label lblDifferenzAusgabe;
+  private Label lblOvertime;
   @FXML
-  private Label lblMehrstundenAusgabe;
+  private Label lblOwn;
   @FXML
-  private Label lblBreaksAW;
+  private Label lblQuota;
 
-  public Label getLblSollAusgabe() {
-    return lblSollAusgabe;
+  public Label getLblBalance() {
+    return lblBalance;
   }
 
-  public Label getLblHabenAusgabe() {
-    return lblHabenAusgabe;
+  public Label getLblBreaks() {
+    return lblBreaks;
   }
 
-  public Label getLblDifferezAusgabe() {
-    return lblDifferenzAusgabe;
+  public Label getLblOvertime() {
+    return lblOvertime;
   }
 
-  public Label getLblMehrstundenAusgabe() {
-    return lblMehrstundenAusgabe;
+  public Label getLblOwn() {
+    return lblOwn;
   }
 
-  public Label getLblBreakAW() {
-    return lblBreaksAW;
+  public Label getLblQuota() {
+    return lblQuota;
   }
 }

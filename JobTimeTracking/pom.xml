@@ -1,130 +1,124 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>de.ravenguard</groupId>
-    <artifactId>job-time-tracking</artifactId>
-    <version>1.0.0</version>
-    <packaging>jar</packaging>
-    <properties>
-        <!-- Compiler properties -->
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.release>11</maven.compiler.release>
-        <maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
-        <maven.compiler.showWarnings>true</maven.compiler.showWarnings>
-        <!-- Version control of dependencies -->
-        <version.javax.activation>1.2.0</version.javax.activation>
-        <version.jaxb>2.3.0</version.jaxb>
-        <version.javafx>11.0.2</version.javafx>
-        <version.jasperreports>6.12.1</version.jasperreports>
-        <version.log4j>2.13.1</version.log4j>
-    </properties>
-    <dependencies>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
-            <version>${version.log4j}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>${version.log4j}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-controls</artifactId>
-            <version>${version.javafx}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-fxml</artifactId>
-            <version>${version.javafx}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-graphics</artifactId>
-            <version>${version.javafx}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-base</artifactId>
-            <version>${version.javafx}</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.eclipse.persistence/org.eclipse.persistence.jpa -->
-        <dependency>
-            <groupId>org.eclipse.persistence</groupId>
-            <artifactId>org.eclipse.persistence.jpa</artifactId>
-            <version>2.7.6</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client -->
-        <dependency>
-            <groupId>org.mariadb.jdbc</groupId>
-            <artifactId>mariadb-java-client</artifactId>
-            <version>2.6.0</version>
-        </dependency>
-    </dependencies>
-    <build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.2.0</version>
-                <executions>
-                    <execution>
-                        <id>make-assembly</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <descriptorRefs>
-                        <descriptorRef>jar-with-dependencies</descriptorRef>
-                    </descriptorRefs>
-                    <archive>
-                        <manifest>
-                            <mainClass>de.ravenguard.jobtimetracking.StartJFX</mainClass>
-                        </manifest>
-                    </archive>
-                </configuration>
-            </plugin>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
-            </plugin>
-            <plugin>
-                <groupId>org.openjfx</groupId>
-                <artifactId>javafx-maven-plugin</artifactId>
-                <version>0.0.4</version>
-                <configuration>
-                    <source>11</source>
-                    <target>11</target>
-                    <release>11</release>
-                    <mainClass>de.ravenguard.jobtimetracking/de.ravenguard.jobtimetracking.StartJFX</mainClass>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-    <name>Job time tracking </name>
-    <description>This tool is for timekeeping at work,  regarding the court judgment
-        of the European Court of Justice.
-
-        1. Including:
-        - manage profiles
-        - add manually times
-        - caputre breaks
-        - capture automatically time
-        - evaluate time
-
-        - View with fxml files and controller classes
-        - Control with services for encapsulating the data and business methods
-        - Repository for saving and loading data, using JAXB
-
-        2. Features:
-        - create automatic Database
-        - security password (crypted in DB)
-        - self controll for break and worktime
-        - Evaluation with custom time borders
-        - List and edit timerecords
-        - Evaluation Vacation days
-        - Automatic &gt;holidayes
-        - Disable and enable automatic time tracking</description>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>de.ravenguard</groupId>
+  <artifactId>job-time-tracking</artifactId>
+  <version>1.0.0</version>
+  <packaging>jar</packaging>
+  <properties>
+    <!-- Compiler properties -->
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.release>11</maven.compiler.release>
+    <maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
+    <maven.compiler.showWarnings>true</maven.compiler.showWarnings>
+    <!-- Version control of dependencies -->
+    <version.javafx>11.0.2</version.javafx>
+    <version.org.eclipse.persistence.jpa>2.7.6</version.org.eclipse.persistence.jpa>
+    <version.mariadb-java-client>2.6.0</version.mariadb-java-client>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-controls</artifactId>
+      <version>${version.javafx}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-fxml</artifactId>
+      <version>${version.javafx}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-graphics</artifactId>
+      <version>${version.javafx}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-base</artifactId>
+      <version>${version.javafx}</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.eclipse.persistence/org.eclipse.persistence.jpa -->
+    <dependency>
+      <groupId>org.eclipse.persistence</groupId>
+      <artifactId>org.eclipse.persistence.jpa</artifactId>
+      <version>${version.org.eclipse.persistence.jpa}</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client -->
+    <dependency>
+      <groupId>org.mariadb.jdbc</groupId>
+      <artifactId>mariadb-java-client</artifactId>
+      <version>${version.mariadb-java-client}</version>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>3.2.0</version>
+        <executions>
+          <execution>
+            <id>make-assembly</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+          <archive>
+            <manifest>
+              <mainClass>de.ravenguard.jobtimetracking.StartJFX</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.asciidoctor</groupId>
+        <artifactId>asciidoctor-maven-plugin</artifactId>
+        <version>1.6.0</version>
+        <dependencies>
+          <dependency>
+            <groupId>org.asciidoctor</groupId>
+            <artifactId>asciidoctorj-pdf</artifactId>
+            <version>1.5.3</version>
+          </dependency>
+        </dependencies>
+        <configuration>
+          <backend>pdf</backend>
+          <attributes>
+            <project-version>${project.version}</project-version>
+            <javafx-version>${version.javafx}</javafx-version>
+            <jpa-version>${version.org.eclipse.persistence.jpa}</jpa-version>
+            <jdbc-version>${version.mariadb-java-client}</jdbc-version>
+          </attributes>
+        </configuration>
+        <executions>
+          <execution>
+            <id>output-pdf</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>process-asciidoc</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+      </plugin>
+      <plugin>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-maven-plugin</artifactId>
+        <version>0.0.4</version>
+        <configuration>
+          <release>11</release>
+          <archive>
+            <mainClass>de.ravenguard.jobtimetracking/de.ravenguard.jobtimetracking.StartJFX</mainClass>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>

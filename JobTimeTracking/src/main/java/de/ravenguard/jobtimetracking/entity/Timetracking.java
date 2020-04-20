@@ -18,6 +18,7 @@ package de.ravenguard.jobtimetracking.entity;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -40,64 +41,84 @@ import javax.persistence.Table;
 @Table(name = "time_tracking", schema = "jobtimetracking")
 public class Timetracking implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
-    @Column(name = "begin", nullable = false, columnDefinition = "TIMESTAMP")
-    private LocalDateTime begin;
-    @Column(name = "end", nullable = false, columnDefinition = "TIMESTAMP")
-    private LocalDateTime end;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
-    private Integer id;
-    @ManyToOne(fetch = FetchType.EAGER,
-            cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH})
-    @JoinColumn(name = "profile_id", nullable = false)
-    private Profile profileFk;
-    @Enumerated(EnumType.STRING)
-    @Column(name = "type")
-    private TimeType type;
+  @Column(name = "begin", nullable = false, columnDefinition = "TIMESTAMP")
+  private LocalDateTime begin;
+  @Column(name = "end", nullable = false, columnDefinition = "TIMESTAMP")
+  private LocalDateTime end;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id", nullable = false, unique = true)
+  private Integer id;
+  @ManyToOne(fetch = FetchType.EAGER,
+          cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH})
+  @JoinColumn(name = "profile_id", nullable = false)
+  private Profile profileFk;
+  @Enumerated(EnumType.STRING)
+  @Column(name = "type")
+  private TimeType type;
 
-    public LocalDateTime getBegin() {
-        return begin;
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
     }
-
-    public LocalDateTime getEnd() {
-        return end;
+    if (obj == null || getClass() != obj.getClass()) {
+      return false;
     }
+    final Timetracking other = (Timetracking) obj;
+    return Objects.equals(this.id, other.getId());
+  }
 
-    public Integer getId() {
-        return id;
-    }
+  public LocalDateTime getBegin() {
+    return begin;
+  }
 
-    public Profile getProfileFk() {
-        return profileFk;
-    }
+  public LocalDateTime getEnd() {
+    return end;
+  }
 
-    public TimeType getType() {
-        return type;
-    }
+  public Integer getId() {
+    return id;
+  }
 
-    public void setBegin(LocalDateTime begin) {
-        this.begin = begin;
-    }
+  public Profile getProfileFk() {
+    return profileFk;
+  }
 
-    public void setEnd(LocalDateTime end) {
-        this.end = end;
-    }
+  public TimeType getType() {
+    return type;
+  }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+  @Override
+  public int hashCode() {
+    int hash = 5;
+    hash = 47 * hash + Objects.hashCode(this.id);
+    return hash;
+  }
 
-    public void setProfileFk(Profile profileFk) {
-        this.profileFk = profileFk;
-        if (!profileFk.getTracking().contains(this)) {
-            profileFk.getTracking().add(this);
-        }
-    }
+  public void setBegin(LocalDateTime begin) {
+    this.begin = begin;
+  }
 
-    public void setType(TimeType type) {
-        this.type = type;
+  public void setEnd(LocalDateTime end) {
+    this.end = end;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
+  public void setProfileFk(Profile profileFk) {
+    this.profileFk = profileFk;
+    if (!profileFk.getTracking().contains(this)) {
+      profileFk.getTracking().add(this);
     }
+  }
+
+  public void setType(TimeType type) {
+    this.type = type;
+  }
+
 }

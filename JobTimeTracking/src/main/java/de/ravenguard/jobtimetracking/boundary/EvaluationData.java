@@ -23,49 +23,49 @@ package de.ravenguard.jobtimetracking.boundary;
  */
 public class EvaluationData {
 
-  private double quota;
-  private double own;
   private double balance;
-  private double overtime;
   private double breaks;
-
-  public double getQuota() {
-    return quota;
-  }
-
-  public void setQuota(double quota) {
-    this.quota = quota;
-  }
-
-  public double getOwn() {
-    return own;
-  }
-
-  public void setOwn(double own) {
-    this.own = own;
-  }
+  private double overtime;
+  private double own;
+  private double quota;
 
   public double getBalance() {
     return balance;
-  }
-
-  public void setBalance(double balance) {
-    this.balance = balance;
-  }
-
-  public double getOvertime() {
-    return overtime;
-  }
-
-  public void setOvertime(double overtime) {
-    this.overtime = overtime;
   }
 
   public double getBreaks() {
     return breaks;
   }
 
+  public double getOvertime() {
+    return overtime;
+  }
+
+  public double getOwn() {
+    return own;
+  }
+
+  public double getQuota() {
+    return quota;
+  }
+
+  public void setBalance(double balance) {
+    this.balance = balance;
+  }
+
   public void setBreaks(double breaks) {
     this.breaks = breaks;
+  }
+
+  public void setOvertime(double overtime) {
+    this.overtime = overtime;
+  }
+
+  public void setOwn(double own) {
+    this.own = own;
+  }
+
+  public void setQuota(double quota) {
+    this.quota = quota;
   }
 }
