@@ -1,5 +1,4 @@
 de\ravenguard\jobtimetracking\StartJFX.class
-de\ravenguard\jobtimetracking\control\DataRecordDBController.class
 de\ravenguard\jobtimetracking\GuiLoader.class
 de\ravenguard\jobtimetracking\boundary\EvaluationData.class
 de\ravenguard\jobtimetracking\control\PasswordConverter.class
@@ -14,6 +13,7 @@ de\ravenguard\jobtimetracking\entity\Profile.class
 de\ravenguard\jobtimetracking\entity\TimeType.class
 de\ravenguard\jobtimetracking\JobTimeTracking$1.class
 de\ravenguard\jobtimetracking\view\ManualtimetrackingController$1.class
+de\ravenguard\jobtimetracking\view\DataRecordDBController.class
 de\ravenguard\jobtimetracking\control\ProfileDao.class
 de\ravenguard\jobtimetracking\entity\Timetracking.class
 de\ravenguard\jobtimetracking\view\ManualtimetrackingController.class

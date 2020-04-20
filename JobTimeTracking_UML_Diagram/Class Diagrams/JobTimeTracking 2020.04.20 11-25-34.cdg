@@ -2,7 +2,7 @@
 
 <ClassDiagram name="JobTimeTracking">
   <ClassDiagramComponents>
-    <Class name="EvaluationData" package="de.ravenguard.jobtimetracking.boundary" visibility="public" xPosition="20.0" yPosition="20.0">
+    <Class name="EvaluationData" package="de.ravenguard.jobtimetracking.boundary" visibility="public" xPosition="1844.0" yPosition="103.0">
       <Fields>
         <Field name="quota" type="double" visibility="private"/>
         <Field name="own" type="double" visibility="private"/>
@@ -34,7 +34,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="EvaluationService" package="de.ravenguard.jobtimetracking.boundary" visibility="public" xPosition="320.0" yPosition="20.0">
+    <Class name="EvaluationService" package="de.ravenguard.jobtimetracking.boundary" visibility="public" xPosition="16.0" yPosition="1233.0">
       <Fields/>
       <Constructors/>
       <Methods>
@@ -53,7 +53,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="TimeTrackingService" package="de.ravenguard.jobtimetracking.boundary" visibility="public" xPosition="620.0" yPosition="20.0">
+    <Class name="TimeTrackingService" package="de.ravenguard.jobtimetracking.boundary" visibility="public" xPosition="539.0" yPosition="94.0">
       <Fields>
         <Field name="dao" type="ProfileDao" visibility="private"/>
         <Field name="isBreak" type="boolean" visibility="private"/>
@@ -101,7 +101,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="LoginException" package="de.ravenguard.jobtimetracking.control" visibility="public" xPosition="920.0" yPosition="20.0">
+    <Class name="LoginException" package="de.ravenguard.jobtimetracking.control" visibility="public" xPosition="2092.0" yPosition="175.0">
       <Fields>
         <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
       </Fields>
@@ -110,7 +110,7 @@
       </Constructors>
       <Methods/>
     </Class>
-    <Class name="PasswordConverter" package="de.ravenguard.jobtimetracking.control" visibility="public" xPosition="1220.0" yPosition="20.0">
+    <Class name="PasswordConverter" package="de.ravenguard.jobtimetracking.control" visibility="public" xPosition="2646.0" yPosition="175.0">
       <Fields>
         <Field name="ALGORITHM" type="String" visibility="private" isStatic="true" isFinal="true"/>
         <Field name="KEY" type="byte[]" visibility="private" isStatic="true" isFinal="true"/>
@@ -125,7 +125,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="ProfileDao" package="de.ravenguard.jobtimetracking.control" visibility="public" xPosition="1520.0" yPosition="20.0">
+    <Class name="ProfileDao" package="de.ravenguard.jobtimetracking.control" visibility="public" xPosition="194.0" yPosition="957.0">
       <Fields>
         <Field name="em" type="EntityManager" visibility="private"/>
         <Field name="emf" type="EntityManagerFactory" visibility="private"/>
@@ -147,7 +147,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="Profile" package="de.ravenguard.jobtimetracking.entity" visibility="public" xPosition="1820.0" yPosition="20.0">
+    <Class name="Profile" package="de.ravenguard.jobtimetracking.entity" visibility="public" xPosition="16.0" yPosition="103.0">
       <Fields>
         <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
         <Field name="company" type="String" visibility="private"/>
@@ -218,7 +218,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="Timetracking" package="de.ravenguard.jobtimetracking.entity" visibility="public" xPosition="2120.0" yPosition="20.0">
+    <Class name="Timetracking" package="de.ravenguard.jobtimetracking.entity" visibility="public" xPosition="1417.0" yPosition="539.0">
       <Fields>
         <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
         <Field name="begin" type="LocalDateTime" visibility="private"/>
@@ -251,23 +251,7 @@
         </Method>
       </Methods>
     </Class>
-    <Enum name="TimeType" package="de.ravenguard.jobtimetracking.entity" visibility="public" xPosition="20.0" yPosition="420.0">
-      <Literals>
-        <Literal name="WORK"/>
-        <Literal name="BREAK"/>
-        <Literal name="MEETING_OFFICE"/>
-        <Literal name="VACATION"/>
-        <Literal name="ILLNESS"/>
-        <Literal name="HOLIDAY"/>
-        <Literal name="TRAINING"/>
-        <Literal name="BUSINESS_TRIP"/>
-        <Literal name="BUSINESS_DINNER"/>
-        <Literal name="SCHOOL_UNIVERSITY"/>
-        <Literal name="HOMEOFFICE"/>
-        <Literal name="WORK_LIFE_BALANCE"/>
-      </Literals>
-    </Enum>
-    <Class name="GuiLoader" package="de.ravenguard.jobtimetracking" visibility="public" xPosition="320.0" yPosition="420.0">
+    <Class name="GuiLoader" package="de.ravenguard.jobtimetracking" visibility="public" xPosition="2090.0" yPosition="342.0">
       <Fields>
         <Field name="PREFIX_FXML" type="String" visibility="private" isStatic="true" isFinal="true"/>
         <Field name="controller" type="C" visibility="private" isFinal="true"/>
@@ -283,7 +267,7 @@
         <Method name="getRoot" returnType="P" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="JobTimeTracking" package="de.ravenguard.jobtimetracking" visibility="public" xPosition="620.0" yPosition="420.0">
+    <Class name="JobTimeTracking" package="de.ravenguard.jobtimetracking" visibility="public" xPosition="423.0" yPosition="625.0">
       <Fields>
         <Field name="service" type="TimeTrackingService" visibility="private" isFinal="true"/>
       </Fields>
@@ -317,7 +301,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="StartJFX" package="de.ravenguard.jobtimetracking" visibility="public" xPosition="920.0" yPosition="420.0">
+    <Class name="StartJFX" package="de.ravenguard.jobtimetracking" visibility="public" xPosition="2351.0" yPosition="500.0">
       <Fields/>
       <Constructors/>
       <Methods>
@@ -326,12 +310,12 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="DataRecordDBController" package="de.ravenguard.jobtimetracking.control" visibility="public" xPosition="1220.0" yPosition="420.0">
+    <Class name="DataRecordDBController" package="de.ravenguard.jobtimetracking.control" visibility="public" xPosition="2358.0" yPosition="664.0">
       <Fields/>
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="EvaluationStandardWeekController" package="de.ravenguard.jobtimetracking.view" visibility="public" xPosition="1520.0" yPosition="420.0">
+    <Class name="EvaluationStandardWeekController" package="de.ravenguard.jobtimetracking.view" visibility="public" xPosition="2328.0" yPosition="175.0">
       <Fields>
         <Field name="lblSollAusgabe" type="Label" visibility="private"/>
         <Field name="lblHabenAusgabe" type="Label" visibility="private"/>
@@ -348,7 +332,7 @@
         <Method name="getLblBreakAW" returnType="Label" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="EvaluationYearController" package="de.ravenguard.jobtimetracking.view" visibility="public" xPosition="1820.0" yPosition="420.0">
+    <Class name="EvaluationYearController" package="de.ravenguard.jobtimetracking.view" visibility="public" xPosition="2646.0" yPosition="376.0">
       <Fields>
         <Field name="lblSollMonat" type="Label" visibility="private"/>
         <Field name="lblHabenMonat" type="Label" visibility="private"/>
@@ -375,7 +359,7 @@
         <Method name="getLblBreaksYearE" returnType="Label" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="MainframeController" package="de.ravenguard.jobtimetracking.view" visibility="public" xPosition="2120.0" yPosition="420.0">
+    <Class name="MainframeController" package="de.ravenguard.jobtimetracking.view" visibility="public" xPosition="1177.0" yPosition="1047.0">
       <Fields>
         <Field name="btnEvaluation" type="Button" visibility="private"/>
         <Field name="lblLiveWorkTime" type="Label" visibility="private"/>
@@ -423,7 +407,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="ManualtimetrackingController" package="de.ravenguard.jobtimetracking.view" visibility="public" xPosition="20.0" yPosition="820.0">
+    <Class name="ManualtimetrackingController" package="de.ravenguard.jobtimetracking.view" visibility="public" xPosition="2000.0" yPosition="977.0">
       <Fields>
         <Field name="cbbDropDown" type="ComboBox&lt;TimeType&gt;" visibility="private"/>
         <Field name="dpDatePickerBegin" type="DatePicker" visibility="private"/>
@@ -446,7 +430,7 @@
         <Method name="initialize" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="ProfileController" package="de.ravenguard.jobtimetracking.view" visibility="public" xPosition="320.0" yPosition="820.0">
+    <Class name="ProfileController" package="de.ravenguard.jobtimetracking.view" visibility="public" xPosition="684.0" yPosition="967.0">
       <Fields>
         <Field name="txtsSurename" type="TextField" visibility="private"/>
         <Field name="txtFirstname" type="TextField" visibility="private"/>
@@ -505,7 +489,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="ProfileEditingController" package="de.ravenguard.jobtimetracking.view" visibility="public" xPosition="620.0" yPosition="820.0">
+    <Class name="ProfileEditingController" package="de.ravenguard.jobtimetracking.view" visibility="public" xPosition="2332.0" yPosition="1149.0">
       <Fields>
         <Field name="lblErrorMessage" type="Label" visibility="private"/>
         <Field name="txtSurename" type="TextField" visibility="private"/>
@@ -530,30 +514,46 @@
         <Method name="getTxtPassword" returnType="TextField" visibility="public"/>
       </Methods>
     </Class>
+    <Enum name="TimeType" package="de.ravenguard.jobtimetracking.entity" visibility="public" xPosition="1738.0" yPosition="539.0">
+      <Literals>
+        <Literal name="WORK"/>
+        <Literal name="BREAK"/>
+        <Literal name="MEETING_OFFICE"/>
+        <Literal name="VACATION"/>
+        <Literal name="ILLNESS"/>
+        <Literal name="HOLIDAY"/>
+        <Literal name="TRAINING"/>
+        <Literal name="BUSINESS_TRIP"/>
+        <Literal name="BUSINESS_DINNER"/>
+        <Literal name="SCHOOL_UNIVERSITY"/>
+        <Literal name="HOMEOFFICE"/>
+        <Literal name="WORK_LIFE_BALANCE"/>
+      </Literals>
+    </Enum>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <HasRelation name="type" source="de.ravenguard.jobtimetracking.entity.Timetracking" target="de.ravenguard.jobtimetracking.entity.TimeType" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="de.ravenguard.jobtimetracking.control.ProfileDao" target="de.ravenguard.jobtimetracking.entity.Profile" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="de.ravenguard.jobtimetracking.view.MainframeController" target="de.ravenguard.jobtimetracking.view.ProfileEditingController" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="de.ravenguard.jobtimetracking.entity.Profile" target="de.ravenguard.jobtimetracking.entity.Timetracking" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="de.ravenguard.jobtimetracking.view.ManualtimetrackingController" target="de.ravenguard.jobtimetracking.entity.TimeType" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="de.ravenguard.jobtimetracking.boundary.TimeTrackingService" target="de.ravenguard.jobtimetracking.entity.Timetracking" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="profile" source="de.ravenguard.jobtimetracking.boundary.TimeTrackingService" target="de.ravenguard.jobtimetracking.entity.Profile" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="de.ravenguard.jobtimetracking.boundary.EvaluationService" target="de.ravenguard.jobtimetracking.entity.Profile" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="service" source="de.ravenguard.jobtimetracking.view.MainframeController" target="de.ravenguard.jobtimetracking.boundary.TimeTrackingService" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="de.ravenguard.jobtimetracking.JobTimeTracking" target="de.ravenguard.jobtimetracking.view.ProfileController" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="de.ravenguard.jobtimetracking.JobTimeTracking" target="de.ravenguard.jobtimetracking.boundary.TimeTrackingService" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="de.ravenguard.jobtimetracking.view.MainframeController" target="de.ravenguard.jobtimetracking.boundary.TimeTrackingService" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="de.ravenguard.jobtimetracking.boundary.EvaluationService" target="de.ravenguard.jobtimetracking.entity.Timetracking" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="service" source="de.ravenguard.jobtimetracking.JobTimeTracking" target="de.ravenguard.jobtimetracking.boundary.TimeTrackingService" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="de.ravenguard.jobtimetracking.entity.Timetracking" target="de.ravenguard.jobtimetracking.entity.Profile" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="dao" source="de.ravenguard.jobtimetracking.boundary.TimeTrackingService" target="de.ravenguard.jobtimetracking.control.ProfileDao" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="de.ravenguard.jobtimetracking.view.MainframeController" target="de.ravenguard.jobtimetracking.view.ManualtimetrackingController" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="de.ravenguard.jobtimetracking.boundary.TimeTrackingService" target="de.ravenguard.jobtimetracking.entity.Profile" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="tracking" source="de.ravenguard.jobtimetracking.entity.Profile" target="de.ravenguard.jobtimetracking.entity.Timetracking" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Timetracking&gt;"/>
+    <HasRelation name="service" source="de.ravenguard.jobtimetracking.view.MainframeController" target="de.ravenguard.jobtimetracking.boundary.TimeTrackingService" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="de.ravenguard.jobtimetracking.boundary.TimeTrackingService" target="de.ravenguard.jobtimetracking.entity.Timetracking" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="cbbDropDown" source="de.ravenguard.jobtimetracking.view.ManualtimetrackingController" target="de.ravenguard.jobtimetracking.entity.TimeType" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="de.ravenguard.jobtimetracking.boundary.TimeTrackingService" target="de.ravenguard.jobtimetracking.boundary.EvaluationData" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="profileFk" source="de.ravenguard.jobtimetracking.entity.Timetracking" target="de.ravenguard.jobtimetracking.entity.Profile" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="dao" source="de.ravenguard.jobtimetracking.boundary.TimeTrackingService" target="de.ravenguard.jobtimetracking.control.ProfileDao" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="de.ravenguard.jobtimetracking.view.MainframeController" target="de.ravenguard.jobtimetracking.boundary.TimeTrackingService" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="tracking" source="de.ravenguard.jobtimetracking.entity.Profile" target="de.ravenguard.jobtimetracking.entity.Timetracking" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Timetracking&gt;"/>
+    <UseRelation source="de.ravenguard.jobtimetracking.view.MainframeController" target="de.ravenguard.jobtimetracking.view.ProfileEditingController" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="type" source="de.ravenguard.jobtimetracking.entity.Timetracking" target="de.ravenguard.jobtimetracking.entity.TimeType" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="de.ravenguard.jobtimetracking.entity.Timetracking" target="de.ravenguard.jobtimetracking.entity.TimeType" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="de.ravenguard.jobtimetracking.entity.Profile" target="de.ravenguard.jobtimetracking.entity.Timetracking" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="service" source="de.ravenguard.jobtimetracking.JobTimeTracking" target="de.ravenguard.jobtimetracking.boundary.TimeTrackingService" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="de.ravenguard.jobtimetracking.JobTimeTracking" target="de.ravenguard.jobtimetracking.boundary.TimeTrackingService" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="de.ravenguard.jobtimetracking.control.ProfileDao" target="de.ravenguard.jobtimetracking.entity.Profile" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="de.ravenguard.jobtimetracking.view.ManualtimetrackingController" target="de.ravenguard.jobtimetracking.entity.TimeType" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="de.ravenguard.jobtimetracking.boundary.TimeTrackingService" target="de.ravenguard.jobtimetracking.boundary.EvaluationData" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="de.ravenguard.jobtimetracking.boundary.EvaluationService" target="de.ravenguard.jobtimetracking.entity.Profile" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="de.ravenguard.jobtimetracking.entity.Timetracking" target="de.ravenguard.jobtimetracking.entity.Profile" sourceCardinality="1..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>
