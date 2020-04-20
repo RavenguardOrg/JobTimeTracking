@@ -1,18 +1,7 @@
 /*
- * Copyright (C) 2019 Anika Schmidt
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package de.ravenguard.jobtimetracking.view;
 
@@ -25,11 +14,10 @@ import javafx.scene.control.TextField;
 import javafx.util.StringConverter;
 
 /**
- * Manualtimetracking
  *
  * @author Anika.Schmidt
  */
-public class ManualtimetrackingController {
+public class DatarecordsUpdateController {
 
     @FXML
     private ComboBox<TimeType> cbbDropDown;
@@ -40,16 +28,16 @@ public class ManualtimetrackingController {
     @FXML
     private TextField txtTimePickerBegin;
     @FXML
-    private TextField txtTimePickerEnd;
+    private TextField txtTimePickerEnde;
     @FXML
-    private Label lblMTTErrors;
+    private Label lblDBRUErrors;
 
-    public Label getLblMTTErrors() {
-        return lblMTTErrors;
+    public Label getLblDBRUErrors() {
+        return lblDBRUErrors;
     }
 
-    public void setLblMTTErrors(Label lblMTTErrors) {
-        this.lblMTTErrors = lblMTTErrors;
+    public void setLblDBRUErrors(Label lblDBRUErrors) {
+        this.lblDBRUErrors = lblDBRUErrors;
     }
 
     public ComboBox<TimeType> getCbbDropDown() {
@@ -69,7 +57,7 @@ public class ManualtimetrackingController {
     }
 
     public TextField getTxtTimePickerEnd() {
-        return txtTimePickerEnd;
+        return txtTimePickerEnde;
     }
 
     /**

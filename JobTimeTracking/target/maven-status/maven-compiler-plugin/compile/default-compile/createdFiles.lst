@@ -1,10 +1,12 @@
 de\ravenguard\jobtimetracking\StartJFX.class
+de\ravenguard\jobtimetracking\view\DatarecordsUpdateController$1.class
 de\ravenguard\jobtimetracking\GuiLoader.class
 de\ravenguard\jobtimetracking\boundary\EvaluationData.class
 de\ravenguard\jobtimetracking\control\PasswordConverter.class
 module-info.class
 de\ravenguard\jobtimetracking\boundary\TimeTrackingService.class
 de\ravenguard\jobtimetracking\view\EvaluationStandardWeekController.class
+de\ravenguard\jobtimetracking\view\DatarecordsUpdateController.class
 de\ravenguard\jobtimetracking\view\MainframeController.class
 de\ravenguard\jobtimetracking\JobTimeTracking.class
 de\ravenguard\jobtimetracking\view\ProfileController.class

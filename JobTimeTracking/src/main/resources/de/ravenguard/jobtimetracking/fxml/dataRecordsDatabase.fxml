@@ -10,12 +10,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" minWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="de.ravenguard.jobtimetracking.control.DataRecordDB">
+<AnchorPane id="AnchorPane" minWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.ravenguard.jobtimetracking.view.DataRecordDBController">
     <children>
         <Pane layoutX="5.0" layoutY="3.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <Label alignment="BASELINE_CENTER" contentDisplay="CENTER" layoutX="239.0" layoutY="21.0" text="Datarecords DB" textAlignment="CENTER">
+                <Label fx:id="lblDatarecords" alignment="CENTER" contentDisplay="CENTER" layoutX="239.0" layoutY="21.0" text="Datarecords DB" textAlignment="CENTER">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>
@@ -23,19 +22,20 @@
                 <Separator layoutY="72.0" prefHeight="3.0" prefWidth="600.0" />
                 <Separator layoutX="3.0" layoutY="320.0" minWidth="600.0" valignment="BASELINE" />
                 <ScrollBar layoutX="593.0" layoutY="72.0" minHeight="199.0" minWidth="14.0" orientation="VERTICAL" prefHeight="203.0" prefWidth="14.0" />
-                <TableView layoutX="3.0" layoutY="78.0" maxHeight="193.0" minHeight="173.0" minWidth="590.0" prefHeight="182.0" prefWidth="590.0">
+                <TableView fx:id="tblvDatarecords" layoutX="3.0" layoutY="76.0" maxHeight="182.0" minHeight="182.0" minWidth="590.0" prefHeight="182.0" prefWidth="590.0">
                     <columns>
-                        <TableColumn prefWidth="75.0" text="C1" />
-                        <TableColumn prefWidth="75.0" text="C2" />
+                        <TableColumn id="begin" prefWidth="75.0" text="Begin" />
+                        <TableColumn id="end" prefWidth="75.0" text="End" />
+                  <TableColumn id="type" prefWidth="75.0" text="Type" />
                     </columns>
-                    <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                    </columnResizePolicy>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
                 </TableView>
                 <Separator layoutX="2.0" layoutY="279.0" minWidth="600.0" valignment="BASELINE" />
-                <Button layoutX="42.0" layoutY="284.0" mnemonicParsing="false" text="Update" />
-                <Button layoutX="493.0" layoutY="284.0" mnemonicParsing="false" text="Delete" />
-                <ScrollBar layoutX="3.0" layoutY="261.0" prefHeight="14.0" prefWidth="590.0" />
+                <Button fx:id="btnUpdate" layoutX="42.0" layoutY="284.0" mnemonicParsing="false" onAction="#onUpdate" text="Update" />
+                <Button fx:id="btnDelete" layoutX="493.0" layoutY="284.0" mnemonicParsing="false" onAction="#onDelete" text="Delete" />
+                <ScrollBar layoutX="3.0" layoutY="260.0" prefHeight="14.0" prefWidth="590.0" />
             </children>
         </Pane>
     </children>

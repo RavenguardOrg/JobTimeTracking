@@ -25,7 +25,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.29797979797979796" minHeight="400.0" minWidth="800.0" xmlns="http://javafx.com/javafx/8.0.211" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.ravenguard.jobtimetracking.view.MainframeController">
+<SplitPane dividerPositions="0.29797979797979796" minHeight="400.0" minWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.ravenguard.jobtimetracking.view.MainframeController">
   <items>
     <AnchorPane minWidth="190.0">
       <children>
@@ -36,26 +36,31 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                 <Font size="14.0" />
               </font>
             </Button>
-            <Button fx:id="btnEvaluation" layoutX="19.0" layoutY="166.0" minHeight="25.0" mnemonicParsing="false" onAction="#onEvaluation" text="Evaluation">
+            <Button fx:id="btnDatarecordsDB" layoutX="17.0" layoutY="188.0" minHeight="25.0" mnemonicParsing="false" onAction="#onDataRecords" text="Datarecords DB">
               <font>
                 <Font size="14.0" />
               </font>
             </Button>
-            <Button fx:id="btnEditingProfile" layoutX="17.0" layoutY="118.0" minHeight="25.0" mnemonicParsing="false" onAction="#onEditProfile" text="Edit profile">
+            <Button fx:id="btnEditingProfile" layoutX="17.0" layoutY="106.0" minHeight="25.0" mnemonicParsing="false" onAction="#onEditProfile" text="Edit profile">
               <font>
                 <Font size="14.0" />
               </font>
             </Button>
-            <Button fx:id="btnManualTimeTracking" layoutX="17.0" layoutY="211.0" minHeight="25.0" mnemonicParsing="false" onAction="#onManualTimeTracking" text="Manual Time Tracking">
+            <Button fx:id="btnManualTimeTracking" layoutX="17.0" layoutY="229.0" minHeight="25.0" mnemonicParsing="false" onAction="#onManualTimeTracking" text="Manual Time Tracking">
               <font>
                 <Font size="14.0" />
               </font>
             </Button>
-            <Label fx:id="lblLiveWorkTime" alignment="CENTER" contentDisplay="CENTER" layoutX="65.0" layoutY="284.0" text="00:00:00">
+            <Label fx:id="lblLiveWorkTime" alignment="CENTER" contentDisplay="CENTER" layoutX="65.0" layoutY="314.0" text="00:00:00">
               <font>
                 <Font name="System Bold" size="15.0" />
               </font>
             </Label>
+                  <Button fx:id="btnEvaluation" layoutX="17.0" layoutY="147.0" minHeight="25.0" mnemonicParsing="false" onAction="#onEvaluation" text="Evaluation">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
           </children>
         </Pane>
       </children>

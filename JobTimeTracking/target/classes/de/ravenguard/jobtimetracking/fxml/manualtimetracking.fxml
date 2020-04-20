@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane minHeight="275.0" minWidth="600.0" xmlns="http://javafx.com/javafx/8.0.211" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.ravenguard.jobtimetracking.view.ManualtimetrackingController">
+<AnchorPane minHeight="275.0" minWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.ravenguard.jobtimetracking.view.ManualtimetrackingController">
   <children>
     <Pane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
@@ -27,7 +26,7 @@
           </padding>
         </TextField>
         <Label layoutX="399.0" layoutY="91.0" text="Begin Time" />
-        <TextField fx:id="txtTimePickerEnde" layoutX="399.0" layoutY="196.0" prefHeight="25.0" prefWidth="127.0" promptText="HH:MM">
+        <TextField fx:id="txtTimePickerEnd" layoutX="399.0" layoutY="196.0" prefHeight="25.0" prefWidth="127.0" promptText="HH:MM">
           <padding>
             <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
           </padding>
@@ -41,13 +40,13 @@
             <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
           </padding>
         </Label>
-        <DatePicker fx:id="dpDatePickerBegin" layoutX="225.0" layoutY="194.0" prefHeight="25.0" prefWidth="137.0">
+        <DatePicker fx:id="dpDatePickerEnd" layoutX="225.0" layoutY="194.0" prefHeight="25.0" prefWidth="137.0">
           <padding>
             <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
           </padding>
         </DatePicker>
         <Label layoutX="225.0" layoutY="91.0" text="Begin Date" />
-        <DatePicker fx:id="dpDatePickerEnde" layoutX="225.0" layoutY="117.0" prefHeight="25.0" prefWidth="137.0">
+        <DatePicker fx:id="dpDatePickerBegin" layoutX="225.0" layoutY="117.0" prefHeight="25.0" prefWidth="137.0">
           <padding>
             <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
           </padding>

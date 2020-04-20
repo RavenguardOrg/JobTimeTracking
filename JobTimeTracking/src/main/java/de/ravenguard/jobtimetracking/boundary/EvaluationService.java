@@ -167,7 +167,7 @@ public class EvaluationService {
             // filter: Only Break
             .filter(element -> element.getType() == TimeType.BREAK)
             // map: Duration
-            .map(element -> Duration.between(element.getBegin(), element.getEnde()))
+            .map(element -> Duration.between(element.getBegin(), element.getEnd()))
             // sum: Duration to double hours and sum up
             .collect(Collectors.summingDouble(element -> {
               long hours = element.toHours();
@@ -184,7 +184,7 @@ public class EvaluationService {
             // map: difference Duration or hours per Day
             .map(element -> {
               if (!element.getType().isCompleteDay()) {
-                return Duration.between(element.getBegin(), element.getEnde());
+                return Duration.between(element.getBegin(), element.getEnd());
               } else {
                 return durationPerDay;
               }

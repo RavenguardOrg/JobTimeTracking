@@ -16,8 +16,6 @@
  */
 package de.ravenguard.jobtimetracking.entity;
 
-import de.ravenguard.jobtimetracking.entity.Profile;
-import de.ravenguard.jobtimetracking.entity.TimeType;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import javax.persistence.CascadeType;
@@ -42,64 +40,64 @@ import javax.persistence.Table;
 @Table(name = "time_tracking", schema = "jobtimetracking")
 public class Timetracking implements Serializable {
 
-  private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-  @Column(name = "begin", nullable = false, columnDefinition = "TIMESTAMP")
-  private LocalDateTime begin;
-  @Column(name = "end", nullable = false, columnDefinition = "TIMESTAMP")
-  private LocalDateTime ende;
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "id", nullable = false, unique = true)
-  private Integer id;
-  @ManyToOne(fetch = FetchType.EAGER,
-          cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH})
-  @JoinColumn(name = "profile_id", nullable = false)
-  private Profile profileFk;
-  @Enumerated(EnumType.STRING)
-  @Column(name = "type")
-  private TimeType type;
+    @Column(name = "begin", nullable = false, columnDefinition = "TIMESTAMP")
+    private LocalDateTime begin;
+    @Column(name = "end", nullable = false, columnDefinition = "TIMESTAMP")
+    private LocalDateTime end;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false, unique = true)
+    private Integer id;
+    @ManyToOne(fetch = FetchType.EAGER,
+            cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH})
+    @JoinColumn(name = "profile_id", nullable = false)
+    private Profile profileFk;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "type")
+    private TimeType type;
 
-  public LocalDateTime getBegin() {
-    return begin;
-  }
-
-  public LocalDateTime getEnde() {
-    return ende;
-  }
-
-  public Integer getId() {
-    return id;
-  }
-
-  public Profile getProfileFk() {
-    return profileFk;
-  }
-
-  public TimeType getType() {
-    return type;
-  }
-
-  public void setBegin(LocalDateTime begin) {
-    this.begin = begin;
-  }
-
-  public void setEnde(LocalDateTime ende) {
-    this.ende = ende;
-  }
-
-  public void setId(Integer id) {
-    this.id = id;
-  }
-
-  public void setProfileFk(Profile profileFk) {
-    this.profileFk = profileFk;
-    if (!profileFk.getTracking().contains(this)) {
-      profileFk.getTracking().add(this);
+    public LocalDateTime getBegin() {
+        return begin;
     }
-  }
 
-  public void setType(TimeType type) {
-    this.type = type;
-  }
+    public LocalDateTime getEnd() {
+        return end;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public Profile getProfileFk() {
+        return profileFk;
+    }
+
+    public TimeType getType() {
+        return type;
+    }
+
+    public void setBegin(LocalDateTime begin) {
+        this.begin = begin;
+    }
+
+    public void setEnd(LocalDateTime end) {
+        this.end = end;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setProfileFk(Profile profileFk) {
+        this.profileFk = profileFk;
+        if (!profileFk.getTracking().contains(this)) {
+            profileFk.getTracking().add(this);
+        }
+    }
+
+    public void setType(TimeType type) {
+        this.type = type;
+    }
 }

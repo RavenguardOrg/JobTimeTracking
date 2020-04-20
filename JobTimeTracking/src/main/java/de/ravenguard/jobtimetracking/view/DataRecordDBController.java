@@ -16,10 +16,34 @@
  */
 package de.ravenguard.jobtimetracking.view;
 
+import de.ravenguard.jobtimetracking.entity.Timetracking;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.TableView;
+
 /**
  *
  * @author Anika.Schmidt
  */
 public class DataRecordDBController {
+
+    @FXML
+    private TableView<Timetracking> tblvDatarecords;
+
+    public TableView<Timetracking> getTblvDatarecords() {
+        return tblvDatarecords;
+    }
+
+    public void setTblvDatarecords(TableView<Timetracking> tblvDatarecords) {
+        this.tblvDatarecords = tblvDatarecords;
+    }
+
+    public void onUpdate(ActionEvent event) {
+
+    }
+
+    public void onDelete(ActionEvent event) {
+
+    }
 
 }
