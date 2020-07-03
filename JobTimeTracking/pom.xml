@@ -15,7 +15,7 @@
         <version.jaxb>2.3.0</version.jaxb>
         <version.javafx>11.0.2</version.javafx>
         <version.jasperreports>6.11.0</version.jasperreports>
-        <version.log4j>2.13.0</version.log4j>
+        <version.log4j>2.13.3</version.log4j>
     </properties>
     <dependencies>
         <dependency>
