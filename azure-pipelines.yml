@@ -8,7 +8,7 @@ steps:
 - task: SonarCloudPrepare@1
   inputs:
     SonarCloud: 'sonarcloud'
-    organization: 'ravenguardorg'
+    organization: 'coldanr'
     scannerMode: 'Other'
 - task: Maven@3
   inputs:
