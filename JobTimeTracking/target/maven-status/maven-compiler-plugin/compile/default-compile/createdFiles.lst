@@ -13,6 +13,7 @@ de\ravenguard\jobtimetracking\logic\EvaluationData.class
 de\ravenguard\jobtimetracking\repository\LocalDateTimeAdapter.class
 de\ravenguard\jobtimetracking\JobTimeTracking.class
 de\ravenguard\jobtimetracking\repository\ProfileDao.class
+de\ravenguard\jobtimetracking\control\DataRecordDB.class
 de\ravenguard\jobtimetracking\JobTimeTracking$1.class
 de\ravenguard\jobtimetracking\control\Manualtimetracking$1.class
 de\ravenguard\jobtimetracking\logic\TimeTrackingService.class

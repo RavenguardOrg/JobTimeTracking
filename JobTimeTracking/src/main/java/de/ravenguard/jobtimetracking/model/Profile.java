@@ -17,6 +17,7 @@
 package de.ravenguard.jobtimetracking.model;
 
 import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -125,11 +126,14 @@ public class Profile {
     this.password = password;
   }
 
-  public ArrayList<Timetracking> getTracking() {
+  public List<Timetracking> getTracking() {
     return tracking;
   }
 
-  public void setTracking(ArrayList<Timetracking> tracking) {
-    this.tracking = tracking;
+  public void setTracking(List<Timetracking> tracking) {
+    this.tracking.clear();
+    if (tracking != null) {
+      this.tracking.addAll(tracking);
+    }
   }
 }
