@@ -22,7 +22,4 @@ steps:
     goals: 'verify'
     sonarQubeRunAnalysis: true
     sqMavenPluginVersionChoice: 'latest'
-    checkStyleRunAnalysis: true
-    pmdRunAnalysis: true
-    findBugsRunAnalysis: true
 - task: SonarCloudPublish@1
