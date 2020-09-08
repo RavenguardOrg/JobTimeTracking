@@ -8,12 +8,12 @@ steps:
 - task: SonarCloudPrepare@1
   inputs:
     SonarCloud: 'sonarcloud'
-    organization: 'ravenguardorg'
+    organization: 'coldanr'
     scannerMode: 'Other'
 - task: Maven@3
   inputs:
     mavenPomFile: 'JobTimeTracking/pom.xml'
-    mavenOptions: '-Xmx3072m'
+    mavenOptions: '-Xmx3072m --no-transfer-progress'
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.11'
     jdkArchitectureOption: 'x64'
