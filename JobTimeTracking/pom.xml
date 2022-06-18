@@ -12,7 +12,7 @@
     <maven.compiler.showWarnings>true</maven.compiler.showWarnings>
     <!-- Version control of dependencies -->
     <version.javax.activation>1.2.0</version.javax.activation>
-    <version.jaxb>2.3.0</version.jaxb>
+    <version.jaxb>4.0.0</version.jaxb>
     <version.javafx>11.0.2</version.javafx>
     <version.log4j>2.17.2</version.log4j>
   </properties>
