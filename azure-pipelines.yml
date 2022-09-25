@@ -10,7 +10,7 @@ steps:
     SonarCloud: 'sonarcloud'
     organization: 'coldanr'
     scannerMode: 'Other'
-- task: Maven@3
+- task: Maven@4.210.0
   inputs:
     mavenPomFile: 'JobTimeTracking/pom.xml'
     mavenOptions: '-Xmx3072m'
