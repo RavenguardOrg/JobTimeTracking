@@ -14,7 +14,7 @@
     <version.javax.activation>1.2.0</version.javax.activation>
     <version.jaxb>2.3.0</version.jaxb>
     <version.javafx>19</version.javafx>
-    <version.log4j>2.18.0</version.log4j>
+    <version.log4j>2.19.0</version.log4j>
   </properties>
   <dependencies>
     <dependency>
