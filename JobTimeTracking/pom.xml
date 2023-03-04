@@ -13,7 +13,7 @@
     <!-- Version control of dependencies -->
     <version.javax.activation>1.2.0</version.javax.activation>
     <version.jaxb>2.3.0</version.jaxb>
-    <version.javafx>19</version.javafx>
+    <version.javafx>19.0.2.1</version.javafx>
     <version.log4j>2.20.0</version.log4j>
   </properties>
   <dependencies>
